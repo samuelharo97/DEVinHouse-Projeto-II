@@ -1,7 +1,7 @@
+import { Form, Button } from '@components'
+
 function App() {
-  return (
-    <h1>test</h1>
-  )
+  return <Form />
 }
 
 export default App
