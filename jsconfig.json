@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@styles": ["./styles/index.js"],
+      "@components": ["./components/index.js"],
+      "@contexts": ["./contexts/index.js"],
+      "@services": ["./services/index.js"],
+      "@hooks": ["./hooks/index.js"],
+      "@pages": ["./pages/index.js"],
+      "@router": ["./router/index.js"]
+    }
+  },
+  "include": ["src"]
+}
