@@ -5,7 +5,6 @@ export const Form = () => {
   const { register, handleSubmit, setValue, setFocus } = useForm()
 
   const findZipcode = e => {
-    console.log('oi')
     const zipcode = e.target.value.replace(/\D/g, '')
     console.log(zipcode)
     fetch(`https://viacep.com.br/ws/${zipcode}/json/`)
