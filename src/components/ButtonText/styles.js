@@ -8,8 +8,4 @@ export const Text = styled.a`
   line-height: 18px;
   align-self: center;
   width: fit-content;
-
-  &:hover {
-    cursor: pointer;
-  }
 `

@@ -35,6 +35,22 @@ body {
 
 }
 
+p, h4 {
+  color: ${({ theme }) => theme.COLORS.COMMON.GRAY_TEXT};
+}
 
+span {
+  color: ${({ theme }) => theme.COLORS.SECONDARY.LIGHT};
+}
+
+a, button {
+    text-decoration: none;
+    cursor: pointer;
+    transition: filter 0.2s;
+  }
+
+  a:hover, button:hover {
+    filter: brightness(0.9);
+  }
 
 `

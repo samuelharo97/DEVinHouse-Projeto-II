@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const LoginForm = styled.form`
+  grid-area: content;
+  
   color: ${({ theme }) => theme.COLORS.PRIMARY.DARK};
   display: flex;
   flex-direction: column;

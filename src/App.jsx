@@ -1,7 +1,7 @@
-import { SignUp, SignIn } from '@pages'
+import { SignUp, SignIn, MyProfile } from '@pages'
 
 function App() {
-  return <SignUp />
+  return <MyProfile />
 }
 
 export default App

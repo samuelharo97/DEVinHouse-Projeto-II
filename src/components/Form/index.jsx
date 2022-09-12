@@ -11,6 +11,7 @@ import { Button, WhiteLayer, ButtonText } from '@components'
 export const Form = () => {
   const { register, handleSubmit, setValue, setFocus } = useForm()
 
+  // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = e => {
     const zipcode = e.target.value.replace(/\D/g, '')
     console.log(zipcode)
@@ -30,7 +31,7 @@ export const Form = () => {
   }
 
   return (
-    <WhiteLayer top="50px">
+    <WhiteLayer>
       <Formulary onSubmit={handleSubmit(submitForm)}>
         <h2>Cadastrar</h2>
         <InputWrapper>

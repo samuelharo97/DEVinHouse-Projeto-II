@@ -29,6 +29,5 @@ export const Container = styled.header`
 
   a {
     color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
-    text-decoration: none;
   }
 `

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 
 export const Login = () => {
   return (
-    <WhiteLayer top="100px">
+    <WhiteLayer>
       <LoginForm>
         <h2>Acessar</h2>
         <div>

@@ -22,9 +22,4 @@ export const Container = styled.button`
   text-transform: uppercase;
   text-align: center;
   align-self: center;
-
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
 `
