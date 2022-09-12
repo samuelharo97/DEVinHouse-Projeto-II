@@ -6,13 +6,15 @@ export const Container = styled.header`
 
   grid-area: header;
 
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
+  background-color: ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
   display: flex;
   justify-content: space-between;
   padding: 0 80px;
   align-items: center;
+  color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
+  span {
+    color: #9213a5cb;
+  }
 
   > div {
     display: flex;

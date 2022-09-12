@@ -7,7 +7,9 @@ export const Header = () => {
     <Container>
       <div>
         <img src="logo.png" alt="company logo" />
-        <h1>Company Name</h1>
+        <h1>
+          House Connect<span>ed</span>{' '}
+        </h1>
       </div>
       {Authenticated ? (
         <ul>

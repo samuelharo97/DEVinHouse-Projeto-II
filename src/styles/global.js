@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
 }
 
 :root {
@@ -25,4 +26,12 @@ export const GlobalStyles = createGlobalStyle`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}`
+}
+
+body {
+  background-color: ${({ theme }) => theme.COLORS.COMMON.GRAY};
+  height: 100%;
+  width: 100%;
+}
+
+`

@@ -1,10 +1,13 @@
 import { Form, Header } from '@components'
+import { Container } from './styles'
 
 export const SignUp = () => {
   return (
     <>
       <Header />
-      <Form />
+      <Container>
+        <Form />
+      </Container>
     </>
   )
 }

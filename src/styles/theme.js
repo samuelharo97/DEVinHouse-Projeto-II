@@ -33,8 +33,8 @@ export const theme = {
       DARK: '#388E3C'
     },
     COMMON: {
-      GRAY: '#388E3C',
-      GRAY_TEXT: '#388E3C',
+      GRAY: '#D7DBDD',
+      GRAY_TEXT: '#495057',
       WHITE: '#FFFFFF',
       BLACK: '#000000'
     }

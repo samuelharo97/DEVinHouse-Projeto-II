@@ -1,6 +1,7 @@
-import { Formulary, InputWrapper } from './styles'
+import { Formulary, InputWrapper, InputContainer } from './styles'
 import { useForm } from 'react-hook-form'
-import { Button } from '@components'
+import { Button, WhiteLayer } from '@components'
+
 export const Form = () => {
   const { register, handleSubmit, setValue, setFocus } = useForm()
 
@@ -13,8 +14,8 @@ export const Form = () => {
         console.log(data)
         setValue('address', data.logradouro)
         setValue('city', data.localidade)
-        /* setValue('reference', data.complemento) */
         setValue('district', data.bairro)
+        setValue('zipcode', data.cep)
       })
   }
 
@@ -23,115 +24,123 @@ export const Form = () => {
   }
 
   return (
-    <Formulary onSubmit={handleSubmit(submitForm)}>
-      <InputWrapper>
-        <>
-          <label htmlFor="name">Nome completo*</label>
-          <input type="text" name="name" id="name" {...register('name')} />
-        </>
-        <>
-          <label htmlFor="email">E-mail*</label>
-          <input type="email" name="email" id="email" {...register('email')} />
-        </>
-      </InputWrapper>
+    <WhiteLayer>
+      <Formulary onSubmit={handleSubmit(submitForm)}>
+        <h2>Cadastrar</h2>
+        <InputWrapper>
+          <InputContainer>
+            <label htmlFor="name">Nome completo*</label>
+            <input type="text" name="name" id="name" {...register('name')} />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="email">E-mail*</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              {...register('email')}
+            />
+          </InputContainer>
+        </InputWrapper>
 
-      <InputWrapper>
-        <>
-          <label htmlFor="profile">URL foto perfil</label>
-          <input
-            type="url"
-            name="profile"
-            id="profile"
-            {...register('profile')}
-          />
-        </>
-        <>
-          <label htmlFor="phone">Telefone</label>
-          <input type="tel" name="phone" id="phone" {...register('phone')} />
-        </>
-      </InputWrapper>
+        <InputWrapper>
+          <InputContainer>
+            <label htmlFor="profile">URL foto perfil</label>
+            <input
+              type="url"
+              name="profile"
+              id="profile"
+              {...register('profile')}
+            />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="phone">Telefone</label>
+            <input type="tel" name="phone" id="phone" {...register('phone')} />
+          </InputContainer>
+        </InputWrapper>
 
-      <InputWrapper>
-        <>
-          <label htmlFor="password">Senha*</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            {...register('password')}
-          />
-        </>
-        <>
-          <label htmlFor="confirmPassword">Confirmar senha*</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            {...register('confirmPassword')}
-          />
-        </>
-      </InputWrapper>
+        <InputWrapper>
+          <InputContainer>
+            <label htmlFor="password">Senha*</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              {...register('password')}
+            />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="confirmPassword">Confirmar senha*</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              {...register('confirmPassword')}
+            />
+          </InputContainer>
+        </InputWrapper>
 
-      <InputWrapper>
-        <>
-          <label htmlFor="zipcode">CEP*</label>
-          <input
-            type="text"
-            name="zipcode"
-            id="zipcode"
-            onBlurCapture={findZipcode}
-            {...register('zipcode')}
-          />
-        </>
-        <>
-          <label htmlFor="address">Logradouro/Endereço*</label>
-          <input
-            type="text"
-            name="address"
-            id="address"
-            {...register('address')}
-          />
-        </>
-      </InputWrapper>
+        <InputWrapper>
+          <InputContainer>
+            <label htmlFor="zipcode">CEP*</label>
+            <input
+              type="text"
+              name="zipcode"
+              id="zipcode"
+              onBlurCapture={findZipcode}
+              {...register('zipcode')}
+            />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="address">Logradouro/Endereço*</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              {...register('address')}
+            />
+          </InputContainer>
+        </InputWrapper>
 
-      <InputWrapper>
-        <>
-          <label htmlFor="city">Cidade*</label>
-          <input type="text" name="city" id="city" {...register('city')} />
-        </>
-        <>
-          <label htmlFor="reference">Complemento</label>
-          <input
-            type="text"
-            name="reference"
-            id="reference"
-            {...register('reference')}
-          />
-        </>
-      </InputWrapper>
+        <InputWrapper>
+          <InputContainer>
+            <label htmlFor="city">Cidade*</label>
+            <input type="text" name="city" id="city" {...register('city')} />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="reference">Complemento</label>
+            <input
+              type="text"
+              name="reference"
+              id="reference"
+              {...register('reference')}
+            />
+          </InputContainer>
+        </InputWrapper>
 
-      <InputWrapper>
-        <>
-          <label htmlFor="addressNumber">Número*</label>
-          <input
-            type="number"
-            name="addressNumber"
-            id="addressNumber"
-            {...register('addressNumber')}
-          />
-        </>
-        <>
-          <label htmlFor="district">Bairro*</label>
-          <input
-            type="text"
-            name="district"
-            id="district"
-            {...register('district')}
-          />
-        </>
-      </InputWrapper>
+        <InputWrapper>
+          <InputContainer>
+            <label htmlFor="addressNumber">Número*</label>
+            <input
+              type="number"
+              name="addressNumber"
+              id="addressNumber"
+              {...register('addressNumber')}
+            />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="district">Bairro*</label>
+            <input
+              type="text"
+              name="district"
+              id="district"
+              {...register('district')}
+            />
+          </InputContainer>
+        </InputWrapper>
 
-      <Button color={'primary'} title={'CADASTRAR'} type={'submit'} />
-    </Formulary>
+        <Button color={'primary'} title={'CADASTRAR'} type={'submit'} />
+      </Formulary>
+    </WhiteLayer>
   )
 }
