@@ -30,8 +30,11 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
   background-color: ${({ theme }) => theme.COLORS.COMMON.GRAY};
-  height: 100%;
+  height: 100vh;
   width: 100%;
+
 }
+
+
 
 `

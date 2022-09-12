@@ -26,4 +26,9 @@ export const Container = styled.header`
     list-style: none;
     gap: 20px;
   }
+
+  a {
+    color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
+    text-decoration: none;
+  }
 `

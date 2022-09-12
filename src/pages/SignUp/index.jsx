@@ -4,8 +4,8 @@ import { Container } from './styles'
 export const SignUp = () => {
   return (
     <>
-      <Header />
       <Container>
+        <Header Authenticated={false} />
         <Form />
       </Container>
     </>

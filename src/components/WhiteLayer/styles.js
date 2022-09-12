@@ -7,5 +7,8 @@ export const Container = styled.div`
   width: fit-content;
   height: fit-content;
   padding: 48px;
-  margin-top: 50px;
+  margin-top: ${({ variant }) => variant};
+
+  grid-area: content;
+  margin: auto;
 `

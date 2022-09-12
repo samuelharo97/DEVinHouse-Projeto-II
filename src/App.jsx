@@ -1,7 +1,7 @@
-import { Form, Button } from '@components'
+import { SignUp, SignIn } from '@pages'
 
 function App() {
-  return <Form />
+  return <SignUp />
 }
 
 export default App

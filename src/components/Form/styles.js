@@ -14,11 +14,6 @@ export const Formulary = styled.form`
   label {
     text-align: left;
   }
-
-  grid-area: content;
-  align-self: center;
-  justify-self: center;
-  justify-content: center;
 `
 
 export const InputContainer = styled.div`
@@ -37,5 +32,18 @@ export const InputWrapper = styled.div`
     border-radius: 5px;
     border: 0.5px solid ${({ theme }) => theme.COLORS.SECONDARY.LIGHT};
     background-color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
+    color: ${({ theme }) => theme.COLORS.COMMON.BLACK};
+    padding-left: 10px;
   }
+
+  input:focus {
+    border: none;
+    outline: 1px solid ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
+  }
+`
+
+export const ActionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 `

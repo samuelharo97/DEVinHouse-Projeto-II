@@ -7,9 +7,8 @@ import { SignUp } from '@pages'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <SignUp />
-      {/* <App /> */}
+      <GlobalStyles /> 
+      <App />
     </ThemeProvider>
   </React.StrictMode>
 )

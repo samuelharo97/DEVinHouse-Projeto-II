@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button } from '@components'
 import { Container } from './styles'
+import PropTypes from 'prop-types'
 
-export const Header = () => {
-  const Authenticated = true
+export const Header = ({ Authenticated = true }) => {
   return (
     <Container>
       <div>
@@ -13,13 +14,23 @@ export const Header = () => {
       </div>
       {Authenticated ? (
         <ul>
-          <li>Inicio</li>
-          <li>Dispositivos</li>
-          <li>Perfil</li>
+          <li>
+            <a href="#"> Inicio </a>
+          </li>
+          <li>
+            <a href="#"> Dispositivos </a>
+          </li>
+          <li>
+            <a href="#"> Perfil </a>
+          </li>
         </ul>
       ) : (
-        <Button title={'LOGIN'} />
+        <Button color={'secondary'} title={'LOGIN'} />
       )}
     </Container>
   )
+}
+
+Header.propTypes = {
+  Authenticated: PropTypes.bool
 }

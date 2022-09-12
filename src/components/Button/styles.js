@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Container = styled.button`
   width: 120px;
-  height: 35px;
   background-color: ${({ theme, color }) =>
     color === 'primary'
       ? theme.COLORS.PRIMARY.MAIN
@@ -10,11 +9,11 @@ export const Container = styled.button`
 
   color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
 
-  height: 56px;
+  height: 40px;
   border: 0;
   padding: 0 16px;
   margin-top: 16px;
-  border-radius: 10px;
+  border-radius: 50px;
   font-family: 'DM Sans';
   font-style: normal;
   font-weight: 700;
@@ -22,8 +21,10 @@ export const Container = styled.button`
   line-height: 18px;
   text-transform: uppercase;
   text-align: center;
+  align-self: center;
 
   &:hover {
     cursor: pointer;
+    opacity: 0.8;
   }
 `

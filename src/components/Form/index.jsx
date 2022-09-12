@@ -1,6 +1,12 @@
-import { Formulary, InputWrapper, InputContainer } from './styles'
+import {
+  Formulary,
+  InputWrapper,
+  InputContainer,
+  ActionWrapper
+} from './styles'
+
 import { useForm } from 'react-hook-form'
-import { Button, WhiteLayer } from '@components'
+import { Button, WhiteLayer, ButtonText } from '@components'
 
 export const Form = () => {
   const { register, handleSubmit, setValue, setFocus } = useForm()
@@ -24,7 +30,7 @@ export const Form = () => {
   }
 
   return (
-    <WhiteLayer>
+    <WhiteLayer top="50px">
       <Formulary onSubmit={handleSubmit(submitForm)}>
         <h2>Cadastrar</h2>
         <InputWrapper>
@@ -139,7 +145,10 @@ export const Form = () => {
           </InputContainer>
         </InputWrapper>
 
-        <Button color={'primary'} title={'CADASTRAR'} type={'submit'} />
+        <ActionWrapper>
+          <Button color={'primary'} title={'CADASTRAR'} type={'submit'} />
+          <ButtonText title={'Login'} />
+        </ActionWrapper>
       </Formulary>
     </WhiteLayer>
   )

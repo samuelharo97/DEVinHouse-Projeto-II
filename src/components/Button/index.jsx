@@ -17,7 +17,7 @@ export const Button = ({
 
 Button.propTypes = {
   title: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   func: PropTypes.func,
   type: PropTypes.string
 }
