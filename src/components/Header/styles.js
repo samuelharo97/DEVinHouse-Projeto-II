@@ -12,10 +12,7 @@ export const Container = styled.header`
   padding: 0 80px;
   align-items: center;
   color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
-  span {
-    color: #9213a5cb;
-  }
-
+  
   > div {
     display: flex;
     align-items: center;

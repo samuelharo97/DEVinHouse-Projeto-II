@@ -8,7 +8,7 @@ export const Formulary = styled.form`
     text-align: center;
     padding-bottom: 28px;
   }
-
+  
   text-align: center;
 
   label {

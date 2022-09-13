@@ -8,9 +8,7 @@ export const Header = ({ Authenticated = true }) => {
     <Container>
       <div>
         <img src="logo.png" alt="company logo" />
-        <h1>
-          House Connect<span>ed</span>{' '}
-        </h1>
+        <h1>Connect Lab</h1>
       </div>
       {Authenticated ? (
         <ul>

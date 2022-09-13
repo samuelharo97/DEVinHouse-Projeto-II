@@ -35,6 +35,18 @@ body {
 
 }
 
+h1 {
+  color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
+}
+
+h3 {
+  color: ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
+}
+
+h5{
+  color: ${({ theme }) => theme.COLORS.SECONDARY.MAIN}
+}
+
 p, h4 {
   color: ${({ theme }) => theme.COLORS.COMMON.GRAY_TEXT};
 }
