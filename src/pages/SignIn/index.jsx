@@ -1,4 +1,4 @@
-import { Header, Login } from '@components'
+import { Header, Icon, Login } from '@components'
 import { Container } from './styles'
 
 export const SignIn = () => {

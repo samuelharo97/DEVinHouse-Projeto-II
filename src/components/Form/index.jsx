@@ -5,10 +5,12 @@ import {
   ActionWrapper
 } from './styles'
 
+import PropTypes from 'prop-types'
+
 import { useForm } from 'react-hook-form'
 import { Button, WhiteLayer, ButtonText } from '@components'
 
-export const Form = () => {
+export const Form = ({ children }) => {
   const { register, handleSubmit, setValue, setFocus } = useForm()
 
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
@@ -146,11 +148,12 @@ export const Form = () => {
           </InputContainer>
         </InputWrapper>
 
-        <ActionWrapper>
-          <Button color={'primary'} title={'CADASTRAR'} type={'submit'} />
-          <ButtonText title={'Login'} />
-        </ActionWrapper>
+        <ActionWrapper>{children}</ActionWrapper>
       </Formulary>
     </WhiteLayer>
   )
+}
+
+Form.propTypes = {
+  children: PropTypes.node
 }

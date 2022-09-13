@@ -13,14 +13,13 @@ export const WeatherInfo = () => {
       .then(data => {
         setInfo(data)
         setIsFetched(true)
-        console.log(data)
       })
   }
 
   useEffect(() => getWeatherData(), [])
 
   return isFetched ? (
-    <WhiteLayer variant="temperature" width="80%">
+    <WhiteLayer gridVariant="temperature" width="80%">
       <Container>
         <h3>
           {info.main.temp}

@@ -5,10 +5,12 @@ import { Container } from './styles'
 export const WhiteLayer = ({
   children,
   width = 'fit-content',
-  variant = 'content'
+  gridVariant = 'content',
+  pad = '48px',
+  ...rest
 }) => {
   return (
-    <Container variant={variant} width={width}>
+    <Container pad={pad} variant={gridVariant} width={width}>
       {children}
     </Container>
   )
@@ -17,5 +19,6 @@ export const WhiteLayer = ({
 WhiteLayer.propTypes = {
   children: PropTypes.node,
   width: PropTypes.string,
-  variant: PropTypes.string
+  pad: PropTypes.string,
+  gridVariant: PropTypes.string
 }

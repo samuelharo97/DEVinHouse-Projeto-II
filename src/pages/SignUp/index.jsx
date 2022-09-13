@@ -1,4 +1,4 @@
-import { Form, Header } from '@components'
+import { Button, ButtonText, Form, Header } from '@components'
 import { Container } from './styles'
 
 export const SignUp = () => {
@@ -6,7 +6,10 @@ export const SignUp = () => {
     <>
       <Container>
         <Header Authenticated={false} />
-        <Form />
+        <Form>
+          <Button color={'primary'} title={'CADASTRAR'} type={'submit'} />
+          <ButtonText title={'Login'} />
+        </Form>
       </Container>
     </>
   )

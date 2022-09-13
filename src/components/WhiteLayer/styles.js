@@ -6,7 +6,7 @@ export const Container = styled.div`
   border-radius: 10px;
   width: ${({ width }) => width};
   height: fit-content;
-  padding: 48px;
+  padding: ${({ pad }) => pad};
 
   grid-area: ${({ variant }) => variant};
   margin: auto;
