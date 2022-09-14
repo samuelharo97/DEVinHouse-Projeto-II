@@ -1,5 +1,5 @@
-import { Header, WeatherInfo, ListCards } from '@components'
-import { Container, Filter } from './styles'
+import { Header, WeatherInfo, ListSelectedDevices } from '@components'
+import { Container, Filter, Footer } from './styles'
 import produtos from '../../services/products.json'
 
 export const Home = () => {
@@ -11,7 +11,8 @@ export const Home = () => {
       <Header />
       <WeatherInfo />
       <Filter />
-      <ListCards products={produtos} />
+      <ListSelectedDevices products={produtos} />
+      <Footer />
     </Container>
   )
 }

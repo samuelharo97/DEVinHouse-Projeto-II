@@ -8,7 +8,26 @@ import {
 import PropTypes from 'prop-types'
 
 import { useForm } from 'react-hook-form'
+import {yupResolver} from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 import { Button, WhiteLayer, ButtonText } from '@components'
+
+const schema = yup.object().shape({
+  email: yup.string().email().required,
+  password: yup.string().required ,
+  fullName: yup.string().required,
+ photoUrl: yup.string().url() ,
+  phone: yup. ,
+  userAddress: {
+      zipCode: ,
+      street: ,
+      number: ,
+      neighborhood: ,
+      city: ,
+      state: ,
+      complement: ,
+  }
+})
 
 export const Form = ({ children }) => {
   const { register, handleSubmit, setValue, setFocus } = useForm()

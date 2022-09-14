@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  width: 386px;
+  width: 320px;
   height: 120px;
   justify-content: space-between;
   align-items: center;
@@ -14,5 +14,8 @@ export const Container = styled.div`
   > div {
     display: flex;
     flex-direction: column;
+  }
+  > svg {
+    margin-left: 15px;
   }
 `

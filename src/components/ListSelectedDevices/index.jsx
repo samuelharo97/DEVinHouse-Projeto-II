@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import { Container, List } from './styles'
 
-export const ListCards = ({ products }) => {
+export const ListSelectedDevices = ({ products }) => {
   const [selectedCardId, setSelectedCardId] = useState([])
 
   const handleSelected = clickedId => {
@@ -32,6 +32,6 @@ export const ListCards = ({ products }) => {
   )
 }
 
-ListCards.propTypes = {
+ListSelectedDevices.propTypes = {
   products: PropTypes.array.isRequired
 }

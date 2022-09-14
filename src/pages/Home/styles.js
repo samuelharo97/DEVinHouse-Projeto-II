@@ -9,11 +9,7 @@ export const Container = styled.div`
     'header'
     'temperature'
     'filter'
-    'content'
     'content';
-  > img {
-    background-color: blue;
-  }
 
   grid-row-gap: 20px;
 `
@@ -23,4 +19,8 @@ export const Filter = styled.div`
   height: 30px;
   width: 100%;
   grid-area: filter;
+`
+export const Footer = styled.footer`
+  height: 100px;
+  width: 100%;
 `

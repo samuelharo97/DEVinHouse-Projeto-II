@@ -26,7 +26,7 @@ export const WeatherInfo = () => {
           <span>°C</span>
         </h3>
         <h5>{info.name + ', SP'}</h5>
-        <p>{` Sensacão térmica: ${info.main.feels_like} - Máxima: ${info.main.temp_max} °C - Mínima: ${info.main.temp_min} °C - Humidade: ${info.main.humidity}%`}</p>
+        <p>{` Sensacão térmica: ${info.main.feels_like} - Máxima: ${info.main.temp_max} °C - Mínima: ${info.main.temp_min} °C - Umidade: ${info.main.humidity}%`}</p>
       </Container>
     </WhiteLayer>
   ) : (
