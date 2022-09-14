@@ -8,29 +8,36 @@ import {
 import PropTypes from 'prop-types'
 
 import { useForm } from 'react-hook-form'
-import {yupResolver} from '@hookform/resolvers/yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { Button, WhiteLayer, ButtonText } from '@components'
+import { WhiteLayer } from '@components'
+
+const errorMsg = 'Campo obrigatório'
 
 const schema = yup.object().shape({
-  email: yup.string().email().required,
-  password: yup.string().required ,
-  fullName: yup.string().required,
- photoUrl: yup.string().url() ,
-  phone: yup. ,
-  userAddress: {
-      zipCode: ,
-      street: ,
-      number: ,
-      neighborhood: ,
-      city: ,
-      state: ,
-      complement: ,
-  }
+  email: yup.string().email().required(),
+  password: yup.string().required(),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null])
+    .required(),
+  fullName: yup.string().required(),
+  photoUrl: yup.string().url(),
+  phone: yup.string(),
+  userAddress: yup.string().required(),
+  zipCode: yup.string().required(),
+  number: yup.number().required(),
+  neighborhood: yup.string().required(),
+  city: yup.string().required(),
+  complement: yup.string()
 })
 
 export const Form = ({ children }) => {
-  const { register, handleSubmit, setValue, setFocus } = useForm()
+  const { register, handleSubmit, setValue } = useForm({
+    resolver: yupResolver(schema)
+  })
+
+  console.log(useForm())
 
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = e => {
@@ -40,15 +47,15 @@ export const Form = ({ children }) => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        setValue('address', data.logradouro)
+        setValue('userAddress', data.logradouro)
         setValue('city', data.localidade)
-        setValue('district', data.bairro)
-        setValue('zipcode', data.cep)
+        setValue('neighborhood', data.bairro)
+        setValue('zipCode', data.cep)
       })
   }
 
-  const submitForm = () => {
-    console.log('worked')
+  const submitForm = data => {
+    console.log(data)
   }
 
   return (
@@ -57,8 +64,14 @@ export const Form = ({ children }) => {
         <h2>Cadastrar</h2>
         <InputWrapper>
           <InputContainer>
-            <label htmlFor="name">Nome completo*</label>
-            <input type="text" name="name" id="name" {...register('name')} />
+            <label htmlFor="fullName">Nome completo*</label>
+            <input
+              type="text"
+              name="fullName"
+              id="fullName"
+              {...register('fullName')}
+            />
+            {/* <span>{errors.fullName?.message}</span> */}
           </InputContainer>
           <InputContainer>
             <label htmlFor="email">E-mail*</label>
@@ -73,12 +86,12 @@ export const Form = ({ children }) => {
 
         <InputWrapper>
           <InputContainer>
-            <label htmlFor="profile">URL foto perfil</label>
+            <label htmlFor="photoUrl">URL foto perfil</label>
             <input
               type="url"
-              name="profile"
-              id="profile"
-              {...register('profile')}
+              name="photoUrl"
+              id="photoUrl"
+              {...register('photoUrl')}
             />
           </InputContainer>
           <InputContainer>
@@ -110,22 +123,22 @@ export const Form = ({ children }) => {
 
         <InputWrapper>
           <InputContainer>
-            <label htmlFor="zipcode">CEP*</label>
+            <label htmlFor="zipCode">CEP*</label>
             <input
               type="text"
-              name="zipcode"
-              id="zipcode"
+              name="zipCode"
+              id="zipCode"
               onBlurCapture={findZipcode}
-              {...register('zipcode')}
+              {...register('zipCode')}
             />
           </InputContainer>
           <InputContainer>
-            <label htmlFor="address">Logradouro/Endereço*</label>
+            <label htmlFor="userAddress">Logradouro/Endereço*</label>
             <input
               type="text"
-              name="address"
-              id="address"
-              {...register('address')}
+              name="userAddress"
+              id="userAddress"
+              {...register('userAddress')}
             />
           </InputContainer>
         </InputWrapper>
@@ -136,33 +149,33 @@ export const Form = ({ children }) => {
             <input type="text" name="city" id="city" {...register('city')} />
           </InputContainer>
           <InputContainer>
-            <label htmlFor="reference">Complemento</label>
+            <label htmlFor="complement">Complemento</label>
             <input
               type="text"
-              name="reference"
-              id="reference"
-              {...register('reference')}
+              name="complement"
+              id="complement"
+              {...register('complement')}
             />
           </InputContainer>
         </InputWrapper>
 
         <InputWrapper>
           <InputContainer>
-            <label htmlFor="addressNumber">Número*</label>
+            <label htmlFor="number">Número*</label>
             <input
               type="number"
-              name="addressNumber"
-              id="addressNumber"
-              {...register('addressNumber')}
+              name="number"
+              id="number"
+              {...register('number')}
             />
           </InputContainer>
           <InputContainer>
-            <label htmlFor="district">Bairro*</label>
+            <label htmlFor="neighborhood">Bairro*</label>
             <input
               type="text"
-              name="district"
-              id="district"
-              {...register('district')}
+              name="neighborhood"
+              id="neighborhood"
+              {...register('neighborhood')}
             />
           </InputContainer>
         </InputWrapper>
