@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { WhiteLayer } from '@components'
-import { axiosCreateUser } from '@services'
+import { axiosCreateUser, axiosUpdateUser } from '@services'
 
 const errorMsg = 'Campo obrigatório'
 
@@ -39,6 +39,7 @@ export const Form = ({ children }) => {
     resolver: yupResolver(schema)
   })
 
+
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = e => {
     const zipcode = e.target.value.replace(/\D/g, '')
@@ -56,7 +57,7 @@ export const Form = ({ children }) => {
   }
 
   const submitForm = data => {
-    axiosCreateUser(data)
+    axiosUpdateUser(data)
   }
 
   return (
@@ -72,8 +73,8 @@ export const Form = ({ children }) => {
               id="fullName"
               {...register('fullName')}
             />
-            <span>{errors.fullName?.message}</span>
-          </InputContainer>
+{/*             <span>{errors.fullName?.message}</span>
+ */}          </InputContainer>
           <InputContainer>
             <label htmlFor="email">E-mail*</label>
             <input

@@ -3,7 +3,7 @@ import { AppRoutes } from './app.routes'
 import { AuthRoutes } from './auth.routes'
 
 export const Routes = () => {
-  const isAuthenticated = false
+  const isAuthenticated = true
   return (
     <BrowserRouter>
       {isAuthenticated ? <AppRoutes /> : <AuthRoutes />}
