@@ -1,6 +1,7 @@
 import { Button, ButtonText, WhiteLayer } from '@components'
 import PropTypes from 'prop-types'
-import { Container } from './styles'
+import { Container, LinkButton } from './styles'
+import { Link } from 'react-router-dom'
 
 export const UserProfile = ({ user }) => {
   return (
@@ -17,13 +18,15 @@ export const UserProfile = ({ user }) => {
 
         <div>
           <div>
-        <section>Endereço</section>
+            <section>Endereço</section>
             <span>{user.zipcode}</span>
             <span>{`${user.address} - ${user.addressNumber} - ${user.district} - ${user.city} - ${user.state}`}</span>
           </div>
         </div>
-        <Button title={'EDITAR'} />
-        <ButtonText title="Sair" />
+
+        <LinkButton to={'/profile/edit'}>EDITAR</LinkButton>
+
+        <ButtonText routeTo={'/'} title="Sair" />
       </Container>
     </WhiteLayer>
   )

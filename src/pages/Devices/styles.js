@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const Section = styled.section`
   grid-area: section;
-  width: 1200px;
+  width: 70%;
   margin: auto;
   align-self: center;
   border-bottom: 1px solid ${({ theme }) => theme.COLORS.SECONDARY.LIGHT};

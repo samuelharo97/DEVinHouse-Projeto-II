@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Container, List } from './styles'
 
 export const ListSelectedDevices = ({ products }) => {
+  
   const [selectedCardId, setSelectedCardId] = useState([])
 
   const handleSelected = clickedId => {

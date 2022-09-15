@@ -7,7 +7,7 @@ export const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/profile" element={<MyProfile />} />
-      <Route path="/edit" element={<ProfileEdit />} />
+      <Route path="/profile/edit" element={<ProfileEdit />} />
       <Route path="/devices" element={<Devices />} />
       {/* <Route path="/devices/:id" element={<DevicesDetails />} /> */}
     </Routes>

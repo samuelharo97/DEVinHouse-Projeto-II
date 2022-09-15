@@ -14,7 +14,6 @@ export const Container = styled.button`
   padding: 0 16px;
   margin-top: 16px;
   border-radius: 50px;
-  font-family: 'DM Sans';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;

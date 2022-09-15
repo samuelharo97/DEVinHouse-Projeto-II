@@ -8,7 +8,7 @@ export const SignUp = () => {
         <Header Authenticated={false} />
         <Form>
           <Button color={'primary'} title={'CADASTRAR'} type={'submit'} />
-          <ButtonText title={'Login'} />
+          <ButtonText routeTo={'/'} title={'Login'} />
         </Form>
       </Container>
     </>

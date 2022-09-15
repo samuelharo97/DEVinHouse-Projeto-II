@@ -7,7 +7,7 @@ export const ProfileEdit = () => {
       <Header />
       <Form>
         <Button color={'primary'} title={'SALVAR'} type={'submit'} />
-        <ButtonText title={'Cancelar'} />
+        <ButtonText routeTo={'/profile'} title={'Cancelar'} />
       </Form>
     </Container>
   )

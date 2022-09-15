@@ -2,6 +2,7 @@
 import { Button } from '@components'
 import { Container } from './styles'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 export const Header = ({ Authenticated = true }) => {
   return (
@@ -13,13 +14,13 @@ export const Header = ({ Authenticated = true }) => {
       {Authenticated ? (
         <ul>
           <li>
-            <a href="#"> Inicio </a>
+            <Link to={'/'}> Inicio </Link>
           </li>
           <li>
-            <a href="#"> Dispositivos </a>
+            <Link to={'/devices'}> Dispositivos </Link>
           </li>
           <li>
-            <a href="#"> Perfil </a>
+            <Link to={'/profile'}> Perfil </Link>
           </li>
         </ul>
       ) : (
