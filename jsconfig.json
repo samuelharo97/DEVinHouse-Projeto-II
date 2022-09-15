@@ -11,5 +11,5 @@
       "@router": ["./router/index.js"]
     }
   },
-  "include": ["src", "app.jsx", "app.jsx", "app.jsx"]
+  "include": ["src", "src/App.jsx", "src/App.jsx", "src/App.jsx"]
 }

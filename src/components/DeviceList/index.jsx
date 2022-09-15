@@ -1,13 +1,20 @@
 import { AddDeviceCard } from '@components'
+import { axiosGetDevices } from '@services'
+import { useEffect, useState } from 'react'
 import { Container, List } from './styles'
-import products from '../../services/products.json'
 
 export const DeviceList = () => {
+  const [devices, setDevices] = useState([])
+
+  useEffect(() => {
+    const getDevices = axiosGetDevices().then(res => setDevices(res))
+  }, [])
+
   return (
     <Container>
       <List>
-        {products.map(product => (
-          <AddDeviceCard key={product._id} device={product} />
+        {devices.map(device => (
+          <AddDeviceCard key={device._id} device={device} />
         ))}
       </List>
     </Container>

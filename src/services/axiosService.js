@@ -33,14 +33,16 @@ export const axiosCreateUser = data => {
       complement: data.complement || undefined
     }
   }
-  axios
-    .post(`${URL}auth/register`, newUser)
-    /* .then(res => localStorage.setItem('@userID', res.data._id))
+  axios.post(`${URL}auth/register`, newUser)
+  /* .then(res => localStorage.setItem('@userID', res.data._id))
     .catch(err => console.log(err)) */
 }
 
 export const axiosGetUser = userId => {
   const token = localStorage.getItem('@Token')
+  if (!token) {
+    throw new Error('Token not found')
+  }
   const id = userId
   console.log(token)
   console.log(id)
@@ -56,6 +58,9 @@ export const axiosGetUser = userId => {
 
 export const axiosUpdateUser = async data => {
   const token = localStorage.getItem('@Token')
+  if (!token) {
+    throw new Error('Token not found')
+  }
   const id = localStorage.getItem('@userID')
   const updatedUser = {
     email: data.email,
@@ -72,7 +77,7 @@ export const axiosUpdateUser = async data => {
       city: data.city,
       state: data.state || undefined,
       complement: data.complement || undefined
-    },
+    }
   }
   console.log(updatedUser, id, token)
   try {
@@ -87,4 +92,17 @@ export const axiosUpdateUser = async data => {
   }
 }
 
+export const axiosGetDevices = () => {
+  const token = localStorage.getItem('@Token')
+  if (!token) {
+    throw new Error('Token not found')
+  }
 
+  return axios
+    .get(`${URL}devices`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(res => res.data)
+}

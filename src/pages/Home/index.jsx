@@ -1,17 +1,22 @@
-import { Header, WeatherInfo, ListSelectedDevices } from '@components'
+import { WeatherInfo, ListSelectedDevices } from '@components'
+import { axiosGetDevices } from '@services'
+import { useEffect, useState } from 'react'
 import { Container, Filter, Footer } from './styles'
-import produtos from '../../services/products.json'
 
 export const Home = () => {
-  const devices = Array(produtos)
-  console.log(devices)
+  const [devices, setDevices] = useState([])
+  /* const getDevices = axiosGetDevices().then(res => setDevices(res))
+   */
 
   return (
     <Container>
-      <Header />
       <WeatherInfo />
       <Filter />
-      <ListSelectedDevices products={produtos} />
+      {devices.length > 0 ? (
+        <ListSelectedDevices products={devices} />
+      ) : (
+        'loading'
+      )}
       <Footer />
     </Container>
   )
