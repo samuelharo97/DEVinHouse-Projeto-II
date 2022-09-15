@@ -1,1 +1,1 @@
-export { axiosLogin } from './axiosService'
+export { axiosLogin, axiosCreateUser } from './axiosService'

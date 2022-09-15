@@ -24,7 +24,7 @@ export const UserProfile = ({ user }) => {
           </div>
         </div>
 
-        <LinkButton to={'/profile/edit'}>EDITAR</LinkButton>
+        <LinkButton to={'/edit'}>EDITAR</LinkButton>
 
         <ButtonText routeTo={'/'} title="Sair" />
       </Container>

@@ -8,7 +8,7 @@ export const Formulary = styled.form`
     text-align: center;
     padding-bottom: 28px;
   }
-  
+
   text-align: center;
 
   label {
@@ -46,4 +46,8 @@ export const ActionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 28px;
+`
+
+export const HiddenInput = styled.div`
+  display: none;
 `

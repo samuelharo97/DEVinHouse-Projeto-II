@@ -2,7 +2,8 @@ import {
   Formulary,
   InputWrapper,
   InputContainer,
-  ActionWrapper
+  ActionWrapper,
+  HiddenInput
 } from './styles'
 
 import PropTypes from 'prop-types'
@@ -11,33 +12,32 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { WhiteLayer } from '@components'
+import { axiosCreateUser } from '@services'
 
 const errorMsg = 'Campo obrigatório'
 
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required(),
+  email: yup.string().email().required(errorMsg),
+  password: yup.string().required(errorMsg),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), null])
-    .required(),
-  fullName: yup.string().required(),
+    .required(errorMsg),
+  fullName: yup.string().required(errorMsg),
   photoUrl: yup.string().url(),
   phone: yup.string(),
-  userAddress: yup.string().required(),
-  zipCode: yup.string().required(),
-  number: yup.number().required(),
-  neighborhood: yup.string().required(),
-  city: yup.string().required(),
-  complement: yup.string()
+  street: yup.string().required(errorMsg),
+  zipCode: yup.string().required(errorMsg),
+  number: yup.number().required(errorMsg),
+  neighborhood: yup.string().required(errorMsg),
+  city: yup.string().required(errorMsg),
+  complement: yup.string(errorMsg)
 })
 
 export const Form = ({ children }) => {
-  const { register, handleSubmit, setValue } = useForm({
+  const { register, handleSubmit, setValue, errors } = useForm({
     resolver: yupResolver(schema)
   })
-
-  console.log(useForm())
 
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = e => {
@@ -47,15 +47,16 @@ export const Form = ({ children }) => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        setValue('userAddress', data.logradouro)
+        setValue('street', data.logradouro)
         setValue('city', data.localidade)
         setValue('neighborhood', data.bairro)
         setValue('zipCode', data.cep)
+        setValue('state', data.uf)
       })
   }
 
   const submitForm = data => {
-    console.log(data)
+    axiosCreateUser(data)
   }
 
   return (
@@ -71,7 +72,7 @@ export const Form = ({ children }) => {
               id="fullName"
               {...register('fullName')}
             />
-            {/* <span>{errors.fullName?.message}</span> */}
+            <span>{errors.fullName?.message}</span>
           </InputContainer>
           <InputContainer>
             <label htmlFor="email">E-mail*</label>
@@ -133,12 +134,12 @@ export const Form = ({ children }) => {
             />
           </InputContainer>
           <InputContainer>
-            <label htmlFor="userAddress">Logradouro/Endereço*</label>
+            <label htmlFor="street">Logradouro/Endereço*</label>
             <input
               type="text"
-              name="userAddress"
-              id="userAddress"
-              {...register('userAddress')}
+              name="street"
+              id="street"
+              {...register('street')}
             />
           </InputContainer>
         </InputWrapper>
@@ -179,6 +180,9 @@ export const Form = ({ children }) => {
             />
           </InputContainer>
         </InputWrapper>
+        <HiddenInput>
+          <input type="text" name="state" id="state" {...register('state')} />
+        </HiddenInput>
 
         <ActionWrapper>{children}</ActionWrapper>
       </Formulary>

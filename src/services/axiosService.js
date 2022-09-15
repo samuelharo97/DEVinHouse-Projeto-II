@@ -14,6 +14,25 @@ export const axiosLogin = async (usuario, senha) => {
     .catch(err => alert(err))
 }
 
-export const createUser = async data => {
-  const newUser = {}
+export const axiosCreateUser = async data => {
+  const newUser = {
+    email: data.email,
+    password: data.password,
+    fullName: data.fullName,
+    photoUrl: data.photoUrl || undefined,
+    phone: data.phone || undefined,
+    userAddress: {
+      zipCode: data.zipCode,
+      street: data.street,
+      number: data.number,
+      neighborhood: data.neighborhood,
+      city: data.city,
+      state: data.state || undefined,
+      complement: data.complement || undefined
+    }
+  }
+  return axios
+    .post(`${URL}auth/register`, newUser)
+    .then(res => localStorage.setItem('@userID', res.data._id))
 }
+
