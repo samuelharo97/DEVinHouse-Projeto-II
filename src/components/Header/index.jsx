@@ -4,7 +4,7 @@ import { Container } from './styles'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-export const Header = ({ Authenticated = true }) => {
+export const Header = ({ Authenticated }) => {
   return (
     <Container>
       <div>

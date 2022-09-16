@@ -1,4 +1,5 @@
 import { WhiteLayer } from '@components'
+import { useAuth } from '@contexts'
 import { useEffect, useState } from 'react'
 import { Container } from './styles'
 
@@ -7,7 +8,8 @@ const API_ID = import.meta.env.VITE_BASE_WEATHER_API_ID
 export const WeatherInfo = () => {
   const [info, setInfo] = useState({})
   const [isFetched, setIsFetched] = useState(false)
-
+  const {teste} = useAuth()
+  console.log(teste)
   const getWeatherData = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=sao paulo,br&appid=${API_ID}&lang=pt_br&units=metric`

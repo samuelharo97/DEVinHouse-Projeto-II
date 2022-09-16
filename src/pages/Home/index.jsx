@@ -1,9 +1,11 @@
 import { WeatherInfo, ListSelectedDevices, WhiteLayer } from '@components'
-import { axiosGetDevices, axiosGetLocations } from '@services'
-import { useEffect, useState } from 'react'
+/* import { axiosGetDevices, axiosGetLocations } from '@services'
+ */import { useEffect, useState } from 'react'
 import { Container, Filter, Footer, Loading } from './styles'
 
+
 export const Home = () => {
+
   const [devices, setDevices] = useState([])
   /* const getDevices = axiosGetDevices().then(res => setDevices(res))
    */

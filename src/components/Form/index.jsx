@@ -12,8 +12,8 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { WhiteLayer } from '@components'
-import { axiosCreateUser, axiosUpdateUser } from '@services'
-
+/* import { axiosCreateUser, axiosUpdateUser } from '@services'
+ */
 const message = 'Campo obrigatório'
 
 const schema = yup.object().shape({
@@ -73,8 +73,8 @@ export const Form = ({ children, title }) => {
   }
 
   const submitForm = data => {
-    title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data)
-  }
+/*     title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data)
+ */  }
 
   return (
     <WhiteLayer>

@@ -1,4 +1,4 @@
-import {  UserProfile } from '@components'
+import { UserProfile } from '@components'
 import { Container } from './styles'
 
 const testObject = {

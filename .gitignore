@@ -22,7 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-src/contexts/Authentication/AuthContext.jsx
-src/contexts/Authentication/AuthProvider.jsx
 .env
-src/contexts/AuthContext.jsx
+

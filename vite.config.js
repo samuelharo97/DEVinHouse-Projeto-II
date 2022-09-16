@@ -12,7 +12,7 @@ export default defineConfig({
     alias: {
       '@styles': path.resolve(__dirname, './src/styles/index.js'),
       '@components': path.resolve(__dirname, './src/components/index.js'),
-      '@context': path.resolve(__dirname, './src/context/index.js'),
+      '@contexts': path.resolve(__dirname, './src/contexts/index.js'),
       '@services': path.resolve(__dirname, './src/services/index.js'),
       '@hooks': path.resolve(__dirname, './src/hooks/index.js'),
       '@pages': path.resolve(__dirname, './src/pages/index.js'),

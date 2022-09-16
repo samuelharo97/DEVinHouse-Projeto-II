@@ -1,14 +1,14 @@
 import { AddDeviceCard } from '@components'
-import { axiosGetDevices } from '@services'
-import { useEffect, useState } from 'react'
+/* import { axiosGetDevices } from '@services'
+ */import { useEffect, useState } from 'react'
 import { Container, List } from './styles'
 
 export const DeviceList = () => {
   const [devices, setDevices] = useState([])
 
-  useEffect(() => {
+ /*  useEffect(() => {
     const getDevices = axiosGetDevices().then(res => setDevices(res))
-  }, [])
+  }, []) */
 
   return (
     <Container>

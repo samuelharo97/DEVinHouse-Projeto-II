@@ -1,9 +1,12 @@
-/* import {  } from '@services' */
+import { WhiteLayer } from '@components'
 
 export const NotFound = () => {
   return (
     <>
-      <h1>not found.</h1>
+      <WhiteLayer>
+        <img src="" alt="monke" />
+        <h3>not found.</h3>
+      </WhiteLayer>
     </>
   )
 }

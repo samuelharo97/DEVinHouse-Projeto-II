@@ -3,13 +3,15 @@ import { LoginForm } from './styles'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { axiosLogin } from '@services'
+import { useAxios } from '@hooks'
 const loginSchema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().required()
 })
 
 export const Login = () => {
+  const { axiosLogin } = useAxios()
+
   const { handleSubmit, register } = useForm({
     resolver: yupResolver(loginSchema)
   })

@@ -1,21 +1,21 @@
-import { Button, ButtonText, WhiteLayer } from '@components'
+import { ButtonText, WhiteLayer } from '@components'
 import PropTypes from 'prop-types'
 import { Container, LinkButton } from './styles'
-import { Navigate, useNavigate } from 'react-router-dom'
 
 export const UserProfile = ({ user }) => {
   const handleLogout = () => {
     localStorage.clear('@Token')
   }
+  
 
   return (
     <WhiteLayer>
       <Container>
         <h3>Meu Perfil</h3>
         <div>
-          <img src={user.url} alt="user profile pic" />
+          <img src={user.photoUrl} alt="user profile pic" />
           <div>
-            <h4>{user.name}</h4>
+            <h4>{user.fullName}</h4>
             <span>{`${user.email} - ${user.phone}`}</span>
           </div>
         </div>
@@ -23,8 +23,8 @@ export const UserProfile = ({ user }) => {
         <div>
           <div>
             <section>Endereço</section>
-            <span>{user.zipcode}</span>
-            <span>{`${user.address} - ${user.addressNumber} - ${user.district} - ${user.city} - ${user.state}`}</span>
+            <span>{user.userAddress.zipCode}</span>
+            <span>{`${user.userAddress.street} - ${user.userAddress.number} - ${user.userAddress.neighborhood} - ${user.userAddress.city} - ${user.userAddress.state}`}</span>
           </div>
         </div>
 
@@ -38,15 +38,17 @@ export const UserProfile = ({ user }) => {
 
 UserProfile.propTypes = {
   user: PropTypes.shape({
-    url: PropTypes.string,
-    name: PropTypes.string.isRequired,
+    photoUrl: PropTypes.string,
+    fullName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string,
-    zipcode: PropTypes.string,
-    address: PropTypes.string.isRequired,
-    district: PropTypes.string.isRequired,
-    addressNumber: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired
+    userAddress: PropTypes.shape({
+      zipCode: PropTypes.string,
+      street: PropTypes.string.isRequired,
+      neighborhood: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      state: PropTypes.string.isRequired
+    })
   })
 }
