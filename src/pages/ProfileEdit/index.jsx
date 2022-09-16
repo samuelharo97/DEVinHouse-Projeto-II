@@ -4,7 +4,7 @@ import { Container } from './styles'
 export const ProfileEdit = () => {
   return (
     <Container>
-      <Form>
+      <Form title="Editar Perfil">
         <Button color={'primary'} title={'SALVAR'} type={'submit'} />
         <ButtonText routeTo={'/profile'} title={'Cancelar'} />
       </Form>

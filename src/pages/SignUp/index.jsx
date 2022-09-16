@@ -5,7 +5,7 @@ export const SignUp = () => {
   return (
     <>
       <Container>
-        <Form>
+        <Form title='Cadastrar'>
           <Button color={'primary'} title={'CADASTRAR'} type={'submit'} />
           <ButtonText routeTo={'/'} title={'Login'} />
         </Form>

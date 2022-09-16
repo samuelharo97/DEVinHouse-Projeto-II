@@ -1,13 +1,16 @@
 import { WhiteLayer } from '@components'
 import { useEffect, useState } from 'react'
 import { Container } from './styles'
+
+const API_ID = import.meta.env.VITE_BASE_WEATHER_API_ID
+
 export const WeatherInfo = () => {
   const [info, setInfo] = useState({})
   const [isFetched, setIsFetched] = useState(false)
 
   const getWeatherData = () => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=sao paulo,br&appid=f8f53b87512fda3fb892dfc683d1df93&lang=pt_br&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=sao paulo,br&appid=${API_ID}&lang=pt_br&units=metric`
     )
       .then(res => res.json())
       .then(data => {

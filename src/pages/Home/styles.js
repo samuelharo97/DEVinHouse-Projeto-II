@@ -6,7 +6,6 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 105px, 215px, 30px auto;
   grid-template-areas:
-    'header'
     'temperature'
     'filter'
     'content';
@@ -23,4 +22,9 @@ export const Filter = styled.div`
 export const Footer = styled.footer`
   height: 100px;
   width: 100%;
+`
+
+export const Loading = styled.div`
+  margin: auto;
+  grid-area: content;
 `

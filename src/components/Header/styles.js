@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.header`
   width: 100%;
+  min-width: 480px;
   height: 105px;
 
   grid-area: header;
@@ -12,7 +13,7 @@ export const Container = styled.header`
   padding: 0 80px;
   align-items: center;
   color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
-  
+
   > div {
     display: flex;
     align-items: center;
@@ -26,5 +27,12 @@ export const Container = styled.header`
 
   a {
     color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
+  }
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 20px;
+    height: fit-content;
   }
 `

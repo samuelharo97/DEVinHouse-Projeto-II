@@ -92,17 +92,50 @@ export const axiosUpdateUser = async data => {
   }
 }
 
-export const axiosGetDevices = () => {
+export const axiosGetDevices = async () => {
   const token = localStorage.getItem('@Token')
   if (!token) {
     throw new Error('Token not found')
   }
 
-  return axios
-    .get(`${URL}devices`, {
+  const res = await axios.get(`${URL}devices`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  return res.data
+}
+
+export const axiosGetLocations = async () => {
+  const token = localStorage.getItem('@Token')
+  try {
+    const res = await axios.get(`${URL}locals`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
-    .then(res => res.data)
+    return res.data
+  } catch (err) {
+    alert(err)
+  }
 }
+
+export const userAddDevice = (userData, deviceData, roomData) => {
+  const token = localStorage.getItem('@Token')
+  const config = {
+    user: userData._id,
+    device: deviceData._id,
+    is_on: true,
+    local: roomData.local,
+    room: roomData.room
+  }
+  axios
+    .post(`${URL}userDevices`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .catch(err => alert(err))
+}
+
+// idea: !!localStorage.getItem('@Token') ? localStorage.getItem('@Token') : get from profile

@@ -6,11 +6,11 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 105px, 40px auto 100px;
   grid-template-areas:
-    'header'
     'section'
     'content'
     'footer';
   grid-row-gap: 50px;
+  padding-top: 100px;
 `
 
 export const Section = styled.section`

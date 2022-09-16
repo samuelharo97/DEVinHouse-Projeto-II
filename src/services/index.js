@@ -1,1 +1,8 @@
-export { axiosLogin, axiosCreateUser, axiosGetUser, axiosUpdateUser, axiosGetDevices } from './axiosService'
+export {
+  axiosLogin,
+  axiosCreateUser,
+  axiosGetUser,
+  axiosUpdateUser,
+  axiosGetDevices,
+  axiosGetLocations
+} from './axiosService'
