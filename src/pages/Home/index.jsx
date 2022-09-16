@@ -1,4 +1,4 @@
-import { WeatherInfo, ListSelectedDevices } from '@components'
+import { WeatherInfo, ListSelectedDevices, WhiteLayer } from '@components'
 import { axiosGetDevices, axiosGetLocations } from '@services'
 import { useEffect, useState } from 'react'
 import { Container, Filter, Footer, Loading } from './styles'
@@ -8,7 +8,7 @@ export const Home = () => {
   /* const getDevices = axiosGetDevices().then(res => setDevices(res))
    */
 
-  console.log(axiosGetLocations())
+  /* console.log(axiosGetLocations()) */
 
   return (
     <Container>
@@ -17,10 +17,11 @@ export const Home = () => {
       {devices.length > 0 ? (
         <ListSelectedDevices products={devices} />
       ) : (
-        <Loading>
-          <h3> Adicione algum dispositivo </h3>
-          
-        </Loading>
+        <WhiteLayer>
+          <Loading>
+            <h3> Adicione algum dispositivo </h3>
+          </Loading>
+        </WhiteLayer>
       )}
       <Footer />
     </Container>

@@ -56,8 +56,7 @@ export const axiosGetUser = userId => {
     .then(res => console.log(res))
 }
 
-export const axiosUpdateUser = async data => {
-  const token = localStorage.getItem('@Token')
+export const axiosUpdateUser = async (data, token) => {
   if (!token) {
     throw new Error('Token not found')
   }
@@ -92,8 +91,7 @@ export const axiosUpdateUser = async data => {
   }
 }
 
-export const axiosGetDevices = async () => {
-  const token = localStorage.getItem('@Token')
+export const axiosGetDevices = async token => {
   if (!token) {
     throw new Error('Token not found')
   }
@@ -106,8 +104,7 @@ export const axiosGetDevices = async () => {
   return res.data
 }
 
-export const axiosGetLocations = async () => {
-  const token = localStorage.getItem('@Token')
+export const axiosGetLocations = async token => {
   try {
     const res = await axios.get(`${URL}locals`, {
       headers: {
@@ -120,7 +117,7 @@ export const axiosGetLocations = async () => {
   }
 }
 
-export const userAddDevice = (userData, deviceData, roomData) => {
+export const axiosUserAddDevice = (userData, deviceData, roomData) => {
   const token = localStorage.getItem('@Token')
   const config = {
     user: userData._id,
@@ -130,12 +127,52 @@ export const userAddDevice = (userData, deviceData, roomData) => {
     room: roomData.room
   }
   axios
-    .post(`${URL}userDevices`, {
+    .post(`${URL}userDevices`, config, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
     .catch(err => alert(err))
+}
+
+export const axiosGetUserDevices = async (id, token) => {
+  const res = await axios.get(`${URL}userDevices/users/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  return res
+}
+
+export const axiosUpdateDeviceStatus = (deviceId, token) => {
+  const config = {
+    id: deviceId.status
+  }
+  axios.put(`${URL}userDevices/${deviceId}`, config, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+
+  /*  returns this obj
+  "_id": "631b76215516db091259eaae",
+	"user": "631b6e3e61ef65fb3859152f",
+	"device": "631b2f6b6f2d2f24a7c0c949",
+	"local": "631b34696f2d2f24a7c0c960",
+	"is_on": false,
+	"room": "Quarto",
+	"__v": 0 */
+}
+
+export const axiosDeleteUserDevice = (deviceId, token) => {
+  axios.delete(`${URL}userDevices/${deviceId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    /* "acknowledged": true, 
+    "deletedCount": 1 */
+  
 }
 
 // idea: !!localStorage.getItem('@Token') ? localStorage.getItem('@Token') : get from profile
