@@ -1,9 +1,13 @@
 import { Button, ButtonText, WhiteLayer } from '@components'
 import PropTypes from 'prop-types'
 import { Container, LinkButton } from './styles'
-import { Link } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 export const UserProfile = ({ user }) => {
+  const handleLogout = () => {
+    localStorage.clear('@Token')
+  }
+
   return (
     <WhiteLayer>
       <Container>
@@ -26,7 +30,7 @@ export const UserProfile = ({ user }) => {
 
         <LinkButton to={'/edit'}>EDITAR</LinkButton>
 
-        <ButtonText routeTo={'/'} title="Sair" />
+        <ButtonText func={handleLogout} routeTo={'/'} title="Sair" />
       </Container>
     </WhiteLayer>
   )
