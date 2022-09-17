@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const LoginForm = styled.form`
   grid-area: content;
-  
+
   color: ${({ theme }) => theme.COLORS.PRIMARY.DARK};
   display: flex;
   flex-direction: column;
@@ -15,6 +15,9 @@ export const LoginForm = styled.form`
 
   label {
     text-align: left;
+    > span {
+      color: red;
+    }
   }
 
   > div {

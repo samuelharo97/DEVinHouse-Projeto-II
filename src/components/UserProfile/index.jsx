@@ -1,12 +1,10 @@
 import { ButtonText, WhiteLayer } from '@components'
+import { useAuth } from '@contexts'
 import PropTypes from 'prop-types'
 import { Container, LinkButton } from './styles'
 
 export const UserProfile = ({ user }) => {
-  const handleLogout = () => {
-    localStorage.clear('@Token')
-  }
-  
+  const { handleLogout } = useAuth()
 
   return (
     <WhiteLayer>

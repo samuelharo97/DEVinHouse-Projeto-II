@@ -3,16 +3,28 @@ import { LoginForm } from './styles'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { useAxios } from '@hooks'
+import { useAuth } from '@contexts'
+
 const loginSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required()
+  email: yup
+    .string()
+    .email()
+    .typeError('Digite um e-mail válido')
+    .required('Digite um e-mail'),
+  password: yup
+    .string()
+    .required('Digite a senha')
+    .min(8, 'A senha deve conter no mínimo 8 caracteres')
 })
 
 export const Login = () => {
-  const { axiosLogin } = useAxios()
+  const { axiosLogin } = useAuth()
 
-  const { handleSubmit, register } = useForm({
+  const {
+    handleSubmit,
+    register,
+    formState: { errors }
+  } = useForm({
     resolver: yupResolver(loginSchema)
   })
 
@@ -26,7 +38,9 @@ export const Login = () => {
       <LoginForm onSubmit={handleSubmit(handleLogin)}>
         <h2>Acessar</h2>
         <div>
-          <label htmlFor="email">E-mail</label>
+          <label htmlFor="email">
+            E-mail <span>{errors.email?.message}</span>
+          </label>
           <input
             type="email"
             name="email"
@@ -36,7 +50,9 @@ export const Login = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Senha</label>
+          <label htmlFor="password">
+            Senha <span>{errors.password?.message}</span>
+          </label>
           <input
             type="password"
             name="password"

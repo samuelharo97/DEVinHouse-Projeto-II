@@ -1,4 +1,5 @@
 import { UserProfile } from '@components'
+import { useAuth } from '@contexts'
 import { Container } from './styles'
 
 const testObject = {
@@ -15,9 +16,11 @@ const testObject = {
 }
 
 export const MyProfile = () => {
+  const { user } = useAuth()
+
   return (
     <Container>
-      <UserProfile user={testObject} />
+      <UserProfile user={user} />
     </Container>
   )
 }

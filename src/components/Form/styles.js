@@ -13,6 +13,9 @@ export const Formulary = styled.form`
 
   label {
     text-align: left;
+    > span {
+      color: red;
+    }
   }
 `
 

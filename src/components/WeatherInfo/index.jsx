@@ -8,11 +8,11 @@ const API_ID = import.meta.env.VITE_BASE_WEATHER_API_ID
 export const WeatherInfo = () => {
   const [info, setInfo] = useState({})
   const [isFetched, setIsFetched] = useState(false)
-  const {teste} = useAuth()
-  console.log(teste)
+  const { user } = useAuth()
+
   const getWeatherData = () => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=sao paulo,br&appid=${API_ID}&lang=pt_br&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${user.userAddress.city},br&appid=${API_ID}&lang=pt_br&units=metric`
     )
       .then(res => res.json())
       .then(data => {
@@ -21,7 +21,7 @@ export const WeatherInfo = () => {
       })
   }
 
-  useEffect(() => getWeatherData(), [])
+  useEffect(() => getWeatherData())
 
   return isFetched ? (
     <WhiteLayer gridVariant="temperature" width="80%">
@@ -30,7 +30,7 @@ export const WeatherInfo = () => {
           {info.main.temp}
           <span>°C</span>
         </h3>
-        <h5>{info.name + ', SP'}</h5>
+        <h5>{info.name + `, ${user.userAddress.state}`}</h5>
         <p>{` Sensacão térmica: ${info.main.feels_like} - Máxima: ${info.main.temp_max} °C - Mínima: ${info.main.temp_min} °C - Umidade: ${info.main.humidity}%`}</p>
       </Container>
     </WhiteLayer>

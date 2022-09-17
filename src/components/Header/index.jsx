@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button } from '@components'
-import { Container } from './styles'
+import { Container, StyledLink } from './styles'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
@@ -24,7 +24,7 @@ export const Header = ({ Authenticated }) => {
           </li>
         </ul>
       ) : (
-        <Button color={'secondary'} title={'LOGIN'} />
+        <StyledLink to={'/'}>LOGIN</StyledLink>
       )}
     </Container>
   )

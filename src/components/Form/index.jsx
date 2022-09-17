@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { WhiteLayer } from '@components'
+import { useAuth } from '@contexts'
 /* import { axiosCreateUser, axiosUpdateUser } from '@services'
  */
 const message = 'Campo obrigatório'
@@ -24,7 +25,7 @@ const schema = yup.object().shape({
     .required(message),
   password: yup
     .string()
-    .min(6, 'A senha deve ter no mínimo 6 caracteres')
+    .min(8, 'A senha deve ter no mínimo 8 caracteres')
     .required(message),
   confirmPassword: yup
     .string()
@@ -33,11 +34,11 @@ const schema = yup.object().shape({
     .required(message),
   fullName: yup.string().required(message),
   photoUrl: yup.string().typeError('URL Inválida').url(),
-  phone: yup.number().typeError('O telefone deve conter apenas números'),
+  phone: yup.number(),
   street: yup.string().required(message),
   zipCode: yup
     .string()
-    .matches(/^[0-9]+$/, 'Apenas números')
+    .matches(/^[0-9]+$/, 'O CEP deve conter 8 números')
     .min(8, 'O CEP deve conter 8 números')
     .max(8, 'O CEP deve conter 8 números')
     .required(message),
@@ -57,6 +58,8 @@ export const Form = ({ children, title }) => {
     resolver: yupResolver(schema)
   })
 
+  const { axiosCreateUser, axiosUpdateUser } = useAuth()
+
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = e => {
     const zipcode = e.target.value.replace(/\D/g, '')
@@ -73,8 +76,8 @@ export const Form = ({ children, title }) => {
   }
 
   const submitForm = data => {
-/*     title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data)
- */  }
+    title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data)
+  }
 
   return (
     <WhiteLayer>
@@ -118,9 +121,7 @@ export const Form = ({ children, title }) => {
             />
           </InputContainer>
           <InputContainer>
-            <label htmlFor="phone">
-              Telefone <span>{errors.phone?.message}</span>
-            </label>
+            <label htmlFor="phone">Telefone</label>
             <input type="tel" name="phone" id="phone" {...register('phone')} />
           </InputContainer>
         </InputWrapper>

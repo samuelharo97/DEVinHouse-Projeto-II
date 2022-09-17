@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.header`
@@ -35,4 +36,22 @@ export const Container = styled.header`
     padding: 10px 20px;
     height: fit-content;
   }
+`
+
+export const StyledLink = styled(Link)`
+  width: 120px;
+  color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
+  background-color: ${({ theme }) => theme.COLORS.SECONDARY.MAIN};
+  height: 40px;
+  border: 0;
+  padding: 0 16px;
+  margin-top: 16px;
+  border-radius: 50px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 10px;
 `
