@@ -25,10 +25,6 @@ export const Footer = styled.footer`
   width: 100%;
 `;
 
-export const Loading = styled.div`
-  margin: auto;
-  grid-area: content;
-`;
 export const List = styled.ul`
   display: flex;
   gap: 40px;

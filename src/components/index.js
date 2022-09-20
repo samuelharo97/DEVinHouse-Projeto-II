@@ -13,3 +13,4 @@ export { AddDeviceCard } from './AddDeviceCard';
 export { DeviceList } from './DeviceList';
 export { Modal } from './Modal';
 export { NavBar } from './NavBar';
+export { Loading } from './Loading';
