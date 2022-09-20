@@ -51,5 +51,21 @@ export const useAxios = () => {
       .catch(err => alert(err))
   }
 
-  return { axiosGetDevices, axiosGetLocations, axiosUserAddDevice }
+  const axiosGetUserDevices = async () => {
+    const token = localStorage.getItem('@Token')
+    const id = localStorage.getItem('@ID')
+    const res = await axios.get(`${URL}userDevices/user/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    return res
+  }
+
+  return {
+    axiosGetDevices,
+    axiosGetLocations,
+    axiosUserAddDevice,
+    axiosGetUserDevices
+  }
 }

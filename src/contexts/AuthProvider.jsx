@@ -119,14 +119,6 @@ export const AuthProvider = ({ children }) => {
   }
 
 
-  const axiosGetUserDevices = async (id, token) => {
-    const res = await axios.get(`${URL}userDevices/users/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    return res
-  }
 
   const axiosUpdateDeviceStatus = (deviceId, token) => {
     const config = {
@@ -176,7 +168,6 @@ export const AuthProvider = ({ children }) => {
         axiosLogin,
         axiosCreateUser,
         axiosGetUser,
-        axiosGetUserDevices,
         axiosUpdateUser,
         axiosUpdateDeviceStatus,
         axiosDeleteUserDevice
