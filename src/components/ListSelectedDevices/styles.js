@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const List = styled.ul`
+export const List = styled.div`
   display: flex;
   gap: 15px;
   width: 80%;
@@ -9,7 +9,7 @@ export const List = styled.ul`
   list-style: none;
 `;
 
-export const Container = styled.main`
+export const Container = styled.div`
   grid-area: content;
   text-align: center;
 `;

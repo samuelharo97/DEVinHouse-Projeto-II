@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 105px auto;
   grid-template-areas: 'content';
-  padding-top: 100px;
+  padding-top: 150px;
+
 
 `

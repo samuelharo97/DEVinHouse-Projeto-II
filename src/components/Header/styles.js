@@ -7,7 +7,7 @@ export const Container = styled.header`
   height: 105px;
   grid-area: header;
   margin-bottom: 20px;
-
+  position: fixed;
   background-color: ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
   display: flex;
   justify-content: space-between;

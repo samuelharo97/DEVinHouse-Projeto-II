@@ -1,7 +1,7 @@
 import { WeatherInfo, ListSelectedDevices, WhiteLayer } from '@components';
 import { useAxios } from '@hooks';
 import { useEffect, useState } from 'react';
-import { Container, Filter, Footer, Loading } from './styles';
+import { Container, Filter, Footer, List, Loading } from './styles';
 
 export const Home = () => {
   const { axiosGetUserDevices } = useAxios();
@@ -17,8 +17,11 @@ export const Home = () => {
     <Container>
       <WeatherInfo />
       <Filter />
+
       {allDevices.length > 0 ? (
-        <ListSelectedDevices products={allDevices} />
+        <List>
+          <ListSelectedDevices products={allDevices} />
+        </List>
       ) : (
         <WhiteLayer>
           <Loading>

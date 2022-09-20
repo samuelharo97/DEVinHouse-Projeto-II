@@ -1,6 +1,6 @@
-import { Icon, WhiteLayer } from '@components'
-import PropTypes from 'prop-types'
-import { Container } from './styles'
+import { Icon, WhiteLayer } from '@components';
+import PropTypes from 'prop-types';
+import { Container } from './styles';
 
 export const Card = ({ product, isSelected, onSelect }) => {
   return (
@@ -16,8 +16,8 @@ export const Card = ({ product, isSelected, onSelect }) => {
         <Icon handleSwitch={onSelect} selected={isSelected} />
       </Container>
     </WhiteLayer>
-  )
-}
+  );
+};
 
 Card.propTypes = {
   product: PropTypes.shape({
@@ -33,4 +33,4 @@ Card.propTypes = {
   }),
   isSelected: PropTypes.bool,
   onSelect: PropTypes.func
-}
+};

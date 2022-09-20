@@ -10,7 +10,7 @@ export const Container = styled.div`
     'content'
     'footer';
   grid-row-gap: 50px;
-  padding-top: 100px;
+  padding-top: 150px;
 `
 
 export const Section = styled.section`
