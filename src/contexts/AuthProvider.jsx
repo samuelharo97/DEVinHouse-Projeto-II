@@ -8,6 +8,19 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({})
   const [auth, setAuth] = useState(false)
 
+  const token = localStorage.getItem('@Token')
+  const id = localStorage.getItem('@ID')
+
+  const checkLogin = () => {
+    if (token) {
+      axiosGetUser(id)
+    }
+  }
+
+  useEffect(() => {
+    checkLogin()
+  }, [])
+
   const axiosLogin = async (usuario, senha) => {
     const user = {
       email: usuario,
@@ -105,36 +118,6 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  const axiosGetLocations = async token => {
-    try {
-      const res = await axios.get(`${URL}locals`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      return res.data
-    } catch (err) {
-      alert(err)
-    }
-  }
-
-  const axiosUserAddDevice = (userData, deviceData, roomData) => {
-    const token = localStorage.getItem('@Token')
-    const config = {
-      user: userData._id,
-      device: deviceData._id,
-      is_on: true,
-      local: roomData.local,
-      room: roomData.room
-    }
-    axios
-      .post(`${URL}userDevices`, config, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .catch(err => alert(err))
-  }
 
   const axiosGetUserDevices = async (id, token) => {
     const res = await axios.get(`${URL}userDevices/users/${id}`, {
@@ -194,8 +177,6 @@ export const AuthProvider = ({ children }) => {
         axiosCreateUser,
         axiosGetUser,
         axiosGetUserDevices,
-        axiosGetLocations,
-        axiosUserAddDevice,
         axiosUpdateUser,
         axiosUpdateDeviceStatus,
         axiosDeleteUserDevice

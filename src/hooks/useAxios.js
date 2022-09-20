@@ -17,5 +17,39 @@ export const useAxios = () => {
     return res.data
   }
 
-  return { axiosGetDevices }
+  const axiosGetLocations = async () => {
+    const token = localStorage.getItem('@Token')
+    try {
+      const res = await axios.get(`${URL}locals`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      return res.data
+    } catch (err) {
+      alert(err)
+    }
+  }
+
+  const axiosUserAddDevice = data => {
+    const token = localStorage.getItem('@Token')
+    const id = localStorage.getItem('@ID')
+    const config = {
+      user: id,
+      device: data.deviceId,
+      is_on: true,
+      local: data.local,
+      room: data.room
+    }
+    axios
+      .post(`${URL}userDevices`, config, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(res => console.log(res))
+      .catch(err => alert(err))
+  }
+
+  return { axiosGetDevices, axiosGetLocations, axiosUserAddDevice }
 }

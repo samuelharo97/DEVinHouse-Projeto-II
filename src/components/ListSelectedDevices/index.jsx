@@ -17,6 +17,9 @@ export const ListSelectedDevices = ({ products }) => {
 
   useEffect(() => console.log(selectedCardId), [selectedCardId])
 
+
+  
+
   return (
     <Container>
       <List>
