@@ -1,16 +1,17 @@
-import { WeatherInfo, ListSelectedDevices, WhiteLayer } from '@components'
-import { useAxios } from '@hooks'
-import { useEffect, useState } from 'react'
-import { Container, Filter, Footer, Loading } from './styles'
+import { WeatherInfo, ListSelectedDevices, WhiteLayer } from '@components';
+import { useAxios } from '@hooks';
+import { useEffect, useState } from 'react';
+import { Container, Filter, Footer, Loading } from './styles';
 
 export const Home = () => {
-  const { axiosGetUserDevices } = useAxios()
-  const [allDevices, setAllDevices] = useState([])
-  useEffect(() => {
-    axiosGetUserDevices().then(res => setAllDevices(res.data))
-  }, [])
+  const { axiosGetUserDevices } = useAxios();
+  const [allDevices, setAllDevices] = useState([]);
 
-  console.log(allDevices)
+  useEffect(() => {
+    axiosGetUserDevices().then((res) => setAllDevices(res.data));
+  }, []);
+
+  console.log(allDevices);
 
   return (
     <Container>
@@ -27,5 +28,5 @@ export const Home = () => {
       )}
       <Footer />
     </Container>
-  )
-}
+  );
+};

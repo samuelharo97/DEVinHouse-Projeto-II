@@ -2,7 +2,7 @@ import { Icon, WhiteLayer } from '@components'
 import PropTypes from 'prop-types'
 import { Container } from './styles'
 
-export const Card = ({ product, isSelected = false, onSelect }) => {
+export const Card = ({ product, isSelected, onSelect }) => {
   return (
     <WhiteLayer pad="20px">
       <Container>
@@ -10,9 +10,7 @@ export const Card = ({ product, isSelected = false, onSelect }) => {
         <div>
           <h5>{product.device.name}</h5>
           <div>
-            <p>{`${product.local.description} | ${product.room} | ${
-              isSelected ? 'ON' : 'OFF'
-            }`}</p>
+            <p>{`${product.local.description} | ${product.room} | ${isSelected ? 'ON' : 'OFF'}`}</p>
           </div>
         </div>
         <Icon handleSwitch={onSelect} selected={isSelected} />

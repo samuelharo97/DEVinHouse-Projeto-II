@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import { Container } from './styles'
+import PropTypes from 'prop-types';
+import { Container } from './styles';
 export const Icon = ({ selected = false, handleSwitch }) => {
   return (
     <Container
@@ -19,10 +19,10 @@ export const Icon = ({ selected = false, handleSwitch }) => {
       <line x1="20.833" y1="15" x2="20.833" y2="21" stroke="white" />
       <path d="M14.333 21H21.333" stroke="white" />
     </Container>
-  )
-}
+  );
+};
 
 Icon.propTypes = {
   selected: PropTypes.bool,
   handleSwitch: PropTypes.func
-}
+};

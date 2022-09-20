@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const Container = styled.header`
   width: 100%;
   min-width: 480px;
   height: 105px;
-
   grid-area: header;
+  margin-bottom: 20px;
 
   background-color: ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
   display: flex;
@@ -36,7 +36,7 @@ export const Container = styled.header`
     padding: 10px 20px;
     height: fit-content;
   }
-`
+`;
 
 export const StyledLink = styled(Link)`
   width: 120px;
@@ -54,4 +54,4 @@ export const StyledLink = styled(Link)`
   text-transform: uppercase;
   text-align: center;
   padding-top: 10px;
-`
+`;

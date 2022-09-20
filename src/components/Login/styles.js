@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const LoginForm = styled.form`
   grid-area: content;
@@ -35,4 +35,4 @@ export const LoginForm = styled.form`
     background-color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
     padding-left: 8px;
   }
-`
+`;

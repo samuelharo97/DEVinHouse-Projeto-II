@@ -19,11 +19,19 @@ export const Section = styled.section`
   margin: auto;
   align-self: center;
   border-bottom: 1px solid ${({ theme }) => theme.COLORS.SECONDARY.LIGHT};
+  min-width: 350px;
   > h3 {
     padding-bottom: 10px;
     font-weight: 500;
     font-size: 32px;
     line-height: 42px;
+  }
+
+  @media (max-width: 650px) {
+    margin-left: 15%;
+    h3 {
+      text-align: center;
+    }
   }
 `
 

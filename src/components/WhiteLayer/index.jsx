@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import { Container } from './styles'
+import { Container } from './styles';
 
 export const WhiteLayer = ({
   children,
@@ -13,12 +13,12 @@ export const WhiteLayer = ({
     <Container pad={pad} variant={gridVariant} width={width}>
       {children}
     </Container>
-  )
-}
+  );
+};
 
 WhiteLayer.propTypes = {
   children: PropTypes.node,
   width: PropTypes.string,
   pad: PropTypes.string,
   gridVariant: PropTypes.string
-}
+};

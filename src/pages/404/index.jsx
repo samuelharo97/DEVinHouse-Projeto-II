@@ -1,4 +1,4 @@
-import { WhiteLayer } from '@components'
+import { WhiteLayer } from '@components';
 
 export const NotFound = () => {
   return (
@@ -8,5 +8,5 @@ export const NotFound = () => {
         <h3>not found.</h3>
       </WhiteLayer>
     </>
-  )
-}
+  );
+};

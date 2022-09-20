@@ -1,32 +1,19 @@
-import {
-  Formulary,
-  InputWrapper,
-  InputContainer,
-  ActionWrapper,
-  HiddenInput
-} from './styles'
+import { Formulary, InputWrapper, InputContainer, ActionWrapper, HiddenInput } from './styles';
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-import { WhiteLayer } from '@components'
-import { useAuth } from '@contexts'
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { WhiteLayer } from '@components';
+import { useAuth } from '@contexts';
 /* import { axiosCreateUser, axiosUpdateUser } from '@services'
  */
-const message = 'Campo obrigatório'
+const message = 'Campo obrigatório';
 
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .typeError('Digite um e-mail válido.')
-    .required(message),
-  password: yup
-    .string()
-    .min(8, 'A senha deve ter no mínimo 8 caracteres')
-    .required(message),
+  email: yup.string().email().typeError('Digite um e-mail válido.').required(message),
+  password: yup.string().min(8, 'A senha deve ter no mínimo 8 caracteres').required(message),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), null], 'As senhas não correspondem')
@@ -46,7 +33,7 @@ const schema = yup.object().shape({
   neighborhood: yup.string().required(message),
   city: yup.string().required(message),
   complement: yup.string(message)
-})
+});
 
 export const Form = ({ children, title }) => {
   const {
@@ -56,28 +43,28 @@ export const Form = ({ children, title }) => {
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
-  })
+  });
 
-  const { axiosCreateUser, axiosUpdateUser } = useAuth()
+  const { axiosCreateUser, axiosUpdateUser } = useAuth();
 
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
-  const findZipcode = e => {
-    const zipcode = e.target.value.replace(/\D/g, '')
-    console.log(zipcode)
+  const findZipcode = (e) => {
+    const zipcode = e.target.value.replace(/\D/g, '');
+    console.log(zipcode);
     fetch(`https://viacep.com.br/ws/${zipcode}/json/`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setValue('street', data.logradouro)
-        setValue('city', data.localidade)
-        setValue('neighborhood', data.bairro)
-        setValue('state', data.uf)
-      })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setValue('street', data.logradouro);
+        setValue('city', data.localidade);
+        setValue('neighborhood', data.bairro);
+        setValue('state', data.uf);
+      });
+  };
 
-  const submitForm = data => {
-    title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data)
-  }
+  const submitForm = (data) => {
+    title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data);
+  };
 
   return (
     <WhiteLayer>
@@ -88,23 +75,13 @@ export const Form = ({ children, title }) => {
             <label htmlFor="fullName">
               Nome completo* <span>{errors.fullName?.message}</span>
             </label>
-            <input
-              type="text"
-              name="fullName"
-              id="fullName"
-              {...register('fullName')}
-            />
+            <input type="text" name="fullName" id="fullName" {...register('fullName')} />
           </InputContainer>
           <InputContainer>
             <label htmlFor="email">
               E-mail* <span>{errors.email?.message}</span>
             </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              {...register('email')}
-            />
+            <input type="email" name="email" id="email" {...register('email')} />
           </InputContainer>
         </InputWrapper>
 
@@ -113,12 +90,7 @@ export const Form = ({ children, title }) => {
             <label htmlFor="photoUrl">
               URL foto perfil <span>{errors.photoURL?.message}</span>
             </label>
-            <input
-              type="url"
-              name="photoUrl"
-              id="photoUrl"
-              {...register('photoUrl')}
-            />
+            <input type="url" name="photoUrl" id="photoUrl" {...register('photoUrl')} />
           </InputContainer>
           <InputContainer>
             <label htmlFor="phone">Telefone</label>
@@ -131,12 +103,7 @@ export const Form = ({ children, title }) => {
             <label htmlFor="password">
               Senha* <span>{errors.password?.message}</span>
             </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              {...register('password')}
-            />
+            <input type="password" name="password" id="password" {...register('password')} />
           </InputContainer>
           <InputContainer>
             <label htmlFor="confirmPassword">
@@ -168,12 +135,7 @@ export const Form = ({ children, title }) => {
             <label htmlFor="street">
               Logradouro/Endereço* <span>{errors.street?.message}</span>
             </label>
-            <input
-              type="text"
-              name="street"
-              id="street"
-              {...register('street')}
-            />
+            <input type="text" name="street" id="street" {...register('street')} />
           </InputContainer>
         </InputWrapper>
 
@@ -188,12 +150,7 @@ export const Form = ({ children, title }) => {
             <label htmlFor="complement">
               Complemento <span>{errors.complement?.message}</span>
             </label>
-            <input
-              type="text"
-              name="complement"
-              id="complement"
-              {...register('complement')}
-            />
+            <input type="text" name="complement" id="complement" {...register('complement')} />
           </InputContainer>
         </InputWrapper>
 
@@ -202,12 +159,7 @@ export const Form = ({ children, title }) => {
             <label htmlFor="number">
               Número* <span>{errors.number?.message}</span>
             </label>
-            <input
-              type="number"
-              name="number"
-              id="number"
-              {...register('number')}
-            />
+            <input type="number" name="number" id="number" {...register('number')} />
           </InputContainer>
           <InputContainer>
             <label htmlFor="neighborhood">
@@ -228,10 +180,10 @@ export const Form = ({ children, title }) => {
         <ActionWrapper>{children}</ActionWrapper>
       </Formulary>
     </WhiteLayer>
-  )
-}
+  );
+};
 
 Form.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string.isRequired
-}
+};

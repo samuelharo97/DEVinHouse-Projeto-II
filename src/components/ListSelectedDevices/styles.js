@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const List = styled.ul`
   display: flex;
@@ -7,9 +7,9 @@ export const List = styled.ul`
   flex-wrap: wrap;
   margin: auto;
   list-style: none;
-`
+`;
 
 export const Container = styled.main`
   grid-area: content;
   text-align: center;
-`
+`;

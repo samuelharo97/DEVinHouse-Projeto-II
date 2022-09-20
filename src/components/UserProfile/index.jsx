@@ -1,10 +1,10 @@
-import { ButtonText, WhiteLayer } from '@components'
-import { useAuth } from '@contexts'
-import PropTypes from 'prop-types'
-import { Container, LinkButton } from './styles'
+import { ButtonText, WhiteLayer } from '@components';
+import { useAuth } from '@contexts';
+import PropTypes from 'prop-types';
+import { Container, LinkButton } from './styles';
 
 export const UserProfile = ({ user }) => {
-  const { handleLogout } = useAuth()
+  const { handleLogout } = useAuth();
 
   return (
     <WhiteLayer>
@@ -31,8 +31,8 @@ export const UserProfile = ({ user }) => {
         <ButtonText func={handleLogout} routeTo={'/'} title="Sair" />
       </Container>
     </WhiteLayer>
-  )
-}
+  );
+};
 
 UserProfile.propTypes = {
   user: PropTypes.shape({
@@ -49,4 +49,4 @@ UserProfile.propTypes = {
       state: PropTypes.string.isRequired
     })
   })
-}
+};

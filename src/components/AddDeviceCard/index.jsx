@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { Card, Container } from './styles'
 
-export const AddDeviceCard = ({ device, handleAdd, locations }) => {
+export const AddDeviceCard = ({ device, locations }) => {
   const [openModal, setOpenModal] = useState(false)
   const toggleModal = () => {
-    setOpenModal(prev => !prev)
+    setOpenModal((prev) => !prev)
   }
- 
+
   return (
     <Container>
       <WhiteLayer>
@@ -21,7 +21,6 @@ export const AddDeviceCard = ({ device, handleAdd, locations }) => {
             device={device}
             showModal={openModal}
             locations={locations}
-       
           />
         </Card>
       </WhiteLayer>

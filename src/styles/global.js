@@ -1,5 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
-import { Link } from 'react-router-dom'
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -29,6 +28,7 @@ body {
   background-color: ${({ theme }) => theme.COLORS.COMMON.GRAY};
   height: 100vh;
   width: 100%;
+  min-width: 480px;
 
 }
 
@@ -62,4 +62,4 @@ a, button {
     filter: brightness(0.9);
   }
 
-`
+`;

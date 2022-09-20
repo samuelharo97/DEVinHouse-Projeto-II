@@ -4,6 +4,7 @@ export const Container = styled.div`
   height: 100vh;
   width: 100%;
   display: grid;
+  padding-top: 50px;
   grid-template-rows: 105px, 215px, 30px auto;
   grid-template-areas:
     'temperature'

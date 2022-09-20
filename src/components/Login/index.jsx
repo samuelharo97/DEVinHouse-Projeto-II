@@ -1,24 +1,20 @@
-import { WhiteLayer, Button, ButtonText } from '@components'
-import { LoginForm } from './styles'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-import { useAuth } from '@contexts'
+import { WhiteLayer, Button, ButtonText } from '@components';
+import { LoginForm } from './styles';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { useAuth } from '@contexts';
 
 const loginSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .typeError('Digite um e-mail válido')
-    .required('Digite um e-mail'),
+  email: yup.string().email().typeError('Digite um e-mail válido').required('Digite um e-mail'),
   password: yup
     .string()
     .required('Digite a senha')
     .min(8, 'A senha deve conter no mínimo 8 caracteres')
-})
+});
 
 export const Login = () => {
-  const { axiosLogin } = useAuth()
+  const { axiosLogin } = useAuth();
 
   const {
     handleSubmit,
@@ -26,12 +22,12 @@ export const Login = () => {
     formState: { errors }
   } = useForm({
     resolver: yupResolver(loginSchema)
-  })
+  });
 
-  const handleLogin = data => {
-    const { email, password } = data
-    axiosLogin(email, password)
-  }
+  const handleLogin = (data) => {
+    const { email, password } = data;
+    axiosLogin(email, password);
+  };
 
   return (
     <WhiteLayer>
@@ -65,5 +61,5 @@ export const Login = () => {
         <ButtonText routeTo="/register" title={'Cadastrar'} />
       </LoginForm>
     </WhiteLayer>
-  )
-}
+  );
+};

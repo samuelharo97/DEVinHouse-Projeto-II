@@ -1,27 +1,27 @@
-import { WhiteLayer } from '@components'
-import { useAuth } from '@contexts'
-import { useEffect, useState } from 'react'
-import { Container } from './styles'
+import { WhiteLayer } from '@components';
+import { useAuth } from '@contexts';
+import { useEffect, useState } from 'react';
+import { Container } from './styles';
 
-const API_ID = import.meta.env.VITE_BASE_WEATHER_API_ID
+const API_ID = import.meta.env.VITE_BASE_WEATHER_API_ID;
 
 export const WeatherInfo = () => {
-  const [info, setInfo] = useState({})
-  const [isFetched, setIsFetched] = useState(false)
-  const { user } = useAuth()
+  const [info, setInfo] = useState({});
+  const [isFetched, setIsFetched] = useState(false);
+  const { user } = useAuth();
 
   const getWeatherData = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${user.userAddress.city},br&appid=${API_ID}&lang=pt_br&units=metric`
     )
-      .then(res => res.json())
-      .then(data => {
-        setInfo(data)
-        setIsFetched(true)
-      })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        setInfo(data);
+        setIsFetched(true);
+      });
+  };
 
-  useEffect(() => getWeatherData())
+  useEffect(() => getWeatherData());
 
   return isFetched ? (
     <WhiteLayer gridVariant="temperature" width="80%">
@@ -31,15 +31,19 @@ export const WeatherInfo = () => {
           <span>°C</span>
         </h3>
         <h5>{info.name + `, ${user.userAddress.state}`}</h5>
-        <p>{` Sensacão térmica: ${info.main.feels_like} - Máxima: ${info.main.temp_max} °C - Mínima: ${info.main.temp_min} °C - Umidade: ${info.main.humidity}%`}</p>
+        <div>
+          <p>Sensacão térmica: {info.main.feels_like}°C</p>
+          <p> Máxima: {info.main.temp_max}°C </p>
+          <p> Mínima: {info.main.temp_min}°C</p> <p> Umidade: {info.main.humidity}% </p>
+        </div>
       </Container>
     </WhiteLayer>
   ) : (
     <WhiteLayer>
       <h1>Loading..</h1>
     </WhiteLayer>
-  )
-}
+  );
+};
 
 /* temp: data.main.temp,
    feelsLike: data.main.feels_like,

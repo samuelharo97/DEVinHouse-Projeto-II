@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { MdClose } from 'react-icons/md'
+import styled from 'styled-components';
+import { MdClose } from 'react-icons/md';
 
 export const Background = styled.div`
   width: 100%;
@@ -13,7 +13,7 @@ export const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const ModalWrapper = styled.div`
   width: fit-content;
@@ -28,18 +28,12 @@ export const ModalWrapper = styled.div`
   border-radius: 10px;
   align-self: center;
   padding: 40px;
-`
-
-export const ModalImg = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px 0 0 10px;
-  background: #000;
-`
+`;
 
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 25px;
   justify-content: center;
   align-items: center;
   line-height: 1.8;
@@ -50,8 +44,9 @@ export const ModalContent = styled.div`
   div {
     display: flex;
     justify-content: space-between;
+    gap: 40px;
   }
-`
+`;
 
 export const CloseModalButton = styled(MdClose)`
   cursor: pointer;
@@ -62,14 +57,14 @@ export const CloseModalButton = styled(MdClose)`
   height: 32px;
   padding: 0;
   z-index: 10;
-`
+`;
 
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-bottom: 28px;
-`
+`;
 
 export const InputWrapper = styled.div`
   display: flex;
@@ -88,7 +83,7 @@ export const InputWrapper = styled.div`
     border: none;
     outline: 1px solid ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
   }
-`
+`;
 
 export const HiddenInput = styled.div`
   display: none;
@@ -100,4 +95,4 @@ export const HiddenInput = styled.div`
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-`
+`;

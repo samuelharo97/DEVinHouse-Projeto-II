@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Formulary = styled.form`
+
   color: ${({ theme }) => theme.COLORS.PRIMARY.DARK};
 
   h2 {
@@ -17,18 +18,19 @@ export const Formulary = styled.form`
       color: red;
     }
   }
-`
+`;
 
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-bottom: 28px;
-`
+`;
 
 export const InputWrapper = styled.div`
   display: flex;
   gap: 20px;
+
   input {
     width: 330px;
     height: 35px;
@@ -45,15 +47,26 @@ export const InputWrapper = styled.div`
   > span {
     color: red;
   }
-`
+
+  @media (max-width: 850px) {
+    input {
+      width: 250px;
+    }
+  }
+
+  @media (max-width: 650px) {
+    input {
+      width: 150px;
+    }
+  }
+`;
 
 export const ActionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 28px;
-`
+`;
 
 export const HiddenInput = styled.div`
   display: none;
-
-`
+`;

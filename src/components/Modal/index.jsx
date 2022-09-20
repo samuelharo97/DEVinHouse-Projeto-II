@@ -1,9 +1,7 @@
-import React, { useRef } from 'react'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-import { useSpring, animated } from 'react-spring'
-import PropTypes from 'prop-types'
+import { useRef } from 'react';
+import { useForm } from 'react-hook-form';
+
+import PropTypes from 'prop-types';
 import {
   Background,
   CloseModalButton,
@@ -11,38 +9,31 @@ import {
   InputContainer,
   InputWrapper,
   ModalContent,
-  ModalImg,
   ModalWrapper
-} from './styles'
-import { Button } from '@components'
-import { useAxios } from '@hooks'
+} from './styles';
+import { Button } from '@components';
+import { useAxios } from '@hooks';
 
 const validationObject = {
   required: true
-}
+};
 
-export const Modal = ({
-  showModal,
-  setShowModal,
-  device,
-  handleAdd,
-  locations
-}) => {
-  const modalRef = useRef()
+export const Modal = ({ showModal, setShowModal, device, locations }) => {
+  const modalRef = useRef();
 
-  const { axiosUserAddDevice } = useAxios()
+  const { axiosUserAddDevice } = useAxios();
 
-  const closeModal = e => {
+  const closeModal = (e) => {
     if (modalRef.current === e.target) {
-      setShowModal(false)
+      setShowModal(false);
     }
-  }
+  };
 
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit } = useForm();
 
-  const submit = data => {
-    axiosUserAddDevice(data)
-  }
+  const submit = (data) => {
+    axiosUserAddDevice(data);
+  };
 
   return (
     <>
@@ -66,7 +57,7 @@ export const Modal = ({
                           <option key={index} value={`${location._id}`}>
                             {location.description}
                           </option>
-                        )
+                        );
                       })}
                     </select>
                   </InputWrapper>
@@ -100,31 +91,26 @@ export const Modal = ({
                   color={'primary'}
                   type={'submit'}
                 />
-                <Button
-                  title={'CANCELAR'}
-                  func={setShowModal}
-                  color={'secondary'}
-                />
+                <Button title={'CANCELAR'} func={setShowModal} color={'secondary'} />
               </div>
             </ModalContent>
             <CloseModalButton
               aria-label="Close modal"
-              onClick={() => setShowModal(prev => !prev)}
+              onClick={() => setShowModal((prev) => !prev)}
             />
           </ModalWrapper>
         </Background>
       ) : null}
     </>
-  )
-}
+  );
+};
 
 Modal.propTypes = {
   showModal: PropTypes.bool,
   setShowModal: PropTypes.func,
-  handleAdd: PropTypes.func,
   locations: PropTypes.array,
   device: PropTypes.shape({
     name: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired
   })
-}
+};

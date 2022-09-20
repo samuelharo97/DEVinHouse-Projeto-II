@@ -18,7 +18,10 @@
     "sourceType": "module"
   },
   "plugins": ["react", "jsx-a11y"],
-  "rules": { "no-unused-vars": "off", "prefer-const": "warn" },
+  "rules": {
+    "no-unused-vars": "error",
+    "prefer-const": "warn"
+  },
   "settings": {
     "react": {
       "version": "detect"
