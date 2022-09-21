@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Container, StyledLink } from './styles';
 
 export const NavBar = () => {
   return (
-    <ul>
-      <li>
-        <Link to={'/'}> Inicio </Link>
-      </li>
-      <li>
-        <Link to={'/devices'}> Dispositivos </Link>
-      </li>
-      <li>
-        <Link to={'/profile'}> Perfil </Link>
-      </li>
-    </ul>
+    <Container>
+      <ul>
+        <li>
+          <StyledLink to={'/'}> Inicio </StyledLink>
+        </li>
+        <li>
+          <StyledLink to={'/devices'}> Dispositivos </StyledLink>
+        </li>
+        <li>
+          <StyledLink to={'/profile'}> Perfil </StyledLink>
+        </li>
+      </ul>
+    </Container>
   );
 };

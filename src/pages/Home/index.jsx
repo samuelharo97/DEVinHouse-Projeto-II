@@ -1,23 +1,20 @@
-import { WeatherInfo, ListSelectedDevices, Loading } from '@components';
-import { useAxios } from '@hooks';
-import { useEffect, useState } from 'react';
-import { Container, Filter, Footer, List } from './styles';
+import { WeatherInfo, ListSelectedDevices, Loading, FilterSections } from '@components';
+import { useAuth } from '@contexts';
+import { useEffect } from 'react';
+import { Container, Footer, List } from './styles';
 
 export const Home = () => {
-  const { axiosGetUserDevices } = useAxios();
-  const [allDevices, setAllDevices] = useState([]);
+  const { getDevices, allDevices, devices } = useAuth();
 
   useEffect(() => {
-    axiosGetUserDevices().then((res) => setAllDevices(res.data));
-  }, []);
-
-  console.log(allDevices);
+    console.log('este useEffect renderizou');
+    getDevices();
+  }, [devices]);
 
   return (
     <Container>
       <WeatherInfo />
-      <Filter />
-
+      <FilterSections />
       {allDevices.length > 0 ? (
         <List>
           <ListSelectedDevices products={allDevices} />

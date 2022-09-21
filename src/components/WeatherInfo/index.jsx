@@ -1,14 +1,14 @@
-import { WhiteLayer } from '@components';
+import { Loading, WhiteLayer } from '@components';
 import { useAuth } from '@contexts';
 import { useEffect, useState } from 'react';
 import { Container } from './styles';
 
-/* const API_ID = import.meta.env.VITE_BASE_WEATHER_API_ID;
- */
-const DummyData = {
+const API_ID = import.meta.env.VITE_BASE_WEATHER_API_ID;
+
+/* const DummyData = {
   main: { temp: '18,5', feels_like: '15,6', temp_max: '19,4', temp_min: '14,4', humidity: '98' },
   name: 'São Paulo'
-};
+}; */
 
 export const WeatherInfo = () => {
   const [info, setInfo] = useState({});
@@ -16,22 +16,23 @@ export const WeatherInfo = () => {
   const { user } = useAuth();
 
   const getWeatherData = () => {
-    /* fetch(
+    fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${user.userAddress.city},br&appid=${API_ID}&lang=pt_br&units=metric`
     )
       .then((res) => res.json())
       .then((data) => {
         setInfo(data);
         setIsFetched(true);
-      }); */
+      });
 
-    setInfo(DummyData);
-    setIsFetched(true);
+    /* setInfo(DummyData);
+    setIsFetched(true); */
   };
 
   useEffect(() => {
     console.log('rendered weather');
     getWeatherData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isFetched ? (
@@ -51,7 +52,9 @@ export const WeatherInfo = () => {
     </WhiteLayer>
   ) : (
     <WhiteLayer>
-      <h1>Loading..</h1>
+      <Container>
+        <Loading />
+      </Container>
     </WhiteLayer>
   );
 };

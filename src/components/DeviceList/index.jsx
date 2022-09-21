@@ -1,24 +1,25 @@
-import { AddDeviceCard, WhiteLayer } from '@components'
-import { useAxios } from '@hooks'
-import { useEffect, useState } from 'react'
-import { Container, InputWrapper, List } from './styles'
+import { AddDeviceCard, Loading } from '@components';
+import { useAxios } from '@hooks';
+import { useEffect, useState } from 'react';
+import { Container, InputWrapper, List } from './styles';
 
 export const DeviceList = () => {
-  const [devices, setDevices] = useState([])
-  const [locations, setLocations] = useState([])
-  const { axiosGetDevices, axiosGetLocations } = useAxios()
-  const [search, setSearch] = useState('')
+  const [devices, setDevices] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const { axiosGetDevices, axiosGetLocations } = useAxios();
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
-    axiosGetDevices().then((res) => setDevices(res))
-    axiosGetLocations().then((res) => setLocations(res))
+    axiosGetDevices().then((res) => setDevices(res));
+    axiosGetLocations().then((res) => setLocations(res));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
+  console.log(locations);
 
   const filteredDevices =
     search.length > 0
       ? devices.filter((device) => device.name.toLowerCase().includes(search.toLowerCase()))
-      : []
+      : [];
 
   return (
     <Container>
@@ -47,10 +48,10 @@ export const DeviceList = () => {
           ))}
         </List>
       ) : (
-        <WhiteLayer>
-          <h3>LOADING...</h3>
-        </WhiteLayer>
+        <List>
+          <Loading />
+        </List>
       )}
     </Container>
-  )
-}
+  );
+};

@@ -1,15 +1,22 @@
 import { AuthContext } from './AuthContext';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { useAxios } from '@hooks';
 
 export const AuthProvider = ({ children }) => {
   const URL = import.meta.env.VITE_BASE_URL;
   const [user, setUser] = useState({});
   const [auth, setAuth] = useState(false);
-
   const token = localStorage.getItem('@Token');
   const id = localStorage.getItem('@ID');
+  const { axiosGetUserDevices } = useAxios();
+
+  const [allDevices, setAllDevices] = useState([]);
+
+  const getDevices = useCallback(() => {
+    axiosGetUserDevices().then((res) => setAllDevices(res.data));
+  }, [axiosGetUserDevices]);
 
   const checkLogin = () => {
     if (token) {
@@ -148,7 +155,9 @@ export const AuthProvider = ({ children }) => {
         axiosCreateUser,
         axiosGetUser,
         axiosUpdateUser,
-        axiosDeleteUserDevice
+        axiosDeleteUserDevice,
+        allDevices,
+        getDevices
       }}
     >
       {children}

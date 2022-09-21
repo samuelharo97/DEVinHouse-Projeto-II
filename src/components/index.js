@@ -14,3 +14,5 @@ export { DeviceList } from './DeviceList';
 export { Modal } from './Modal';
 export { NavBar } from './NavBar';
 export { Loading } from './Loading';
+export { Filter } from './Filter';
+export { FilterSections } from './FilterSections';

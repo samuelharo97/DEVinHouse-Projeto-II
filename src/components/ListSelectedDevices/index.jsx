@@ -1,13 +1,11 @@
 import { Card } from '@components';
 import { useAxios } from '@hooks';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { Container, List } from './styles';
+/* import { useEffect } from 'react';
+ */import { Container, List } from './styles';
 
 export const ListSelectedDevices = ({ products }) => {
   const { axiosUpdateDeviceStatus } = useAxios();
-
-  useEffect(() => console.log('Render'), [axiosUpdateDeviceStatus]);
 
   return (
     <Container>

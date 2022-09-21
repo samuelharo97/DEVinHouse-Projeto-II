@@ -14,12 +14,6 @@ export const Container = styled.div`
   grid-row-gap: 20px;
 `;
 
-export const Filter = styled.div`
-  background-color: blue;
-  height: 30px;
-  width: 100%;
-  grid-area: filter;
-`;
 export const Footer = styled.footer`
   height: 100px;
   width: 100%;
