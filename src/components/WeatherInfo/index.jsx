@@ -45,9 +45,9 @@ export const WeatherInfo = () => {
         </h3>
         <h5>{info.name + `, ${user.userAddress.state}`}</h5>
         <div>
-          <p>Sensacão térmica: {info.main.feels_like.toFixed(0)}°C</p>
-          <p> Máxima: {info.main.temp_max.toFixed(0)}°C </p>
-          <p> Mínima: {info.main.temp_min.toFixed(0)}°C</p> <p> Umidade: {info.main.humidity}% </p>
+          <p>Sensacão térmica: {info.main.feels_like.toFixed(1)}°C</p>
+          <p> Máxima: {info.main.temp_max.toFixed(1)}°C </p>
+          <p> Mínima: {info.main.temp_min.toFixed(1)}°C</p> <p> Umidade: {info.main.humidity}% </p>
         </div>
       </Container>
     </WhiteLayer>
