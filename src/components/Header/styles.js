@@ -25,6 +25,11 @@ export const Container = styled.header`
     list-style: none;
     gap: 20px;
   }
+  
+  svg {
+    height: 30px;
+    width: 30px;
+  }
 
   a {
     color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
@@ -55,7 +60,6 @@ export const StyledLink = styled(Link)`
   height: 40px;
   border: 0;
   padding: 0 16px;
-  margin-top: 16px;
   border-radius: 50px;
   font-style: normal;
   font-weight: 700;

@@ -109,11 +109,22 @@ export const useAxios = () => {
     });
   };
 
+  const axiosGetDeviceById = (deviceId) => {
+    const token = localStorage.getItem('@Token');
+    const response = axios.get(`${URL}userDevices/${deviceId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response;
+  };
+
   return {
     axiosGetDevices,
     axiosGetLocations,
     axiosUserAddDevice,
     axiosGetUserDevices,
+    axiosGetDeviceById,
     axiosUpdateDeviceStatus,
     axiosCreateUser,
     axiosDeleteUserDevice

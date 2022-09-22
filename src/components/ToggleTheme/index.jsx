@@ -2,16 +2,9 @@ import { MdDarkMode, MdLightMode } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import { useTheme } from '@contexts';
 import { darkTheme, lightTheme } from '@styles';
-import { useEffect } from 'react';
 
 export const ToggleTheme = () => {
   const { theme, setTheme } = useTheme();
-
-  const checkTheme = () => {
-    return theme === darkTheme ? 'DARK' : 'LIGHT';
-  };
-
-  const currentTheme = useEffect(() => checkTheme(), []);
 
   const handleToggle = () => {
     if (theme === darkTheme) {
@@ -23,10 +16,14 @@ export const ToggleTheme = () => {
     }
   };
 
-  return currentTheme === 'DARK' ? (
-    <MdDarkMode onClick={handleToggle} />
-  ) : (
-    <MdLightMode onClick={handleToggle} />
+  return (
+    <div>
+      {theme === lightTheme ? (
+        <MdLightMode onClick={handleToggle} />
+      ) : (
+        <MdDarkMode onClick={handleToggle} />
+      )}
+    </div>
   );
 };
 

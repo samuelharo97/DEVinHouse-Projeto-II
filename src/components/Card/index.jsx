@@ -1,10 +1,12 @@
-import { Icon, WhiteLayer } from '@components';
+import { Icon } from '@components';
 import PropTypes from 'prop-types';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, List } from './styles';
 
-export const Card = ({ product, isSelected, onSelect }) => {
+export const Card = ({ product, isSelected }) => {
+  const navigate = useNavigate();
   return (
-    <List>
+    <List onClick={() => navigate(`details/${product._id}`)}>
       <Container>
         <img src={product.device.photoUrl} alt="IOT device" />
         <div>
@@ -13,7 +15,8 @@ export const Card = ({ product, isSelected, onSelect }) => {
             <p>{`${product.local.description} | ${product.room} | ${isSelected ? 'ON' : 'OFF'}`}</p>
           </div>
         </div>
-        <Icon handleSwitch={onSelect} selected={isSelected} />
+
+        <Icon selected={isSelected} />
       </Container>
     </List>
   );
@@ -26,6 +29,7 @@ Card.propTypes = {
     }),
     room: PropTypes.string,
     status: PropTypes.string,
+    _id: PropTypes.string,
     device: PropTypes.shape({
       photoUrl: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired

@@ -1,6 +1,6 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 
-import { Home, MyProfile, ProfileEdit, Devices, NotFound } from '@pages'
+import { Home, MyProfile, ProfileEdit, Devices, Details, NotFound } from '@pages';
 
 export const AppRoutes = () => {
   return (
@@ -8,9 +8,10 @@ export const AppRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/profile" element={<MyProfile />} />
       <Route path="/edit" element={<ProfileEdit />} />
-      <Route path="/devices" element={<Devices />} />
+      <Route path="/devices/" element={<Devices />} />
+      <Route path="details/:id" element={<Details />} />
+
       <Route path="*" element={<NotFound />} />
-      {/* <Route path="/devices/:id" element={<DevicesDetails />} /> */}
     </Routes>
-  )
-}
+  );
+};

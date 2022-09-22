@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import { Container } from './styles';
-export const Icon = ({ selected = false, handleSwitch }) => {
+export const Icon = ({ selected = false }) => {
   return (
     <Container
-      onClick={handleSwitch}
       variant={selected}
       width="36"
       height="36"
@@ -24,5 +23,4 @@ export const Icon = ({ selected = false, handleSwitch }) => {
 
 Icon.propTypes = {
   selected: PropTypes.bool,
-  handleSwitch: PropTypes.func
 };
