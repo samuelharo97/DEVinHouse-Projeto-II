@@ -6,7 +6,7 @@ export const Header = ({ Authenticated }) => {
     <Container>
       <div>
         <img src="logo.png" alt="company logo" />
-        <h1>Connect Lab</h1>
+        <h1>ConnectLab</h1>
       </div>
       {Authenticated ? (
         <FlexibleDiv>

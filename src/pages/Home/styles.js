@@ -19,12 +19,16 @@ export const Footer = styled.footer`
   width: 100%;
 `;
 
-export const List = styled.ul`
-  display: flex;
-  gap: 40px;
+export const Group = styled.div`
   grid-area: content;
-  flex-wrap: wrap;
-  list-style: none;
+  text-align: center;
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+  > ul,
+  li {
+    list-style: none;
+  }
 `;
 
 export const FilterContainer = styled.div`

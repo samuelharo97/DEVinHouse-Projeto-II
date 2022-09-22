@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const List = styled.div`
+export const List = styled.ul`
   display: flex;
   gap: 15px;
   width: 80%;

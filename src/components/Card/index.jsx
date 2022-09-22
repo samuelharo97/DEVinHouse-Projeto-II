@@ -1,10 +1,10 @@
 import { Icon, WhiteLayer } from '@components';
 import PropTypes from 'prop-types';
-import { Container } from './styles';
+import { Container, List } from './styles';
 
 export const Card = ({ product, isSelected, onSelect }) => {
   return (
-    <WhiteLayer pad="20px">
+    <List>
       <Container>
         <img src={product.device.photoUrl} alt="IOT device" />
         <div>
@@ -15,7 +15,7 @@ export const Card = ({ product, isSelected, onSelect }) => {
         </div>
         <Icon handleSwitch={onSelect} selected={isSelected} />
       </Container>
-    </WhiteLayer>
+    </List>
   );
 };
 
