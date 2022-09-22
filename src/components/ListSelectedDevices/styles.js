@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   width: 80%;
   flex-wrap: wrap;

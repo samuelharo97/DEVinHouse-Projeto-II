@@ -11,7 +11,7 @@ import {
   ModalContent,
   ModalWrapper
 } from './styles';
-import { Button } from '@components';
+import { Button, Loading } from '@components';
 import { useAxios } from '@hooks';
 
 const validationObject = {

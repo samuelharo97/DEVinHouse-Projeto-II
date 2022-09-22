@@ -1,5 +1,5 @@
 import { Spinner } from './styles';
 
-export const Loading = () => {
-  return <Spinner></Spinner>;
+export const Loading = ({ ...rest }) => {
+  return <Spinner {...rest}></Spinner>;
 };
