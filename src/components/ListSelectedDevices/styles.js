@@ -4,10 +4,18 @@ export const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  width: 80%;
-  flex-wrap: wrap;
+  width: 95%;
   margin: auto;
   list-style: none;
+  @media (max-width: 1390px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 970px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (min-width: 1800px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 export const Container = styled.div`

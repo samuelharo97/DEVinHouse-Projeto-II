@@ -25,7 +25,7 @@ export const List = styled.li`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   height: fit-content;
-  width: 430px;
+  width: 400px;
   margin: auto;
   padding: 20px;
 `;
