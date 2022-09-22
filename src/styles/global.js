@@ -62,4 +62,17 @@ a, button {
     filter: brightness(0.9);
   }
 
+
+  main{
+    padding: 0 20px;
+
+  }
+
+
+  @media (max-width: 650px) {
+    main{
+      padding-top: 100px;
+    }
+  }
+
 `;

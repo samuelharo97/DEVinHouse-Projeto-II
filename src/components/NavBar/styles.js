@@ -7,7 +7,7 @@ export const Container = styled.nav`
     align-items: center;
     list-style: none;
     .active {
-      color: ${({ theme }) => theme.COLORS.SECONDARY.MAIN};
+      color: ${({ theme }) => theme.COLORS.SECONDARY.DARK};
       font-weight: 700;
     }
   }

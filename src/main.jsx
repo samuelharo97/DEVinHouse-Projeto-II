@@ -1,13 +1,15 @@
-import { AuthProvider } from '@contexts'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { AuthProvider, ThemeContextProvider } from '@contexts';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import { App } from './App'
+import { App } from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <ThemeContextProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </ThemeContextProvider>
   </React.StrictMode>
-)
+);

@@ -29,7 +29,7 @@ export const List = styled.ul`
 
 export const FilterContainer = styled.div`
   height: 30px;
-  width: 80%;
+  width: 78%;
   grid-area: filter;
   margin: 15px auto;
   display: flex;

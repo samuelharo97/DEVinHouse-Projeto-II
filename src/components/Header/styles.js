@@ -11,7 +11,7 @@ export const Container = styled.header`
   background-color: ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
   display: flex;
   justify-content: space-between;
-  padding: 0 80px;
+  padding: 0 50px;
   align-items: center;
   color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
 
@@ -30,11 +30,21 @@ export const Container = styled.header`
     color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
   }
 
+  img {
+    width: 120px;
+    height: 120px;
+  }
+
   @media (max-width: 650px) {
     flex-direction: column;
-    gap: 20px;
     padding: 10px 20px;
     height: fit-content;
+  }
+
+  @media (max-width: 800px) {
+    > div {
+      gap: 5px;
+    }
   }
 `;
 
@@ -54,4 +64,20 @@ export const StyledLink = styled(Link)`
   text-transform: uppercase;
   text-align: center;
   padding-top: 10px;
+`;
+
+export const FlexibleDiv = styled.div`
+  svg {
+    height: 30px;
+    width: 30px;
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    text-align: center;
+  }
+  @media (max-width: 650px) {
+    flex-direction: row;
+    height: fit-content;
+  }
 `;

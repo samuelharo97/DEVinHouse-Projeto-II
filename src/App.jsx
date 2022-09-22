@@ -1,12 +1,13 @@
 import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes, AuthRoutes } from '@router';
 import { ThemeProvider } from 'styled-components';
-import { theme, GlobalStyles } from '@styles';
+import {  GlobalStyles } from '@styles';
 import { Header } from '@components';
-import { useAuth } from '@contexts';
+import { useAuth, useTheme } from '@contexts';
 
 export function App() {
   const { auth } = useAuth();
+  const {theme} = useTheme()
   const isAuthenticated = auth;
 
   return (

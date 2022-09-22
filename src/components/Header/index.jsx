@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { Container, StyledLink } from './styles';
+import { Container, FlexibleDiv, StyledLink } from './styles';
 import PropTypes from 'prop-types';
-import { NavBar } from '@components';
-
+import { NavBar, ToggleTheme } from '@components';
 export const Header = ({ Authenticated }) => {
   return (
     <Container>
@@ -10,7 +8,16 @@ export const Header = ({ Authenticated }) => {
         <img src="logo.png" alt="company logo" />
         <h1>Connect Lab</h1>
       </div>
-      {Authenticated ? <NavBar /> : <StyledLink to={'/'}>LOGIN</StyledLink>}
+      {Authenticated ? (
+        <FlexibleDiv>
+          <NavBar />
+          <ToggleTheme />
+        </FlexibleDiv>
+      ) : (
+        <div>
+          <StyledLink to={'/'}>LOGIN</StyledLink> <ToggleTheme />
+        </div>
+      )}
     </Container>
   );
 };

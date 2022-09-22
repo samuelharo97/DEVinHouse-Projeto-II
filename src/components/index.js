@@ -15,3 +15,4 @@ export { Modal } from './Modal';
 export { NavBar } from './NavBar';
 export { Loading } from './Loading';
 export { Filter } from './Filter';
+export { ToggleTheme } from './ToggleTheme';

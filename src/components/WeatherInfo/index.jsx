@@ -37,7 +37,7 @@ export const WeatherInfo = () => {
   }, []);
 
   return isFetched ? (
-    <WhiteLayer gridVariant="temperature" width="80%">
+    <WhiteLayer gridVariant="temperature">
       <Container>
         <h3>
           {info.main.temp.toFixed(0)}

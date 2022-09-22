@@ -5,7 +5,7 @@ export const Container = styled.article`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  min-width: 400px;
+  min-width: 350px;
 
   > h3 {
     font-size: 48px;

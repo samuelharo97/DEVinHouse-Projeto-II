@@ -1,15 +1,15 @@
-export const theme = {
+export const lightTheme = {
   COLORS: {
     PRIMARY: {
-      LIGHT: '#F0B27A',
-      MAIN: '#FF8818',
-      DARK: '#CA6F1E'
+      LIGHT: '#87c984',
+      MAIN: '#00A335',
+      DARK: '#00863F'
     },
 
     SECONDARY: {
-      LIGHT: '#5D6D7E',
-      MAIN: '#2E4052',
-      DARK: '#212F3C'
+      LIGHT: '#6990A7',
+      MAIN: '#50788A',
+      DARK: '#31586C'
     },
 
     ERROR: {
