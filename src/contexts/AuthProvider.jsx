@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { AuthContext } from './AuthContext';
 import PropTypes from 'prop-types';
 import { useState, useEffect, useCallback } from 'react';
@@ -39,32 +40,8 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('@ID', res.data.user._id);
       axiosGetUser(res.data.user._id);
     } catch (err) {
-      return alert(err);
+      return console.error(err);
     }
-  };
-
-  const axiosCreateUser = (data) => {
-    console.log('trying to create');
-    const newUser = {
-      email: data.email,
-      password: data.password,
-      fullName: data.fullName,
-      photoUrl: data.photoUrl || undefined,
-      phone: data.phone || undefined,
-      userAddress: {
-        zipCode: data.zipCode,
-        street: data.street,
-        number: data.number,
-        neighborhood: data.neighborhood,
-        city: data.city,
-        state: data.state || undefined,
-        complement: data.complement || undefined
-      }
-    };
-    axios
-      .post(`${URL}auth/register`, newUser)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
   };
 
   const axiosGetUser = (userId) => {
@@ -74,8 +51,6 @@ export const AuthProvider = ({ children }) => {
       throw new Error('Token not found');
     }
     const id = userId;
-    console.log(token);
-    console.log(id);
 
     axios
       .get(`${URL}users/${id}`, {
@@ -125,18 +100,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const axiosDeleteUserDevice = (deviceId, token) => {
-    axios.delete(`${URL}userDevices/${deviceId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    /* "acknowledged": true, 
-    "deletedCount": 1 */
-  };
-
-  // idea: !!localStorage.getItem('@Token') ? localStorage.getItem('@Token') : get from profile
-
   const handleLogout = () => {
     localStorage.clear('@Token');
     localStorage.clear('@ID');
@@ -152,10 +115,8 @@ export const AuthProvider = ({ children }) => {
         setAuth,
         handleLogout,
         axiosLogin,
-        axiosCreateUser,
         axiosGetUser,
         axiosUpdateUser,
-        axiosDeleteUserDevice,
         allDevices,
         getDevices
       }}

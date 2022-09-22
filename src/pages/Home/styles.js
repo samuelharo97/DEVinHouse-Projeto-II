@@ -22,7 +22,16 @@ export const Footer = styled.footer`
 export const List = styled.ul`
   display: flex;
   gap: 40px;
-
+  grid-area: content;
   flex-wrap: wrap;
   list-style: none;
+`;
+
+export const FilterContainer = styled.div`
+  height: 30px;
+  width: 80%;
+  grid-area: filter;
+  margin: 15px auto;
+  display: flex;
+  gap: 10px;
 `;

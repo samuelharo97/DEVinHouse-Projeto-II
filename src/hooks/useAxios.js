@@ -78,11 +78,44 @@ export const useAxios = () => {
       .catch((err) => console.log(err));
   };
 
+  const axiosCreateUser = (data) => {
+    const newUser = {
+      email: data.email,
+      password: data.password,
+      fullName: data.fullName,
+      photoUrl: data.photoUrl || undefined,
+      phone: data.phone || undefined,
+      userAddress: {
+        zipCode: data.zipCode,
+        street: data.street,
+        number: data.number,
+        neighborhood: data.neighborhood,
+        city: data.city,
+        state: data.state || undefined,
+        complement: data.complement || undefined
+      }
+    };
+    axios
+      .post(`${URL}auth/register`, newUser)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  const axiosDeleteUserDevice = (deviceId, token) => {
+    axios.delete(`${URL}userDevices/${deviceId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
   return {
     axiosGetDevices,
     axiosGetLocations,
     axiosUserAddDevice,
     axiosGetUserDevices,
-    axiosUpdateDeviceStatus
+    axiosUpdateDeviceStatus,
+    axiosCreateUser,
+    axiosDeleteUserDevice
   };
 };

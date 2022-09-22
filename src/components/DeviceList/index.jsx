@@ -14,7 +14,6 @@ export const DeviceList = () => {
     axiosGetLocations().then((res) => setLocations(res));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(locations);
 
   const filteredDevices =
     search.length > 0

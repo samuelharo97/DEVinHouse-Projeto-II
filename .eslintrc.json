@@ -19,7 +19,7 @@
   },
   "plugins": ["react", "jsx-a11y"],
   "rules": {
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
     "prefer-const": "warn"
   },
   "settings": {

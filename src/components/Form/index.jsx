@@ -7,13 +7,20 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { WhiteLayer } from '@components';
 import { useAuth } from '@contexts';
-/* import { axiosCreateUser, axiosUpdateUser } from '@services'
- */
+import { useAxios } from '@hooks';
+
 const message = 'Campo obrigatório';
 
 const schema = yup.object().shape({
   email: yup.string().email().typeError('Digite um e-mail válido.').required(message),
-  password: yup.string().min(8, 'A senha deve ter no mínimo 8 caracteres').required(message),
+  password: yup
+    .string(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+      'Deve conter 8 caracteres, um maiúsculo, um minúsculo, um número e um caractere'
+    )
+    .matches()
+    .min(8, 'A senha deve ter no mínimo 8 caracteres')
+    .required(message),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), null], 'As senhas não correspondem')
@@ -21,7 +28,7 @@ const schema = yup.object().shape({
     .required(message),
   fullName: yup.string().required(message),
   photoUrl: yup.string().typeError('URL Inválida').url(),
-  phone: yup.number(),
+  phone: yup.number().notRequired().optional().nullable(),
   street: yup.string().required(message),
   zipCode: yup
     .string()
@@ -45,7 +52,8 @@ export const Form = ({ children, title }) => {
     resolver: yupResolver(schema)
   });
 
-  const { axiosCreateUser, axiosUpdateUser } = useAuth();
+  const { axiosCreateUser } = useAxios();
+  const { axiosUpdateUser } = useAuth();
 
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = (e) => {

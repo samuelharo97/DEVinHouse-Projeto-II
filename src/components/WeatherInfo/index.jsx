@@ -6,7 +6,7 @@ import { Container } from './styles';
 const API_ID = import.meta.env.VITE_BASE_WEATHER_API_ID;
 
 /* const DummyData = {
-  main: { temp: '18,5', feels_like: '15,6', temp_max: '19,4', temp_min: '14,4', humidity: '98' },
+  main: { temp: '08,5', feels_like: '05,6', temp_max: '09,4', temp_min: '04,4', humidity: '98' },
   name: 'São Paulo'
 }; */
 
@@ -22,10 +22,11 @@ export const WeatherInfo = () => {
       .then((res) => res.json())
       .then((data) => {
         setInfo(data);
+        console.log(data);
         setIsFetched(true);
       });
 
-    /* setInfo(DummyData);
+    /*    setInfo(DummyData);
     setIsFetched(true); */
   };
 
@@ -39,14 +40,14 @@ export const WeatherInfo = () => {
     <WhiteLayer gridVariant="temperature" width="80%">
       <Container>
         <h3>
-          {info.main.temp}
+          {info.main.temp.toFixed(0)}
           <span>°C</span>
         </h3>
         <h5>{info.name + `, ${user.userAddress.state}`}</h5>
         <div>
-          <p>Sensacão térmica: {info.main.feels_like}°C</p>
-          <p> Máxima: {info.main.temp_max}°C </p>
-          <p> Mínima: {info.main.temp_min}°C</p> <p> Umidade: {info.main.humidity}% </p>
+          <p>Sensacão térmica: {info.main.feels_like.toFixed(0)}°C</p>
+          <p> Máxima: {info.main.temp_max.toFixed(0)}°C </p>
+          <p> Mínima: {info.main.temp_min.toFixed(0)}°C</p> <p> Umidade: {info.main.humidity}% </p>
         </div>
       </Container>
     </WhiteLayer>
