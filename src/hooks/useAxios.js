@@ -99,8 +99,11 @@ export const useAxios = () => {
     };
     axios
       .post(`${URL}auth/register`, newUser)
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
+      .then((res) => toast.sucess('Usuário criado com sucesso'))
+      .catch((err) => {
+        toast.error('Falha ao criar o usuário');
+        console.error(err);
+      });
   };
 
   const axiosDeleteUserDevice = (deviceId, token) => {

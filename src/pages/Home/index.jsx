@@ -22,10 +22,8 @@ export const Home = () => {
 
   function handleSection(clickedSection) {
     if (clickedSection === activeSection) {
-      console.log('state = null');
       setActiveSection(null);
     } else {
-      console.log(`state = ${clickedSection}`);
       const filteredProducts = allDevices.filter(
         (device) => device.local.description === clickedSection
       );
@@ -35,7 +33,6 @@ export const Home = () => {
   }
 
   useEffect(() => {
-    console.log('este useEffect renderizou');
     getDevices();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [devices]);

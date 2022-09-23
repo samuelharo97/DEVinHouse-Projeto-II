@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { AbsoluteLoading, Icon, WhiteLayer } from '@components';
 import { useAxios, useLoader } from '@hooks';
 import PropTypes from 'prop-types';

@@ -69,7 +69,6 @@ export const Form = ({ children, title }) => {
   };
 
   const submitForm = (data) => {
-    console.log('Submitted');
     title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data);
   };
 

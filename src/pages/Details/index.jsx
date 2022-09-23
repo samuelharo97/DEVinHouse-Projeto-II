@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { DeviceDetails, AbsoluteLoading } from '@components';
 import { useAxios, useLoader } from '@hooks';
 import { useEffect, useState } from 'react';
