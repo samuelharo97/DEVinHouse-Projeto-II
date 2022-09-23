@@ -33,7 +33,7 @@ export const DeviceDetails = ({ product, func }) => {
                 });
               })
               .catch((err) => {
-                console.err(err);
+                console.error(err);
                 toast.error('Falha na atualização');
               })
           }

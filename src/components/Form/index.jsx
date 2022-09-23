@@ -28,8 +28,8 @@ const schema = yup.object().shape({
     .required(message),
   fullName: yup.string().required(message),
   photoUrl: yup.string().typeError('URL Inválida').url(),
-  phone: yup.number().notRequired().optional().nullable(),
   street: yup.string().required(message),
+  phone: yup.mixed().nullable(),
   zipCode: yup
     .string()
     .matches(/^[0-9]+$/, 'O CEP deve conter 8 números')
@@ -69,6 +69,7 @@ export const Form = ({ children, title }) => {
   };
 
   const submitForm = (data) => {
+    console.log('Submitted');
     title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data);
   };
 
@@ -81,13 +82,25 @@ export const Form = ({ children, title }) => {
             <label htmlFor="fullName">
               Nome completo* <span>{errors.fullName?.message}</span>
             </label>
-            <input type="text" name="fullName" id="fullName" {...register('fullName')} />
+            <input
+              type="text"
+              placeholder="Seu nome"
+              name="fullName"
+              id="fullName"
+              {...register('fullName')}
+            />
           </InputContainer>
           <InputContainer>
             <label htmlFor="email">
               E-mail* <span>{errors.email?.message}</span>
             </label>
-            <input type="email" name="email" id="email" {...register('email')} />
+            <input
+              type="email"
+              placeholder="Seu e-mail"
+              name="email"
+              id="email"
+              {...register('email')}
+            />
           </InputContainer>
         </InputWrapper>
 
@@ -96,11 +109,24 @@ export const Form = ({ children, title }) => {
             <label htmlFor="photoUrl">
               URL foto perfil <span>{errors.photoURL?.message}</span>
             </label>
-            <input type="url" name="photoUrl" id="photoUrl" {...register('photoUrl')} />
+            <input
+              type="url"
+              placeholder="Sua foto"
+              name="photoUrl"
+              id="photoUrl"
+              {...register('photoUrl')}
+            />
           </InputContainer>
           <InputContainer>
             <label htmlFor="phone">Telefone</label>
-            <input type="tel" name="phone" id="phone" {...register('phone')} />
+            <input
+              type="tel"
+              formNoValidate
+              placeholder="Seu telefone"
+              name="phone"
+              id="phone"
+              {...register('phone')}
+            />
           </InputContainer>
         </InputWrapper>
 
@@ -109,7 +135,13 @@ export const Form = ({ children, title }) => {
             <label htmlFor="password">
               Senha* <span>{errors.password?.message}</span>
             </label>
-            <input type="password" name="password" id="password" {...register('password')} />
+            <input
+              type="password"
+              placeholder="Sua senha"
+              name="password"
+              id="password"
+              {...register('password')}
+            />
           </InputContainer>
           <InputContainer>
             <label htmlFor="confirmPassword">
@@ -117,6 +149,7 @@ export const Form = ({ children, title }) => {
             </label>
             <input
               type="password"
+              placeholder="Confirme sua senha"
               name="confirmPassword"
               id="confirmPassword"
               {...register('confirmPassword')}
@@ -131,6 +164,7 @@ export const Form = ({ children, title }) => {
             </label>
             <input
               type="text"
+              placeholder="Seu CEP"
               name="zipCode"
               id="zipCode"
               onBlurCapture={findZipcode}
@@ -141,7 +175,13 @@ export const Form = ({ children, title }) => {
             <label htmlFor="street">
               Logradouro/Endereço* <span>{errors.street?.message}</span>
             </label>
-            <input type="text" name="street" id="street" {...register('street')} />
+            <input
+              type="text"
+              placeholder="Seu logradouro/endereço"
+              name="street"
+              id="street"
+              {...register('street')}
+            />
           </InputContainer>
         </InputWrapper>
 
@@ -150,13 +190,25 @@ export const Form = ({ children, title }) => {
             <label htmlFor="city">
               Cidade* <span>{errors.city?.message}</span>
             </label>
-            <input type="text" name="city" id="city" {...register('city')} />
+            <input
+              type="text"
+              placeholder="Sua cidade"
+              name="city"
+              id="city"
+              {...register('city')}
+            />
           </InputContainer>
           <InputContainer>
             <label htmlFor="complement">
               Complemento <span>{errors.complement?.message}</span>
             </label>
-            <input type="text" name="complement" id="complement" {...register('complement')} />
+            <input
+              type="text"
+              placeholder="Seu complemento"
+              name="complement"
+              id="complement"
+              {...register('complement')}
+            />
           </InputContainer>
         </InputWrapper>
 
@@ -165,7 +217,13 @@ export const Form = ({ children, title }) => {
             <label htmlFor="number">
               Número* <span>{errors.number?.message}</span>
             </label>
-            <input type="number" name="number" id="number" {...register('number')} />
+            <input
+              type="number"
+              placeholder="Número da sua residência"
+              name="number"
+              id="number"
+              {...register('number')}
+            />
           </InputContainer>
           <InputContainer>
             <label htmlFor="neighborhood">
@@ -173,6 +231,7 @@ export const Form = ({ children, title }) => {
             </label>
             <input
               type="text"
+              placeholder="Seu bairro"
               name="neighborhood"
               id="neighborhood"
               {...register('neighborhood')}

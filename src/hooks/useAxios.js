@@ -85,22 +85,22 @@ export const useAxios = () => {
       email: data.email,
       password: data.password,
       fullName: data.fullName,
-      photoUrl: data.photoUrl || undefined,
-      phone: data.phone || undefined,
+      photoUrl: data.photoUrl || null,
+      phone: data.phone || null,
       userAddress: {
         zipCode: data.zipCode,
         street: data.street,
         number: data.number,
         neighborhood: data.neighborhood,
         city: data.city,
-        state: data.state || undefined,
-        complement: data.complement || undefined
+        state: data.state || null,
+        complement: data.complement || null
       }
     };
     axios
       .post(`${URL}auth/register`, newUser)
       .then((res) => console.log(res))
-      .catch((err) => console.err(err));
+      .catch((err) => console.error(err));
   };
 
   const axiosDeleteUserDevice = (deviceId, token) => {

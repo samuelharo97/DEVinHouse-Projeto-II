@@ -74,8 +74,8 @@ export const AuthProvider = ({ children }) => {
       email: data.email,
       password: data.password,
       fullName: data.fullName,
-      photoUrl: data.photoUrl || undefined,
-      phone: data.phone || undefined,
+      photoUrl: data.photoUrl || null,
+      phone: data.phone || null,
 
       userAddress: {
         zipCode: data.zipCode,
@@ -83,8 +83,8 @@ export const AuthProvider = ({ children }) => {
         number: data.number,
         neighborhood: data.neighborhood,
         city: data.city,
-        state: data.state || undefined,
-        complement: data.complement || undefined
+        state: data.state || null,
+        complement: data.complement || null
       }
     };
     try {
