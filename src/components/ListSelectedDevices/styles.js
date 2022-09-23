@@ -7,6 +7,9 @@ export const List = styled.ul`
   width: 95%;
   margin: auto;
   list-style: none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
   @media (max-width: 1390px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -20,5 +23,4 @@ export const List = styled.ul`
 
 export const Container = styled.div`
   grid-area: content;
-  text-align: center;
 `;
