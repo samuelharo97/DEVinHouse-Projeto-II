@@ -1,8 +1,18 @@
-import { DeviceList } from '@components';
+import { AbsoluteLoading, DeviceList } from '@components';
+import { useLoader } from '@hooks';
+import { useEffect } from 'react';
 import { Container, Footer, Section } from './styles';
 
 export const Devices = () => {
-  return (
+  const { isLoading, loadsFor2seconds } = useLoader();
+
+  useEffect(() => {
+    loadsFor2seconds();
+  }, []);
+
+  return isLoading ? (
+    <AbsoluteLoading />
+  ) : (
     <Container>
       <div>
         <Section>

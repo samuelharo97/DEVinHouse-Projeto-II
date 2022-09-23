@@ -1,5 +1,5 @@
-import { Icon, Loading, WhiteLayer } from '@components';
-import { useAxios } from '@hooks';
+import { AbsoluteLoading, Icon, WhiteLayer } from '@components';
+import { useAxios, useLoader } from '@hooks';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -7,6 +7,7 @@ import { Container } from './styles';
 export const DeviceDetails = ({ product, func }) => {
   const { axiosUpdateDeviceStatus } = useAxios();
   const [status, setStatus] = useState(true);
+  const { loadsFor2seconds, isLoading } = useLoader();
 
   useEffect(() => {
     if (product.is_on) {
@@ -16,7 +17,11 @@ export const DeviceDetails = ({ product, func }) => {
     }
   }, []);
 
-  return (
+  useEffect(() => loadsFor2seconds(), [status]);
+
+  return isLoading ? (
+    <AbsoluteLoading />
+  ) : (
     <WhiteLayer>
       <Container>
         <h3>{product.device.name}</h3>

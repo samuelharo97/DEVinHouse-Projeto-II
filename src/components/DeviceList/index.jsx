@@ -47,9 +47,7 @@ export const DeviceList = () => {
           ))}
         </List>
       ) : (
-        <List>
-          <Loading />
-        </List>
+        <Loading />
       )}
     </Container>
   );

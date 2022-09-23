@@ -1,34 +1,29 @@
-import { DeviceDetails, Loading } from '@components';
-import { useAxios } from '@hooks';
+import { DeviceDetails, AbsoluteLoading } from '@components';
+import { useAxios, useLoader } from '@hooks';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container } from './styles';
 
 export const Details = () => {
   const { id } = useParams();
+  const { axiosGetDeviceById } = useAxios();
+  const { isLoading, loadsFor3seconds } = useLoader();
   const [device, setDevice] = useState();
   const [fetched, setFetched] = useState(false);
-  const { axiosGetDeviceById } = useAxios();
 
   useEffect(() => {
+    loadsFor3seconds();
     axiosGetDeviceById(id).then((res) => {
       setDevice(res.data);
       setFetched(true);
     });
   }, []);
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const loadsFor3seconds = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  };
-
   return isLoading ? (
-    <Loading />
+    <Container>
+      <AbsoluteLoading />
+    </Container>
   ) : (
-    <Container>{fetched ? <DeviceDetails product={device} /> : <Loading />}</Container>
+    <Container>{fetched ? <DeviceDetails product={device} /> : <AbsoluteLoading />}</Container>
   );
 };

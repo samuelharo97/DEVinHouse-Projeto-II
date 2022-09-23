@@ -5,6 +5,7 @@ import { Container } from './styles';
 export const WhiteLayer = ({
   children,
   width = 'fit-content',
+  height = 'fit-content',
   gridVariant = 'content',
   pad = '48px',
   ...rest
@@ -19,6 +20,7 @@ export const WhiteLayer = ({
 WhiteLayer.propTypes = {
   children: PropTypes.node,
   width: PropTypes.string,
+  height: PropTypes.string,
   pad: PropTypes.string,
   gridVariant: PropTypes.string
 };
