@@ -14,7 +14,7 @@ export const UserProfile = ({ user }) => {
           <img src={user.photoUrl || './profile.png'} alt="user profile pic" />
           <div>
             <h4>{user.fullName}</h4>
-            <span>{`${user.email} - ${user.phone}`}</span>
+            <span>{`${user.email} - ${user.phone || ''}`}</span>
           </div>
         </div>
 
