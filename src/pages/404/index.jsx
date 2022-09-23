@@ -2,8 +2,6 @@ import { Loading, WhiteLayer } from '@components';
 import { Container } from './styles';
 
 export const NotFound = () => {
-
-
   return (
     <>
       <Container>
@@ -16,6 +14,7 @@ export const NotFound = () => {
             404. <br /> content not found. <br /> try another route.
           </h3>
         </WhiteLayer>
+        <Loading />
       </Container>
     </>
   );

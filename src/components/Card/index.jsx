@@ -1,6 +1,6 @@
 import { Icon } from '@components';
 import PropTypes from 'prop-types';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { Container, List } from './styles';
 
 export const Card = ({ product, isSelected }) => {

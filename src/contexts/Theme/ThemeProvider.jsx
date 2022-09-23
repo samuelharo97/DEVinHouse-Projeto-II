@@ -1,7 +1,7 @@
 import { ThemeContext } from './ThemeContext';
 import PropTypes from 'prop-types';
 import { useLayoutEffect, useState } from 'react';
-import { lightTheme, darkTheme } from '@styles';
+import { lightTheme } from '@styles';
 
 export const ThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState(lightTheme);

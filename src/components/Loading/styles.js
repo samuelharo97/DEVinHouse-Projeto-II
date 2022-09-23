@@ -8,9 +8,7 @@ export const Spinner = styled.div`
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
-  grid-area: content;
   margin: auto;
-  
 
   @keyframes spin {
     0% {
@@ -31,7 +29,6 @@ export const AbsoluteSpinner = styled.div`
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
-  grid-area: content;
   margin: auto;
   position: fixed;
   z-index: 999;
