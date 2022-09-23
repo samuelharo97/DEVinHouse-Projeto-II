@@ -58,11 +58,9 @@ export const Form = ({ children, title }) => {
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = (e) => {
     const zipcode = e.target.value.replace(/\D/g, '');
-    console.log(zipcode);
     fetch(`https://viacep.com.br/ws/${zipcode}/json/`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setValue('street', data.logradouro);
         setValue('city', data.localidade);
         setValue('neighborhood', data.bairro);

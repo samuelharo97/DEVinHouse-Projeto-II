@@ -22,7 +22,6 @@ export const WeatherInfo = () => {
       .then((res) => res.json())
       .then((data) => {
         setInfo(data);
-        console.log(data);
         setIsFetched(true);
       });
 
@@ -31,7 +30,6 @@ export const WeatherInfo = () => {
   };
 
   useEffect(() => {
-    console.log('rendered weather');
     getWeatherData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const useAxios = () => {
   const URL = import.meta.env.VITE_BASE_URL;
@@ -47,8 +48,11 @@ export const useAxios = () => {
           Authorization: `Bearer ${token}`
         }
       })
-      .then((res) => console.log(res))
-      .catch((err) => alert(err));
+      .then((res) => toast.success('Item adicionado com sucesso'))
+      .catch((err) => {
+        console.err(err);
+        toast.error('Falha ao adicionar o produto');
+      });
   };
 
   const axiosGetUserDevices = async () => {
@@ -68,14 +72,12 @@ export const useAxios = () => {
     const config = {
       is_on: newStatus
     };
-    axios
-      .put(`${URL}userDevices/${device._id}`, config, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    const response = axios.put(`${URL}userDevices/${device._id}`, config, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response;
   };
 
   const axiosCreateUser = (data) => {
@@ -98,7 +100,7 @@ export const useAxios = () => {
     axios
       .post(`${URL}auth/register`, newUser)
       .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .catch((err) => console.err(err));
   };
 
   const axiosDeleteUserDevice = (deviceId, token) => {

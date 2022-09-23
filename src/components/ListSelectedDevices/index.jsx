@@ -1,11 +1,8 @@
 import { Card } from '@components';
-import { useAxios } from '@hooks';
 import PropTypes from 'prop-types';
-/* import { useEffect } from 'react';
- */import { Container, List } from './styles';
+import { Container, List } from './styles';
 
 export const ListSelectedDevices = ({ products }) => {
-  const { axiosUpdateDeviceStatus } = useAxios();
 
   return (
     <Container>
@@ -15,7 +12,6 @@ export const ListSelectedDevices = ({ products }) => {
             key={product._id}
             product={product}
             isSelected={product.is_on}
-            onSelect={() => axiosUpdateDeviceStatus(product)}
           />
         ))}
       </List>

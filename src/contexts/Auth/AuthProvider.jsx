@@ -65,7 +65,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const axiosUpdateUser = async (data) => {
-    console.log('trying to update');
     const id = localStorage.getItem('@ID');
     const token = localStorage.getItem('@Token');
     if (!token || !id) {

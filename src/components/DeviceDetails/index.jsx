@@ -1,8 +1,11 @@
-import { Icon, WhiteLayer } from '@components';
+import { Icon, Loading, WhiteLayer } from '@components';
+import { useAxios } from '@hooks';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { Container } from './styles';
-export const DeviceDetails = ({ product }) => {
+export const DeviceDetails = ({ product, func }) => {
+  const { axiosUpdateDeviceStatus } = useAxios();
   const [status, setStatus] = useState(true);
 
   useEffect(() => {
@@ -19,7 +22,23 @@ export const DeviceDetails = ({ product }) => {
         <h3>{product.device.name}</h3>
         <span>{product.device.madeBy}</span>
         <img src={product.device.photoUrl} alt={`${product.device.name}`} />
-        <p>Dispositivo {status ? 'Ligado' : 'Desligado'}</p> <Icon selected={status} />
+        <p>Dispositivo {status ? 'Ligado' : 'Desligado'}</p>{' '}
+        <Icon
+          handleSwitch={() =>
+            axiosUpdateDeviceStatus(product)
+              .then((res) => {
+                toast.success('Status atualizado com sucesso');
+                setStatus((prev) => {
+                  return !prev;
+                });
+              })
+              .catch((err) => {
+                console.err(err);
+                toast.error('Falha na atualização');
+              })
+          }
+          selected={status}
+        />
         <aside>
           <section>Informações do dispositivo</section>
           <p>
@@ -45,6 +64,7 @@ export const DeviceDetails = ({ product }) => {
 };
 
 DeviceDetails.propTypes = {
+  func: PropTypes.func,
   product: PropTypes.shape({
     room: PropTypes.string,
     is_on: PropTypes.bool,

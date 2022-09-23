@@ -1,16 +1,8 @@
 import { Loading, WhiteLayer } from '@components';
-import { useState } from 'react';
 import { Container } from './styles';
 
 export const NotFound = () => {
-  const [isLoading, setIsLoading] = useState(false);
 
-  const loadsFor3seconds = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  };
 
   return (
     <>
@@ -23,12 +15,6 @@ export const NotFound = () => {
           <h3>
             404. <br /> content not found. <br /> try another route.
           </h3>
-
-          {isLoading ? <Loading  /> : null}
-
-          <button onClick={loadsFor3seconds}>testar</button>
-
-          {/* <Loading></Loading> */}
         </WhiteLayer>
       </Container>
     </>

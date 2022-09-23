@@ -11,17 +11,24 @@ export const Details = () => {
   const { axiosGetDeviceById } = useAxios();
 
   useEffect(() => {
-    console.log('Fetching device data');
     axiosGetDeviceById(id).then((res) => {
-      console.log(res);
       setDevice(res.data);
       setFetched(true);
     });
   }, []);
 
-  return (
-    <>
-      <Container>{fetched ? <DeviceDetails product={device} /> : <Loading />}</Container>
-    </>
+  const [isLoading, setIsLoading] = useState(false);
+
+  const loadsFor3seconds = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  };
+
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <Container>{fetched ? <DeviceDetails product={device} /> : <Loading />}</Container>
   );
 };
