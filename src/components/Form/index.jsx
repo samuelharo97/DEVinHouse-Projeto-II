@@ -16,7 +16,7 @@ const schema = yup.object().shape({
   email: yup.string().email().typeError('Digite um e-mail válido.').required(message),
   password: yup
     .string()
-    .matches(validPassword, 'A senha deve conter letras e números')
+    .matches(validPassword, 'A senha deve conter: letras, números e caracteres especiais')
     .min(8, 'Senha deve ter no mínimo 8 caracteres')
     .required(message),
   confirmPassword: yup

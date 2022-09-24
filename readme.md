@@ -57,18 +57,9 @@ This project is the second big challenge from DEVinHouse course in collaboration
 
 - A text editor or an IDE (like Visual Studio Code)
 - [Server API made from Node + express](https://github.com/DEVin-Intelbras/connect-lab-server-node)
-- [Vite + React.JS](https://vitejs.dev/)
+- [Vite + React.JS](https://vitejs.dev/) 
 
 ## Development
-
-The development strategy that I decided to go for while reading the projects requirements was the following:
-
-1. Installing the required UI/UX focused libraries, and then proceeding to create all components and pages from figma's suggested layout.
-2. Figuring out how ViaCEP's and OpenWeather's API'S works, and implementing it on the project.
-3. Created all validations for the registration form using YUP and react-hook-form.
-4. Created all communications between front-end and back-end using Axios and then added an authentication context that manages if the user is logged in or not.
-5. Refactoring: Moved all functions using Axios into a custom hook called useAxios and called them on the required components.
-6. Optimization: Finished styling the project and added toast notifications from react-toastify.
 
 ### Part 1: Requirements
 
@@ -197,6 +188,17 @@ and Figma links (High Fidelity Prototype). Use the example only to understand th
 but feel free to create your unique visual identity with colors and formats that you find most interesting 
 and intuitive.
 ```
+
+### Roadmap
+
+The development strategy that I decided to go for while reading the projects requirements was the following:
+
+1. Installing the required UI/UX focused libraries, and then proceeding to create all components and pages from figma's suggested layout.
+2. Figuring out how ViaCEP's and OpenWeather's API'S works, and implementing it on the project.
+3. Created all validations for the registration form using YUP and react-hook-form.
+4. Created all communications between front-end and back-end using Axios and then added an authentication context that manages if the user is logged in or not.
+5. Refactoring: Moved all functions using Axios into a custom hook called useAxios and called them on the required components.
+6. Optimization: Finished styling the project and added toast notifications from react-toastify.
 
 ## Author
 
