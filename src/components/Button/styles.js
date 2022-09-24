@@ -1,11 +1,9 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.button`
   width: 120px;
   background-color: ${({ theme, color }) =>
-    color === 'primary'
-      ? theme.COLORS.PRIMARY.MAIN
-      : theme.COLORS.SECONDARY.MAIN};
+    color === 'primary' ? theme.COLORS.PRIMARY.MAIN : color};
 
   color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
 
@@ -21,4 +19,4 @@ export const Container = styled.button`
   text-transform: uppercase;
   text-align: center;
   align-self: center;
-`
+`;

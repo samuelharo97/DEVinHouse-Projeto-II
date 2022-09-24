@@ -106,12 +106,21 @@ export const useAxios = () => {
       });
   };
 
-  const axiosDeleteUserDevice = (deviceId, token) => {
-    axios.delete(`${URL}userDevices/${deviceId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
+  const axiosDeleteUserDevice = (deviceId) => {
+    const token = localStorage.getItem('@Token');
+    axios
+      .delete(`${URL}userDevices/${deviceId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+        toast.success('Dispositivo removido com sucesso.');
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error('Falha ao remover dispositivo, tente novamente.');
+      });
   };
 
   const axiosGetDeviceById = (deviceId) => {

@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { AbsoluteLoading, Icon, WhiteLayer } from '@components';
+import { AbsoluteLoading, Button, Icon, WhiteLayer } from '@components';
 import { useAxios, useLoader } from '@hooks';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Container } from './styles';
-export const DeviceDetails = ({ product, func }) => {
-  const { axiosUpdateDeviceStatus } = useAxios();
+export const DeviceDetails = ({ product }) => {
+  const { axiosUpdateDeviceStatus, axiosDeleteUserDevice } = useAxios();
   const [status, setStatus] = useState(true);
-  const { loadsFor2seconds, isLoading } = useLoader();
-
+  const { loadsFor2seconds, loadsFor1second, isLoading } = useLoader();
   useEffect(() => {
     if (product.is_on) {
       setStatus(true);
@@ -18,11 +18,24 @@ export const DeviceDetails = ({ product, func }) => {
     }
   }, []);
 
+  const navigate = useNavigate();
+
+  const deleteDevice = () => {
+    const confirmed = confirm(
+      `Tem certeza que deseja remover ${product.device.name} dos seus dispositivos?`
+    );
+    if (confirmed) {
+      axiosDeleteUserDevice(product._id);
+      loadsFor1second();
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    }
+  };
+
   useEffect(() => loadsFor2seconds(), [status]);
 
-  return isLoading ? (
-    <AbsoluteLoading />
-  ) : (
+  return (
     <WhiteLayer>
       <Container>
         <h3>{product.device.name}</h3>
@@ -45,6 +58,7 @@ export const DeviceDetails = ({ product, func }) => {
           }
           selected={status}
         />
+        {isLoading && <AbsoluteLoading />}
         <aside>
           <section>Informações do dispositivo</section>
           <p>
@@ -58,23 +72,23 @@ export const DeviceDetails = ({ product, func }) => {
           </p>
           <p>
             Fuso horário:
-            <span>UTC-3</span>
+            <span>(GMT-3)</span>
           </p>
           <p>
             Força do sinal: <span>{product.device.info.signal}</span>
           </p>
         </aside>
-        {/* <Button func={} /> */}
+        <Button title="Remover" func={deleteDevice} />
       </Container>
     </WhiteLayer>
   );
 };
 
 DeviceDetails.propTypes = {
-  func: PropTypes.func,
   product: PropTypes.shape({
     room: PropTypes.string,
     is_on: PropTypes.bool,
+    _id: PropTypes.string,
     device: PropTypes.shape({
       photoUrl: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
