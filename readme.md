@@ -14,8 +14,9 @@ This project is the second big challenge from DEVinHouse course in collaboration
   - [Tools Required](#tools-required)
 - [Development](#development)
   - [Requirements](#requirements)
-  - [Roadmap](#Roadmap)
-- [Authors](#authors)
+  - [Roadmap](#roadmap)
+  - [Deploy](#deploy)
+- [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
 ## Getting Started
@@ -55,13 +56,13 @@ This project is the second big challenge from DEVinHouse course in collaboration
 
 ### Tools Required
 
-- A text editor or an IDE (like Visual Studio Code)
+- [A text editor or an IDE (like Visual Studio Code)]()
 - [Server API made from Node + express](https://github.com/DEVin-Intelbras/connect-lab-server-node)
 - [Vite + React.JS](https://vitejs.dev/) 
 
 ## Development
 
-### Part 1: Requirements
+### Requirements
 
 <!-- prettier-ignore -->
 ```
@@ -199,6 +200,11 @@ The development strategy that I decided to go for while reading the projects req
 4. Created all communications between front-end and back-end using Axios and then added an authentication context that manages if the user is logged in or not.
 5. Refactoring: Moved all functions using Axios into a custom hook called useAxios and called them on the required components.
 6. Optimization: Finished styling the project and added toast notifications from react-toastify.
+
+
+### Deploy
+
+Project was deployed with github + netlify: [ConnectLab](https://connectlab.netlify.app)
 
 ## Author
 
