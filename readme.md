@@ -56,7 +56,7 @@ This project is the second big challenge from DEVinHouse course in collaboration
 
 ### Tools Required
 
-- [A text editor or an IDE (like Visual Studio Code)]()
+- [A text editor or an IDE (like Visual Studio Code)](https://code.visualstudio.com)
 - [Server API made from Node + express](https://github.com/DEVin-Intelbras/connect-lab-server-node)
 - [Vite + React.JS](https://vitejs.dev/) 
 
