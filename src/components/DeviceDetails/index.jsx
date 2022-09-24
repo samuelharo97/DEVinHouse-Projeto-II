@@ -58,12 +58,13 @@ export const DeviceDetails = ({ product, func }) => {
           </p>
           <p>
             Fuso horário:
-            <span>Tá de sacanagem</span>
+            <span>UTC-3</span>
           </p>
           <p>
             Força do sinal: <span>{product.device.info.signal}</span>
           </p>
         </aside>
+        {/* <Button func={} /> */}
       </Container>
     </WhiteLayer>
   );

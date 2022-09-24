@@ -1,25 +1,23 @@
 import { Formulary, InputWrapper, InputContainer, ActionWrapper, HiddenInput } from './styles';
-
 import PropTypes from 'prop-types';
-
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { WhiteLayer } from '@components';
 import { useAuth } from '@contexts';
 import { useAxios } from '@hooks';
+import { useEffect } from 'react';
+import { phoneMask, phoneNumber, validPassword } from '@utils';
+import { fetchZipcode } from '@services';
 
 const message = 'Campo obrigatório';
 
 const schema = yup.object().shape({
   email: yup.string().email().typeError('Digite um e-mail válido.').required(message),
   password: yup
-    .string(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      'Deve conter 8 caracteres, um maiúsculo, um minúsculo, um número e um caractere'
-    )
-    .matches()
-    .min(8, 'A senha deve ter no mínimo 8 caracteres')
+    .string()
+    .matches(validPassword, 'A senha deve conter letras e números')
+    .min(8, 'Senha deve ter no mínimo 8 caracteres')
     .required(message),
   confirmPassword: yup
     .string()
@@ -29,10 +27,10 @@ const schema = yup.object().shape({
   fullName: yup.string().required(message),
   photoUrl: yup.string().typeError('URL Inválida').url(),
   street: yup.string().required(message),
-  phone: yup.mixed().nullable(),
+  phone: yup.string().matches(phoneNumber),
   zipCode: yup
     .string()
-    .matches(/^[0-9]+$/, 'O CEP deve conter 8 números')
+    .matches(/^[0-9]+$/, 'O CEP deve conter 8 números, sem barra (-)')
     .min(8, 'O CEP deve conter 8 números')
     .max(8, 'O CEP deve conter 8 números')
     .required(message),
@@ -47,6 +45,7 @@ export const Form = ({ children, title }) => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
@@ -57,8 +56,7 @@ export const Form = ({ children, title }) => {
 
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = (e) => {
-    const zipcode = e.target.value.replace(/\D/g, '');
-    fetch(`https://viacep.com.br/ws/${zipcode}/json/`)
+    fetchZipcode(e)
       .then((res) => res.json())
       .then((data) => {
         setValue('street', data.logradouro);
@@ -69,8 +67,15 @@ export const Form = ({ children, title }) => {
   };
 
   const submitForm = (data) => {
+    console.log(data);
     title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data);
   };
+
+  const phoneValue = watch('phone');
+
+  useEffect(() => {
+    setValue('phone', phoneMask(phoneValue));
+  }, [phoneValue]);
 
   return (
     <WhiteLayer>

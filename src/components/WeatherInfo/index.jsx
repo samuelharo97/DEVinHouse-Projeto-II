@@ -1,38 +1,25 @@
 import { Loading, WhiteLayer } from '@components';
 import { useAuth } from '@contexts';
+import { getWeatherData } from '@services';
 import { useEffect, useState } from 'react';
 import { Container } from './styles';
-
-const API_ID = import.meta.env.VITE_BASE_WEATHER_API_ID;
-
-/* const DummyData = {
-  main: { temp: '08,5', feels_like: '05,6', temp_max: '09,4', temp_min: '04,4', humidity: '98' },
-  name: 'São Paulo'
-}; */
 
 export const WeatherInfo = () => {
   const [info, setInfo] = useState({});
   const [isFetched, setIsFetched] = useState(false);
   const { user } = useAuth();
 
-  const getWeatherData = () => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${user.userAddress.city},br&appid=${API_ID}&lang=pt_br&units=metric`
-    )
+  
+  const fetchWeather = () => {
+    getWeatherData(user.userAddress.city)
       .then((res) => res.json())
       .then((data) => {
         setInfo(data);
         setIsFetched(true);
       });
-
-    /*    setInfo(DummyData);
-    setIsFetched(true); */
   };
 
-  useEffect(() => {
-    getWeatherData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useEffect(() => fetchWeather(), []);
 
   return isFetched ? (
     <WhiteLayer gridVariant="temperature">

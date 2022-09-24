@@ -99,7 +99,7 @@ export const useAxios = () => {
     };
     axios
       .post(`${URL}auth/register`, newUser)
-      .then((res) => toast.sucess('Usuário criado com sucesso'))
+      .then((res) => toast.success('Usuário criado com sucesso'))
       .catch((err) => {
         toast.error('Falha ao criar o usuário');
         console.error(err);
