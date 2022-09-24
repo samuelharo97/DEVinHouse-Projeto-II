@@ -13,7 +13,8 @@ This project is the second big challenge from DEVinHouse course in collaboration
 - [Project Structure](#project-structure)
   - [Tools Required](#tools-required)
 - [Development](#development)
-  - [Part 1: Heading](#part-1-requirements)
+  - [Requirements](#requirements)
+  - [Roadmap](#Roadmap)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgments)
 
