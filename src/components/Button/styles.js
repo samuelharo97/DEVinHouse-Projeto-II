@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.button`
   width: 120px;
   background-color: ${({ theme, color }) =>
-    color === 'primary' ? theme.COLORS.PRIMARY.MAIN : color};
+    color === 'primary' ? theme.COLORS.PRIMARY.MAIN : theme.COLORS.SECONDARY.MAIN};
 
   color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
 
