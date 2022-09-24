@@ -8,6 +8,7 @@ This project is the second big challenge from DEVinHouse course in collaboration
 ![GitHub stars](https://img.shields.io/github/stars/samuelharo97/DEVinHouse-Projeto-II)
 ![GitHub forks](https://img.shields.io/github/samuelharo97/DEVinHouse-Projeto-II)
  -->
+
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
   - [Tools Required](#tools-required)
@@ -21,7 +22,7 @@ This project is the second big challenge from DEVinHouse course in collaboration
 - `main` branch contains aggregate code of all branches
 - `development` branch WILL contain code under development
 
-## Project structure
+## ConnectLab files structure
 
 ```
 	ConnectLab
@@ -71,6 +72,7 @@ The development strategy that I decided to go for while reading the projects req
 ### Part 1: Requirements
 
 <!-- prettier-ignore -->
+```
 1. A user registration page, containing the fields:
    ├── Full Name (required)
    ├── Photo URL (optional)
@@ -162,6 +164,7 @@ The development strategy that I decided to go for while reading the projects req
    └─Button to log out of the application.
 
 8. Creation of a stylization (visual identity) of the system. Following the document, an example of the proposed application will be presented, containing wireframes (Low Fidelity Prototype) and Figma links (High Fidelity Prototype). Use the example only to understand the model to be developed, but feel free to create your unique visual identity with colors and formats that you find most interesting and intuitive.
+```
 
 ## Author
 
