@@ -9,7 +9,6 @@ export const WeatherInfo = () => {
   const [isFetched, setIsFetched] = useState(false);
   const { user } = useAuth();
 
-  
   const fetchWeather = () => {
     getWeatherData(user.userAddress.city)
       .then((res) => res.json())
@@ -19,6 +18,7 @@ export const WeatherInfo = () => {
       });
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => fetchWeather(), []);
 
   return isFetched ? (

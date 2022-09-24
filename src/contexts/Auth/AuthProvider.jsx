@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useAxios } from '@hooks';
+import { toast } from 'react-toastify';
 
 export const AuthProvider = ({ children }) => {
   const URL = import.meta.env.VITE_BASE_URL;
@@ -38,8 +39,10 @@ export const AuthProvider = ({ children }) => {
       const res = await axios.post(`${URL}auth/login`, user);
       localStorage.setItem('@Token', res.data.token);
       localStorage.setItem('@ID', res.data.user._id);
+      toast.success('Usuário autenticado');
       axiosGetUser(res.data.user._id);
     } catch (err) {
+      toast.error('Falha no login, tente outra senha ou e-mail');
       return console.error(err);
     }
   };
