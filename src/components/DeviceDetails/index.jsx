@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Container } from './styles';
+import { Container, FlexColumnDiv, FlexRowDiv } from './styles';
 export const DeviceDetails = ({ product }) => {
   const { axiosUpdateDeviceStatus, axiosDeleteUserDevice } = useAxios();
   const [status, setStatus] = useState(true);
@@ -38,26 +38,31 @@ export const DeviceDetails = ({ product }) => {
   return (
     <WhiteLayer>
       <Container>
-        <h3>{product.device.name}</h3>
-        <span>{product.device.madeBy}</span>
+        <FlexColumnDiv>
+          <h3>{product.device.name}</h3>
+          <span>{product.device.madeBy}</span>
+        </FlexColumnDiv>
+
         <img src={product.device.photoUrl} alt={`${product.device.name}`} />
-        <p>Dispositivo {status ? 'Ligado' : 'Desligado'}</p>{' '}
-        <Icon
-          handleSwitch={() =>
-            axiosUpdateDeviceStatus(product)
-              .then((res) => {
-                toast.success('Status atualizado com sucesso');
-                setStatus((prev) => {
-                  return !prev;
-                });
-              })
-              .catch((err) => {
-                console.error(err);
-                toast.error('Falha na atualização');
-              })
-          }
-          selected={status}
-        />
+        <FlexRowDiv>
+          <h5>Dispositivo {status ? 'Ligado' : 'Desligado'}</h5>
+          <Icon
+            handleSwitch={() =>
+              axiosUpdateDeviceStatus(product)
+                .then((res) => {
+                  toast.success('Status atualizado com sucesso');
+                  setStatus((prev) => {
+                    return !prev;
+                  });
+                })
+                .catch((err) => {
+                  console.error(err);
+                  toast.error('Falha na atualização');
+                })
+            }
+            selected={status}
+          />
+        </FlexRowDiv>
         {isLoading && <AbsoluteLoading />}
         <aside>
           <section>Informações do dispositivo</section>
@@ -72,7 +77,7 @@ export const DeviceDetails = ({ product }) => {
           </p>
           <p>
             Fuso horário:
-            <span>(GMT-3)</span>
+            <span> (GMT-3) </span>
           </p>
           <p>
             Força do sinal: <span>{product.device.info.signal}</span>
