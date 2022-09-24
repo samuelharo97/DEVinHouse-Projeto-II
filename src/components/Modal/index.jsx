@@ -11,8 +11,8 @@ import {
   ModalContent,
   ModalWrapper
 } from './styles';
-import { Button } from '@components';
-import { useAxios } from '@hooks';
+import { AbsoluteLoading, Button } from '@components';
+import { useAxios, useLoader } from '@hooks';
 
 const validationObject = {
   required: true
@@ -30,9 +30,10 @@ export const Modal = ({ showModal, setShowModal, device, locations }) => {
   };
 
   const { register, handleSubmit } = useForm();
-
+  const { loadsFor3seconds, isLoading } = useLoader();
   const submit = (data) => {
     axiosUserAddDevice(data);
+    loadsFor3seconds();
   };
 
   return (
@@ -41,6 +42,7 @@ export const Modal = ({ showModal, setShowModal, device, locations }) => {
         <Background onClick={closeModal} ref={modalRef}>
           <ModalWrapper showModal={showModal}>
             <ModalContent>
+              {isLoading && <AbsoluteLoading />}
               <h3>{device.name}</h3>
               <form onSubmit={handleSubmit(submit)}>
                 <InputContainer>
