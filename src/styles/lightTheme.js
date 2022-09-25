@@ -23,9 +23,9 @@ export const lightTheme = {
       DARK: '#F57C00'
     },
     INFO: {
-      LIGHT: '#4FC3F7',
-      MAIN: '#29B6F6',
-      DARK: '#0288D1'
+      LIGHT: '#87d0d1',
+      MAIN: '#27bdbe',
+      DARK: '#00A8D5'
     },
     SUCCESS: {
       LIGHT: '#81C784',
