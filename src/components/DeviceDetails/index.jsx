@@ -35,6 +35,19 @@ export const DeviceDetails = ({ product }) => {
 
   useEffect(() => loadsFor2seconds(), [status]);
 
+  const updateStatus = () =>
+    axiosUpdateDeviceStatus(product)
+      .then((res) => {
+        toast.success('Status atualizado com sucesso');
+        setStatus((prev) => {
+          return !prev;
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error('Falha na atualização');
+      });
+
   return (
     <WhiteLayer>
       <Container>
@@ -46,22 +59,7 @@ export const DeviceDetails = ({ product }) => {
         <img src={product.device.photoUrl} alt={`${product.device.name}`} />
         <FlexRowDiv>
           <h5>Dispositivo {status ? 'Ligado' : 'Desligado'}</h5>
-          <Icon
-            handleSwitch={() =>
-              axiosUpdateDeviceStatus(product)
-                .then((res) => {
-                  toast.success('Status atualizado com sucesso');
-                  setStatus((prev) => {
-                    return !prev;
-                  });
-                })
-                .catch((err) => {
-                  console.error(err);
-                  toast.error('Falha na atualização');
-                })
-            }
-            selected={status}
-          />
+          <Icon handleSwitch={() => updateStatus()} selected={status} />
         </FlexRowDiv>
         {isLoading && <AbsoluteLoading />}
         <aside>

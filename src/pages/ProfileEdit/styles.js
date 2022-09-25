@@ -13,4 +13,3 @@ export const Container = styled.div`
 export const Header = styled.header`
   grid-area: header;
 `;
-

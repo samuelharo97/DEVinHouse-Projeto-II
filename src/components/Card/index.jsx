@@ -1,12 +1,43 @@
 import { Icon } from '@components';
 import PropTypes from 'prop-types';
-import {  useNavigate } from 'react-router-dom';
-import { Container, List } from './styles';
+import { useNavigate } from 'react-router-dom';
+import { Container, InfoIcon, List } from './styles';
+import { FaInfoCircle } from 'react-icons/fa';
+import { useAxios } from '@hooks';
+import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
 
 export const Card = ({ product, isSelected }) => {
+  const { axiosUpdateDeviceStatus } = useAxios();
   const navigate = useNavigate();
+  const [status, setStatus] = useState(true);
+  const updateStatus = () =>
+    axiosUpdateDeviceStatus(product)
+      .then((res) => {
+        toast.success('Status atualizado com sucesso');
+        setStatus((prev) => {
+          return !prev;
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error('Falha na atualização');
+      });
+
+  const checkStatus = () => {
+    if (product.is_on) {
+      setStatus(true);
+    } else {
+      setStatus(false);
+    }
+  };
+
+  useEffect(() => {
+    console.log('Renderizei');
+    checkStatus();
+  }, []);
   return (
-    <List onClick={() => navigate(`details/${product._id}`)}>
+    <List>
       <Container>
         <img src={product.device.photoUrl} alt="IOT device" />
         <div>
@@ -14,9 +45,12 @@ export const Card = ({ product, isSelected }) => {
           <div>
             <p>{`${product.local.description} | ${product.room} | ${isSelected ? 'ON' : 'OFF'}`}</p>
           </div>
+          <InfoIcon>
+            <FaInfoCircle onClick={() => navigate(`details/${product._id}`)} />
+          </InfoIcon>
         </div>
 
-        <Icon selected={isSelected} />
+        <Icon handleSwitch={() => updateStatus()} selected={status} />
       </Container>
     </List>
   );
@@ -30,6 +64,7 @@ Card.propTypes = {
     room: PropTypes.string,
     status: PropTypes.string,
     _id: PropTypes.string,
+    is_on: PropTypes.string,
     device: PropTypes.shape({
       photoUrl: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired

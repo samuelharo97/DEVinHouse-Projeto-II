@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { WeatherInfo, ListSelectedDevices, Filter, AbsoluteLoading } from '@components';
+import { WeatherInfo, ListSelectedDevices, Filter, AbsoluteLoading, WhiteLayer } from '@components';
 import { useAuth } from '@contexts';
 import { useAxios, useLoader } from '@hooks';
 import { useState, useEffect } from 'react';
@@ -62,11 +62,23 @@ export const Home = () => {
       </FilterContainer>
       {activeSection === null ? (
         <Group>
-          <ListSelectedDevices products={allDevices} />
+          {allDevices.length > 0 ? (
+            <ListSelectedDevices products={allDevices} />
+          ) : (
+            <WhiteLayer>
+              <h3>Adicione dispositivos!</h3>
+            </WhiteLayer>
+          )}
         </Group>
       ) : (
         <Group>
-          <ListSelectedDevices products={filtered} />
+          {filtered.length > 0 ? (
+            <ListSelectedDevices products={filtered} />
+          ) : (
+            <WhiteLayer>
+              <h3>{`Adicione dispositivos na categoria ${activeSection}.`}</h3>
+            </WhiteLayer>
+          )}
         </Group>
       )}
       <Footer />

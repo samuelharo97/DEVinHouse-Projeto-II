@@ -14,6 +14,15 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
   }
+
+  h5 {
+    margin-top: 20px;
+  }
+
+  div > div:nth-child(3) {
+    margin-top: 20px;
+  }
+
   > svg {
     margin-left: 15px;
   }
@@ -28,4 +37,16 @@ export const List = styled.li`
   width: 400px;
   margin: auto;
   padding: 20px;
+`;
+
+export const InfoIcon = styled.div`
+  svg {
+    color: ${({ theme }) => theme.COLORS.INFO.DARK};
+    height: 20px;
+    width: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;

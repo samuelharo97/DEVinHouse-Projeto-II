@@ -1,5 +1,5 @@
-import { Button, ButtonText, Form } from '@components'
-import { Container } from './styles'
+import { Button, ButtonText, Form } from '@components';
+import { Container } from './styles';
 
 export const ProfileEdit = () => {
   return (
@@ -9,5 +9,5 @@ export const ProfileEdit = () => {
         <ButtonText routeTo={'/profile'} title={'Cancelar'} />
       </Form>
     </Container>
-  )
-}
+  );
+};

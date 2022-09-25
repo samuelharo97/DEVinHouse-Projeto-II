@@ -3,7 +3,7 @@ import { DeviceDetails, AbsoluteLoading } from '@components';
 import { useAxios, useLoader } from '@hooks';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container } from './styles';
+import { Container, FreeSpace } from './styles';
 
 export const Details = () => {
   const { id } = useParams();
@@ -25,6 +25,9 @@ export const Details = () => {
       <AbsoluteLoading />
     </Container>
   ) : (
-    <Container>{fetched ? <DeviceDetails product={device} /> : <AbsoluteLoading />}</Container>
+    <>
+      <Container>{fetched ? <DeviceDetails product={device} /> : <AbsoluteLoading />}</Container>{' '}
+      <FreeSpace />
+    </>
   );
 };
