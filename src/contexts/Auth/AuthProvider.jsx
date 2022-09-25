@@ -97,8 +97,10 @@ export const AuthProvider = ({ children }) => {
         }
       });
       setUser(res.data);
+      toast.success('Perfil atualizado com sucesso!');
     } catch (err) {
       console.error(err);
+      toast.error('Falha ao atualizar o perfil, tente novamente!')
     }
   };
 

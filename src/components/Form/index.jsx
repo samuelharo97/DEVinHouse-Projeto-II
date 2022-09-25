@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Formulary, InputWrapper, InputContainer, ActionWrapper, HiddenInput } from './styles';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
@@ -9,6 +10,7 @@ import { useAxios } from '@hooks';
 import { useEffect } from 'react';
 import { phoneMask, phoneNumber, validPassword } from '@utils';
 import { fetchZipcode } from '@services';
+import { useNavigate } from 'react-router-dom';
 
 const message = 'Campo obrigatório';
 
@@ -41,6 +43,7 @@ const schema = yup.object().shape({
 });
 
 export const Form = ({ children, title }) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -69,6 +72,13 @@ export const Form = ({ children, title }) => {
   const submitForm = (data) => {
     console.log(data);
     title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data);
+    title === 'Cadastrar'
+      ? setTimeout(() => {
+          navigate('/');
+        }, 1500)
+      : setTimeout(() => {
+          navigate('/profile');
+        }, 1500);
   };
 
   const phoneValue = watch('phone');
@@ -168,7 +178,7 @@ export const Form = ({ children, title }) => {
             </label>
             <input
               type="text"
-              placeholder="Seu CEP"
+              placeholder="Ex: 01153000"
               name="zipCode"
               id="zipCode"
               onBlurCapture={findZipcode}
