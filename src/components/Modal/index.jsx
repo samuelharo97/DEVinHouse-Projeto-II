@@ -90,10 +90,16 @@ export const Modal = ({ showModal, setShowModal, device, locations }) => {
                 <Button
                   title={'CONFIRMAR'}
                   func={handleSubmit(submit)}
+                  disable={isLoading}
                   color={'primary'}
                   type={'submit'}
                 />
-                <Button title={'CANCELAR'} func={setShowModal} color={'secondary'} />
+                <Button
+                  disable={isLoading}
+                  title={'CANCELAR'}
+                  func={setShowModal}
+                  color={'secondary'}
+                />
               </div>
             </ModalContent>
             <CloseModalButton

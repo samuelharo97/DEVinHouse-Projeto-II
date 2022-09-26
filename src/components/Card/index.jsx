@@ -50,7 +50,7 @@ export const Card = ({ product, isSelected }) => {
             <FaInfoCircle onClick={() => navigate(`details/${product._id}`)} />
           </InfoIcon>
         </div>
-
+  
         <Icon handleSwitch={() => updateStatus()} selected={status} />
       </Container>
     </List>

@@ -1,9 +1,10 @@
-import { WhiteLayer, Button, ButtonText } from '@components';
+import { WhiteLayer, Button, ButtonText, AbsoluteLoading } from '@components';
 import { LoginForm } from './styles';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAuth } from '@contexts';
+import { useLoader } from '@hooks';
 
 const loginSchema = yup.object().shape({
   email: yup.string().email().typeError('Digite um e-mail válido').required('Digite um e-mail'),
@@ -15,6 +16,7 @@ const loginSchema = yup.object().shape({
 
 export const Login = () => {
   const { axiosLogin } = useAuth();
+  const { isLoading, loadsFor1point5 } = useLoader();
 
   const {
     handleSubmit,
@@ -25,6 +27,7 @@ export const Login = () => {
   });
 
   const handleLogin = (data) => {
+    loadsFor1point5();
     const { email, password } = data;
     axiosLogin(email, password);
   };
@@ -45,6 +48,7 @@ export const Login = () => {
             {...register('email')}
           />
         </div>
+        {isLoading && <AbsoluteLoading />}
         <div>
           <label htmlFor="password">
             Senha <span>{errors.password?.message}</span>

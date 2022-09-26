@@ -19,4 +19,8 @@ export const Container = styled.button`
   text-transform: uppercase;
   text-align: center;
   align-self: center;
+
+  &disabled {
+    color: ${({ theme }) => theme.COLORS.ERROR.LIGHT};
+  }
 `;

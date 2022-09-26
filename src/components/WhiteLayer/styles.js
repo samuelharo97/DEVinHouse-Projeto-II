@@ -9,4 +9,5 @@ export const Container = styled.div`
   padding: ${({ pad }) => pad};
   grid-area: ${({ variant }) => variant};
   margin: auto;
+
 `;
