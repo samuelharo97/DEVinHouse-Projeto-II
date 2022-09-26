@@ -13,6 +13,12 @@ export const Container = styled.article`
     line-height: 62px;
   }
 
+  img {
+    align-self: center;
+    width: 80px;
+    height: 80px;
+  }
+
   > h5 {
     font-weight: 400;
     font-size: 32px;
@@ -41,5 +47,33 @@ export const Container = styled.article`
       flex-direction: column;
       text-align: center;
     }
+  }
+`;
+
+export const FlexRowDiv = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+  
+  > h3 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 62px;
+  }
+
+  h5 {
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 62px;
+  }
+
+  span {
+    color: ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
+  }
+
+  > img {
+    background-color: ${({ theme }) => theme.COLORS.COMMON.GRAY};
+    border: solid 1px ${({ theme }) => theme.COLORS.PRIMARY.LIGHT};
   }
 `;

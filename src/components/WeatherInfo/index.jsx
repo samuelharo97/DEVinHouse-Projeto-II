@@ -2,7 +2,7 @@ import { Loading, WhiteLayer } from '@components';
 import { useAuth } from '@contexts';
 import { getWeatherData } from '@services';
 import { useEffect, useState } from 'react';
-import { Container } from './styles';
+import { Container, FlexRowDiv } from './styles';
 
 export const WeatherInfo = () => {
   const [info, setInfo] = useState({});
@@ -15,6 +15,7 @@ export const WeatherInfo = () => {
       .then((data) => {
         setInfo(data);
         setIsFetched(true);
+        console.log(info.weather[0].icon);
       });
   };
 
@@ -24,10 +25,13 @@ export const WeatherInfo = () => {
   return isFetched ? (
     <WhiteLayer gridVariant="temperature">
       <Container>
+      <FlexRowDiv>
         <h3>
           {info.main.temp.toFixed(0)}
           <span>°C</span>
         </h3>
+          <img src={`/weather/${info.weather[0].icon}.png`} alt="ícone da previsão do tempo" />
+        </FlexRowDiv>
         <h5>{info.name + `, ${user.userAddress.state}`}</h5>
         <div>
           <p>Sensacão térmica: {info.main.feels_like.toFixed(1)}°C</p>

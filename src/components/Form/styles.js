@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Formulary = styled.form`
-
   color: ${({ theme }) => theme.COLORS.PRIMARY.DARK};
 
   h2 {

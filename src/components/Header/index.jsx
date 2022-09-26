@@ -1,11 +1,14 @@
 import { Container, FlexibleDiv, StyledLink } from './styles';
 import PropTypes from 'prop-types';
 import { NavBar, ToggleTheme } from '@components';
+import { Link } from 'react-router-dom';
 export const Header = ({ Authenticated }) => {
   return (
     <Container>
       <div>
-        <img src="logo.png" alt="company logo" />
+        <Link to={'/'}>
+          <img src="logo.png" alt="company logo" />
+        </Link>
         <h1>ConnectLab</h1>
       </div>
       {Authenticated ? (

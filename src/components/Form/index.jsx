@@ -26,10 +26,10 @@ const schema = yup.object().shape({
     .oneOf([yup.ref('password'), null], 'As senhas não correspondem')
     .typeError('As senhas não correspondem')
     .required(message),
-  fullName: yup.string().required(message),
+  fullName: yup.string().required(message).max(80, 'No máximo 80 caracteres'),
   photoUrl: yup.string().typeError('URL Inválida').url(),
   street: yup.string().required(message),
-  phone: yup.string().matches(phoneNumber),
+  phone: yup.string().matches(phoneNumber).min(15, 'Celular deve conter 11 números').max(15),
   zipCode: yup
     .string()
     .matches(/^[0-9]+$/, 'O CEP deve conter 8 números, sem barra (-)')
@@ -132,11 +132,11 @@ export const Form = ({ children, title }) => {
             />
           </InputContainer>
           <InputContainer>
-            <label htmlFor="phone">Telefone</label>
+            <label htmlFor="phone">Celular</label>
             <input
               type="tel"
               formNoValidate
-              placeholder="Seu telefone"
+              placeholder="Seu celular"
               name="phone"
               id="phone"
               {...register('phone')}

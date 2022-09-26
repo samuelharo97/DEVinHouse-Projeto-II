@@ -25,7 +25,7 @@ export const Container = styled.header`
     list-style: none;
     gap: 20px;
   }
-  
+
   svg {
     height: 30px;
     width: 30px;
