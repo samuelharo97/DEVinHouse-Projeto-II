@@ -55,7 +55,7 @@ export const FlexRowDiv = styled.section`
   justify-content: center;
   align-items: center;
   gap: 56px;
-  
+
   > h3 {
     font-size: 48px;
     font-weight: 700;
@@ -70,10 +70,5 @@ export const FlexRowDiv = styled.section`
 
   span {
     color: ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
-  }
-
-  > img {
-    background-color: ${({ theme }) => theme.COLORS.COMMON.GRAY};
-    border: solid 1px ${({ theme }) => theme.COLORS.PRIMARY.LIGHT};
   }
 `;
