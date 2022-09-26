@@ -34,6 +34,7 @@ export const Card = ({ product, isSelected }) => {
 
   useEffect(() => {
     checkStatus();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
