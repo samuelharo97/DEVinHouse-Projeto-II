@@ -38,7 +38,7 @@ export const DeviceDetails = ({ product }) => {
   const updateStatus = () =>
     axiosUpdateDeviceStatus(product)
       .then((res) => {
-        toast.success('Status atualizado com sucesso');
+        toast.success(`${product.device.name} foi ${!status ? 'ligado' : 'desligado'} com sucesso`);
         setStatus((prev) => {
           return !prev;
         });
@@ -72,10 +72,6 @@ export const DeviceDetails = ({ product }) => {
           </p>
           <p>
             Endereço MAC: <span>{product.device.info.mac_address}</span>
-          </p>
-          <p>
-            Fuso horário:
-            <span> (GMT-3) </span>
           </p>
           <p>
             Força do sinal: <span>{product.device.info.signal}</span>

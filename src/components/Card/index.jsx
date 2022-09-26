@@ -14,7 +14,7 @@ export const Card = ({ product, isSelected }) => {
   const updateStatus = () =>
     axiosUpdateDeviceStatus(product)
       .then((res) => {
-        toast.success('Status atualizado com sucesso');
+        toast.success(`${product.device.name} foi ${!status ? 'ligado' : 'desligado'} com sucesso`);
         setStatus((prev) => {
           return !prev;
         });
@@ -33,9 +33,9 @@ export const Card = ({ product, isSelected }) => {
   };
 
   useEffect(() => {
-    console.log('Renderizei');
     checkStatus();
   }, []);
+
   return (
     <List>
       <Container>
@@ -64,7 +64,7 @@ Card.propTypes = {
     room: PropTypes.string,
     status: PropTypes.string,
     _id: PropTypes.string,
-    is_on: PropTypes.string,
+    is_on: PropTypes.bool,
     device: PropTypes.shape({
       photoUrl: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
