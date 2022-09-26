@@ -13,7 +13,7 @@ This project is the second big challenge from DEVinHouse course in collaboration
 - [Project Structure](#project-structure)
   - [Tools Required](#tools-required)
 - [Development](#development)
-  - [Requirements](#requirements)
+  - [Requirements](#requirements-/-features)
   - [Roadmap](#roadmap)
   - [Deploy](#deploy)
 - [Author](#author)
@@ -62,7 +62,7 @@ This project is the second big challenge from DEVinHouse course in collaboration
 
 ## Development
 
-### Requirements
+### Requirements / Features
 
 <!-- prettier-ignore -->
 ```

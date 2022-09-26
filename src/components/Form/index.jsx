@@ -70,7 +70,6 @@ export const Form = ({ children, title }) => {
   };
 
   const submitForm = (data) => {
-    console.log(data);
     title === 'Cadastrar' ? axiosCreateUser(data) : axiosUpdateUser(data);
     title === 'Cadastrar'
       ? setTimeout(() => {

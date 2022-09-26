@@ -15,7 +15,6 @@ export const WeatherInfo = () => {
       .then((data) => {
         setInfo(data);
         setIsFetched(true);
-        console.log(info.weather[0].icon);
       });
   };
 
