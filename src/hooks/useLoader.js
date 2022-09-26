@@ -29,5 +29,20 @@ export const useLoader = () => {
     }, 1000);
   };
 
-  return { isLoading, loadsFor2seconds, loadsFor3seconds, loadsFor1point5, loadsFor1second };
+  const loadsForRandom = () => {
+    setIsLoading(true);
+    const random = Math.floor(Math.random() * (20000 - 5000 + 1) + 5000);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, random);
+  };
+
+  return {
+    isLoading,
+    loadsFor2seconds,
+    loadsFor3seconds,
+    loadsFor1point5,
+    loadsFor1second,
+    loadsForRandom
+  };
 };

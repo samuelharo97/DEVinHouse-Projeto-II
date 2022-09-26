@@ -30,10 +30,10 @@ export const Modal = ({ showModal, setShowModal, device, locations }) => {
   };
 
   const { register, handleSubmit } = useForm();
-  const { loadsFor3seconds, isLoading } = useLoader();
+  const { loadsForRandom, isLoading } = useLoader();
   const submit = (data) => {
+    loadsForRandom();
     axiosUserAddDevice(data);
-    loadsFor3seconds();
   };
 
   return (
