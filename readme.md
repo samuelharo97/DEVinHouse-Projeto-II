@@ -3,11 +3,11 @@
 
 This project is the second big challenge from DEVinHouse course in collaboration with the company Intelbras, where the proposition was to create a web application to manage IOT devices using Vite + React in the given time period of 16 days.
 
-<!-- ![Current Version](https://img.shields.io/badge/version-v0.1-blue)
+![Current Version](https://img.shields.io/badge/version-v0.1-blue)
 ![GitHub contributors](https://img.shields.io/github/contributors/samuelharo97/DEVinHouse-Projeto-II)
 ![GitHub stars](https://img.shields.io/github/stars/samuelharo97/DEVinHouse-Projeto-II)
 ![GitHub forks](https://img.shields.io/github/samuelharo97/DEVinHouse-Projeto-II)
- -->
+
 
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
@@ -27,31 +27,162 @@ This project is the second big challenge from DEVinHouse course in collaboration
 ## ConnectLab files structure
 
 ```
-	ConnectLab
-	├── README.md
-	├── package.json
-	├── package-lock.json
-	├── jsconfig.json
-	├── vite.config.js
-	├── .gitignore
-	├── .eslintrc.json
-	├── .env
-	├── .prettierrc
-	├── index.html
-	├── public
-	│   ├── logo.png
-	│   ├── profile.png
-	└── src
-		├── components
-		├── contexts
-		├── hooks
-		├── pages
-		├── router
-		├── services
-		├── styles
-		├── utils
-		└── main.jsx
-		└── App.jsx
+DEVinHouse Projeto II - ConnectLab
+├─ .env
+├─ .eslintrc.json
+├─ .gitignore
+├─ .prettierrc
+├─ index.html
+├─ jsconfig.json
+├─ netlify.toml
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ logo.png
+│  ├─ profile.png
+│  └─ weather
+│     ├─ 01d.png
+│     ├─ 01n.png
+│     ├─ 02d.png
+│     ├─ 02n.png
+│     ├─ 03d.png
+│     ├─ 03n.png
+│     ├─ 04d.png
+│     ├─ 04n.png
+│     ├─ 09d.png
+│     ├─ 09n.png
+│     ├─ 10d.png
+│     ├─ 10n.png
+│     ├─ 11d.png
+│     ├─ 11n.png
+│     ├─ 13d.png
+│     ├─ 13n.png
+│     ├─ 50d.png
+│     └─ 50n.png
+├─ README.md
+├─ src
+│  ├─ App.jsx
+│  ├─ assets
+│  ├─ components
+│  │  ├─ AddDeviceCard
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Button
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ ButtonText
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Card
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ DeviceDetails
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ DeviceList
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Filter
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Form
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Header
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Icon
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ index.js
+│  │  ├─ ListSelectedDevices
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Loading
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Login
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Modal
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ NavBar
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ ToggleTheme
+│  │  │  └─ index.jsx
+│  │  ├─ UserProfile
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ WeatherInfo
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  └─ WhiteLayer
+│  │     ├─ index.jsx
+│  │     └─ styles.js
+│  ├─ contexts
+│  │  ├─ Auth
+│  │  │  ├─ AuthContext.jsx
+│  │  │  ├─ AuthProvider.jsx
+│  │  │  ├─ index.js
+│  │  │  └─ useAuth.js
+│  │  ├─ index.js
+│  │  └─ Theme
+│  │     ├─ index.js
+│  │     ├─ ThemeContext.jsx
+│  │     ├─ ThemeProvider.jsx
+│  │     └─ useTheme.js
+│  ├─ hooks
+│  │  ├─ index.js
+│  │  ├─ useAxios.js
+│  │  └─ useLoader.js
+│  ├─ main.jsx
+│  ├─ pages
+│  │  ├─ 404
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Details
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Devices
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ Home
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ index.js
+│  │  ├─ Profile
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ ProfileEdit
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  ├─ SignIn
+│  │  │  ├─ index.jsx
+│  │  │  └─ styles.js
+│  │  └─ SignUp
+│  │     ├─ index.jsx
+│  │     └─ styles.js
+│  ├─ router
+│  │  ├─ app.routes.jsx
+│  │  ├─ auth.routes.jsx
+│  │  └─ index.js
+│  ├─ services
+│  │  ├─ fetchWeatherInfo.js
+│  │  ├─ fetchZipcode.js
+│  │  └─ index.js
+│  ├─ styles
+│  │  ├─ darkTheme.js
+│  │  ├─ global.js
+│  │  ├─ index.js
+│  │  └─ lightTheme.js
+│  └─ utils
+│     ├─ index.js
+│     ├─ mask.js
+│     └─ validations.js
+└─ vite.config.js
+
 ```
 
 ### Tools Required
@@ -222,3 +353,4 @@ Special thanks to both of them for providing endless guidance and assistance in 
 #### [DEVin[Intelbras]](https://github.com/DEVin-Intelbras)
 
 For providing the node API for the challenge. :)
+
