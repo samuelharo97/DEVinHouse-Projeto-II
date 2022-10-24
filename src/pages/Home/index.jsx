@@ -14,10 +14,10 @@ export const Home = () => {
   useEffect(() => {
     axiosGetLocations().then((res) => setLocations(res));
   }, []);
-  const { isLoading, loadsFor1second } = useLoader();
+  const { isLoading, loadsFor } = useLoader();
 
   useEffect(() => {
-    loadsFor1second();
+    loadsFor(1000);
   }, []);
 
   function handleSection(clickedSection) {

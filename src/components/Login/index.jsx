@@ -16,7 +16,7 @@ const loginSchema = yup.object().shape({
 
 export const Login = () => {
   const { axiosLogin } = useAuth();
-  const { isLoading, loadsFor1point5 } = useLoader();
+  const { isLoading, loadsFor } = useLoader();
 
   const {
     handleSubmit,
@@ -27,7 +27,7 @@ export const Login = () => {
   });
 
   const handleLogin = (data) => {
-    loadsFor1point5();
+    loadsFor(1500);
     const { email, password } = data;
     axiosLogin(email, password);
   };

@@ -9,7 +9,7 @@ import { Container, FlexColumnDiv, FlexRowDiv } from './styles';
 export const DeviceDetails = ({ product }) => {
   const { axiosUpdateDeviceStatus, axiosDeleteUserDevice } = useAxios();
   const [status, setStatus] = useState(true);
-  const { loadsFor2seconds, loadsFor1second, isLoading } = useLoader();
+  const { loadsFor, isLoading } = useLoader();
   useEffect(() => {
     if (product.is_on) {
       setStatus(true);
@@ -26,14 +26,14 @@ export const DeviceDetails = ({ product }) => {
     );
     if (confirmed) {
       axiosDeleteUserDevice(product._id);
-      loadsFor1second();
+      loadsFor(1000);
       setTimeout(() => {
         navigate('/');
       }, 3000);
     }
   };
 
-  useEffect(() => loadsFor2seconds(), [status]);
+  useEffect(() => loadsFor(2000), [status]);
 
   const updateStatus = () =>
     axiosUpdateDeviceStatus(product)

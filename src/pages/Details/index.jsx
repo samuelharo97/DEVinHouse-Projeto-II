@@ -8,12 +8,12 @@ import { Container, FreeSpace } from './styles';
 export const Details = () => {
   const { id } = useParams();
   const { axiosGetDeviceById } = useAxios();
-  const { isLoading, loadsFor3seconds } = useLoader();
+  const { isLoading, loadsFor } = useLoader();
   const [device, setDevice] = useState();
   const [fetched, setFetched] = useState(false);
 
   useEffect(() => {
-    loadsFor3seconds();
+    loadsFor(3000);
     axiosGetDeviceById(id).then((res) => {
       setDevice(res.data);
       setFetched(true);

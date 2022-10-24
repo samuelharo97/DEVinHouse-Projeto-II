@@ -5,10 +5,10 @@ import { useEffect } from 'react';
 import { Container, Footer, Section } from './styles';
 
 export const Devices = () => {
-  const { isLoading, loadsFor2seconds } = useLoader();
+  const { isLoading, loadsFor } = useLoader();
 
   useEffect(() => {
-    loadsFor2seconds();
+    loadsFor(2000);
   }, []);
 
   return isLoading ? (
