@@ -42,7 +42,6 @@ export const useAxios = () => {
         location: data.local
       }
     };
-    // console.log(config);
     axios
       .post(`${URL}userDevices`, config, {
         headers: {
@@ -69,11 +68,11 @@ export const useAxios = () => {
 
   const axiosUpdateDeviceStatus = (device) => {
     const token = localStorage.getItem('@Token');
-    const newStatus = !device.is_on;
+    const newStatus = !device.settings.is_on;
     const config = {
       is_on: newStatus
     };
-    const response = axios.put(`${URL}userDevices/${device._id}`, config, {
+    const response = axios.patch(`${URL}userDevices/${device.id}`, config, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -99,7 +98,6 @@ export const useAxios = () => {
         complement: data.complement || null
       }
     };
-    // console.log(newUser);
     axios
       .post(`${URL}auth/register`, newUser)
       .then((res) => toast.success('Usuário criado com sucesso'))
@@ -107,7 +105,6 @@ export const useAxios = () => {
         toast.error('Falha ao criar o usuário');
         console.error(err);
       });
-    // console.log(`${URL}auth/register`);
   };
 
   const axiosDeleteUserDevice = (deviceId) => {
@@ -129,7 +126,7 @@ export const useAxios = () => {
 
   const axiosGetDeviceById = (deviceId) => {
     const token = localStorage.getItem('@Token');
-    const response = axios.get(`${URL}userDevices/${deviceId}`, {
+    const response = axios.get(`${URL}userDevices/details/${deviceId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

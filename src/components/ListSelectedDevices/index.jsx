@@ -4,7 +4,6 @@ import {  Card } from '@components';
 import { Container, List } from './styles';
 
 export const ListSelectedDevices = ({ products }) => {
-  console.log(products, 'list selected');
   return (
     <Container>
       <List>

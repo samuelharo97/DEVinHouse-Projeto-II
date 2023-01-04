@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 
 export const Card = ({ data, isSelected }) => {
-  console.log(data, 'Card');
   const { axiosUpdateDeviceStatus } = useAxios();
   const navigate = useNavigate();
   const [status, setStatus] = useState(true);

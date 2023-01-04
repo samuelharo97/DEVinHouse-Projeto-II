@@ -27,7 +27,6 @@ export const Login = () => {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczMzFhZDIxLTE0MzMtNGUxMi04ZDk2LThkZjMxOTQ4NjgxYyIsIm5hbWUiOiJBZ2VudGUgTW90aGVyIiwiZW1haWwiOiJqYXBhbG9rb3R1cmJvQGVtYWlsLmNvbSIsImlhdCI6MTY3MjU5OTgyOCwiZXhwIjoxNjc0MzI3ODI4fQ.g0raeNpUFMUscVxCQJb23a-Xh7kp7OrSlnI8L8XlWBQ`
       }
     });
-    console.log(res.data);
   };
 
   useEffect(() => {

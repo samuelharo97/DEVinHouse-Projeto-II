@@ -17,7 +17,7 @@ export const Home = () => {
   const { isLoading, loadsFor } = useLoader();
 
   useEffect(() => {
-    loadsFor(5000);
+    loadsFor(1000);
   }, []);
 
   function handleSection(clickedSection) {
@@ -27,9 +27,7 @@ export const Home = () => {
       const filteredProducts = allDevices.filter(
         (device) => device.settings.location === clickedSection
       );
-      console.log(activeSection, 'active');
-      console.log(filteredProducts, 'filtered');
-      console.log(clickedSection, 'clicked');
+
       setFiltered(filteredProducts);
       setActiveSection(clickedSection);
     }
