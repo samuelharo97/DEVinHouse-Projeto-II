@@ -17,7 +17,9 @@ export const AuthProvider = ({ children }) => {
   const [allDevices, setAllDevices] = useState([]);
 
   const getDevices = useCallback(() => {
-    axiosGetUserDevices().then((res) => setAllDevices(res.data));
+    axiosGetUserDevices().then((res) => {
+      setAllDevices(res.data);
+    });
   }, [axiosGetUserDevices]);
 
   const checkLogin = () => {
@@ -38,9 +40,9 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post(`${URL}auth/login`, user);
       localStorage.setItem('@Token', res.data.token);
-      localStorage.setItem('@ID', res.data.user._id);
+      localStorage.setItem('@ID', res.data.user.id);
       toast.success('Usuário autenticado');
-      axiosGetUser(res.data.user._id);
+      axiosGetUser(res.data.user.id);
     } catch (err) {
       toast.error('Falha no login, tente outra senha ou e-mail');
       return console.error(err);

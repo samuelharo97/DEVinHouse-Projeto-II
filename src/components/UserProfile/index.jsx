@@ -44,7 +44,7 @@ UserProfile.propTypes = {
       zipCode: PropTypes.string,
       street: PropTypes.string.isRequired,
       neighborhood: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      number: PropTypes.number.isRequired,
       city: PropTypes.string.isRequired,
       state: PropTypes.string.isRequired
     })

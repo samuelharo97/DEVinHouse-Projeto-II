@@ -21,7 +21,7 @@ export const useAxios = () => {
   const axiosGetLocations = async () => {
     const token = localStorage.getItem('@Token');
     try {
-      const res = await axios.get(`${URL}locals`, {
+      const res = await axios.get(`${URL}userDevices/locals`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -34,14 +34,15 @@ export const useAxios = () => {
 
   const axiosUserAddDevice = (data) => {
     const token = localStorage.getItem('@Token');
-    const id = localStorage.getItem('@ID');
     const config = {
-      user: id,
-      device: data.deviceId,
-      is_on: true,
-      local: data.local,
-      room: data.room
+      device_id: data.deviceId,
+      settings: {
+        is_on: false,
+        room: data.room,
+        location: data.local
+      }
     };
+    // console.log(config);
     axios
       .post(`${URL}userDevices`, config, {
         headers: {
@@ -57,8 +58,8 @@ export const useAxios = () => {
 
   const axiosGetUserDevices = async () => {
     const token = localStorage.getItem('@Token');
-    const id = localStorage.getItem('@ID');
-    const res = await axios.get(`${URL}userDevices/user/${id}`, {
+    /* const id = localStorage.getItem('@ID'); */
+    const res = await axios.get(`${URL}userDevices/user/`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -84,6 +85,7 @@ export const useAxios = () => {
     const newUser = {
       email: data.email,
       password: data.password,
+      confirm_password: data.password,
       fullName: data.fullName,
       photoUrl: data.photoUrl || null,
       phone: data.phone || null,
@@ -97,6 +99,7 @@ export const useAxios = () => {
         complement: data.complement || null
       }
     };
+    // console.log(newUser);
     axios
       .post(`${URL}auth/register`, newUser)
       .then((res) => toast.success('Usuário criado com sucesso'))
@@ -104,6 +107,7 @@ export const useAxios = () => {
         toast.error('Falha ao criar o usuário');
         console.error(err);
       });
+    // console.log(`${URL}auth/register`);
   };
 
   const axiosDeleteUserDevice = (deviceId) => {

@@ -7,14 +7,15 @@ import { useAxios } from '@hooks';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 
-export const Card = ({ product, isSelected }) => {
+export const Card = ({ data, isSelected }) => {
+  console.log(data, 'Card');
   const { axiosUpdateDeviceStatus } = useAxios();
   const navigate = useNavigate();
   const [status, setStatus] = useState(true);
   const updateStatus = () =>
-    axiosUpdateDeviceStatus(product)
+    axiosUpdateDeviceStatus(data)
       .then((res) => {
-        toast.success(`${product.device.name} foi ${!status ? 'ligado' : 'desligado'} com sucesso`);
+        toast.success(`${data.device.name} foi ${!status ? 'ligado' : 'desligado'} com sucesso`);
         setStatus((prev) => {
           return !prev;
         });
@@ -25,7 +26,7 @@ export const Card = ({ product, isSelected }) => {
       });
 
   const checkStatus = () => {
-    if (product.is_on) {
+    if (data.settings.is_on) {
       setStatus(true);
     } else {
       setStatus(false);
@@ -34,23 +35,25 @@ export const Card = ({ product, isSelected }) => {
 
   useEffect(() => {
     checkStatus();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <List>
       <Container>
-        <img src={product.device.photoUrl} alt="IOT device" />
+        <img src={data.device.photoUrl} alt="IOT device" />
         <div>
-          <h5>{product.device.name}</h5>
+          <h5>{data.device.name}</h5>
           <div>
-            <p>{`${product.local.description} | ${product.room} | ${isSelected ? 'ON' : 'OFF'}`}</p>
+            <p>{`${data.settings.location} | ${data.settings.room} | ${
+              isSelected ? 'ON' : 'OFF'
+            }`}</p>
           </div>
           <InfoIcon>
-            <FaInfoCircle onClick={() => navigate(`details/${product._id}`)} />
+            <FaInfoCircle onClick={() => navigate(`details/${data.id}`)} />
           </InfoIcon>
         </div>
-  
+
         <Icon handleSwitch={() => updateStatus()} selected={status} />
       </Container>
     </List>
@@ -58,17 +61,16 @@ export const Card = ({ product, isSelected }) => {
 };
 
 Card.propTypes = {
-  product: PropTypes.shape({
-    local: PropTypes.shape({
-      description: PropTypes.string
-    }),
-    room: PropTypes.string,
-    status: PropTypes.string,
-    _id: PropTypes.string,
-    is_on: PropTypes.bool,
+  data: PropTypes.shape({
+    id: PropTypes.string,
     device: PropTypes.shape({
-      photoUrl: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      photoUrl: PropTypes.string.isRequired
+    }),
+    settings: PropTypes.shape({
+      room: PropTypes.string,
+      is_on: PropTypes.bool,
+      location: PropTypes.string
     })
   }),
   isSelected: PropTypes.bool,

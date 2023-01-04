@@ -5,6 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAuth } from '@contexts';
 import { useLoader } from '@hooks';
+/* import axios from 'axios';
+import { useEffect } from 'react'; */
 
 const loginSchema = yup.object().shape({
   email: yup.string().email().typeError('Digite um e-mail válido').required('Digite um e-mail'),
@@ -17,6 +19,20 @@ const loginSchema = yup.object().shape({
 export const Login = () => {
   const { axiosLogin } = useAuth();
   const { isLoading, loadsFor } = useLoader();
+  
+  /* const test = async () => {
+    const URL = import.meta.env.VITE_BASE_URL;
+    const res = await axios.get(`${URL}/devices`, {
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjczMzFhZDIxLTE0MzMtNGUxMi04ZDk2LThkZjMxOTQ4NjgxYyIsIm5hbWUiOiJBZ2VudGUgTW90aGVyIiwiZW1haWwiOiJqYXBhbG9rb3R1cmJvQGVtYWlsLmNvbSIsImlhdCI6MTY3MjU5OTgyOCwiZXhwIjoxNjc0MzI3ODI4fQ.g0raeNpUFMUscVxCQJb23a-Xh7kp7OrSlnI8L8XlWBQ`
+      }
+    });
+    console.log(res.data);
+  };
+
+  useEffect(() => {
+    test();
+  },); */
 
   const {
     handleSubmit,
