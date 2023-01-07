@@ -55,7 +55,7 @@ export const Form = ({ children, title }) => {
   });
 
   const { axiosCreateUser } = useAxios();
-  const { axiosUpdateUser } = useAuth();
+  const { axiosUpdateUser, user } = useAuth();
 
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = (e) => {
@@ -80,7 +80,27 @@ export const Form = ({ children, title }) => {
         }, 1500);
   };
 
+  const populateForm = () => {
+    if (title === 'Editar Perfil') {
+      setValue('fullName', user.fullName);
+      setValue('email', user.email);
+      setValue('photoUrl', user.photoUrl);
+      setValue('phone', user.phone);
+      setValue('street', user.userAddress.street);
+      setValue('number', user.userAddress.number);
+      setValue('zipCode', user.userAddress.zipCode);
+      setValue('city', user.userAddress.city);
+      setValue('neighborhood', user.userAddress.neighborhood);
+      setValue('state', user.userAddress.state);
+      setValue('complement', user.userAddress.complement || '');
+    }
+  };
+
   const phoneValue = watch('phone');
+
+  useEffect(() => {
+    populateForm();
+  }, []);
 
   useEffect(() => {
     setValue('phone', phoneMask(phoneValue));
