@@ -6,7 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { WhiteLayer } from '@components';
 import { useAuth } from '@contexts';
-import { useAxios } from '@hooks';
 import { useEffect } from 'react';
 import { phoneMask, phoneNumber } from '@utils';
 import { fetchZipcode } from '@services';
@@ -32,7 +31,7 @@ const schema = yup.object().shape({
   complement: yup.string(message)
 });
 
-export const Form = ({ children, title }) => {
+export const EditProfile = ({ children, title }) => {
   const navigate = useNavigate();
   const {
     register,
@@ -44,10 +43,8 @@ export const Form = ({ children, title }) => {
     resolver: yupResolver(schema)
   });
 
-  const { axiosCreateUser } = useAxios();
-  const { user } = useAuth();
+  const { axiosUpdateUser, user } = useAuth();
 
-  // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = (e) => {
     fetchZipcode(e)
       .then((res) => res.json())
@@ -60,26 +57,25 @@ export const Form = ({ children, title }) => {
   };
 
   const submitForm = (data) => {
-    axiosCreateUser(data);
+    console.log(data);
+    axiosUpdateUser(data);
     setTimeout(() => {
-      navigate('/');
+      navigate('/profile');
     }, 1500);
   };
 
   const populateForm = () => {
-    if (title === 'Editar Perfil') {
-      setValue('fullName', user.fullName);
-      setValue('email', user.email);
-      setValue('photoUrl', user.photoUrl);
-      setValue('phone', user.phone);
-      setValue('street', user.userAddress.street);
-      setValue('number', user.userAddress.number);
-      setValue('zipCode', user.userAddress.zipCode);
-      setValue('city', user.userAddress.city);
-      setValue('neighborhood', user.userAddress.neighborhood);
-      setValue('state', user.userAddress.state);
-      setValue('complement', user.userAddress.complement || '');
-    }
+    setValue('fullName', user.fullName);
+    setValue('email', user.email);
+    setValue('photoUrl', user.photoUrl);
+    setValue('phone', user.phone);
+    setValue('street', user.userAddress.street);
+    setValue('number', user.userAddress.number);
+    setValue('zipCode', user.userAddress.zipCode);
+    setValue('city', user.userAddress.city);
+    setValue('neighborhood', user.userAddress.neighborhood);
+    setValue('state', user.userAddress.state);
+    setValue('complement', user.userAddress.complement || '');
   };
 
   const phoneValue = watch('phone');
@@ -240,7 +236,7 @@ export const Form = ({ children, title }) => {
   );
 };
 
-Form.propTypes = {
+EditProfile.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string.isRequired
 };

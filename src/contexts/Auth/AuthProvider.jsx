@@ -69,6 +69,29 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+  const axiosChangePassword = (data) => {
+    const token = localStorage.getItem('@Token');
+    const id = localStorage.getItem('@ID');
+    const config = {
+      email: user.email,
+      old_password: data.old_password,
+      new_password: data.new_password,
+      confirm_password: data.confirm_password
+    };
+
+    axios
+      .patch(`${URL}users/${id}`, config, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((res) => toast.success('Senha alterada com sucesso.'))
+      .catch((err) => {
+        console.log(err);
+        toast.error('Falha ao alterar a senha, tente novamente.');
+      });
+  };
+
   const axiosUpdateUser = async (data) => {
     const id = localStorage.getItem('@ID');
     const token = localStorage.getItem('@Token');
@@ -77,7 +100,6 @@ export const AuthProvider = ({ children }) => {
     }
     const updatedUser = {
       email: data.email,
-      password: data.password,
       fullName: data.fullName,
       photoUrl: data.photoUrl || null,
       phone: data.phone || null,
@@ -124,7 +146,8 @@ export const AuthProvider = ({ children }) => {
         axiosGetUser,
         axiosUpdateUser,
         allDevices,
-        getDevices
+        getDevices,
+        axiosChangePassword
       }}
     >
       {children}

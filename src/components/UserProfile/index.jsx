@@ -26,7 +26,10 @@ export const UserProfile = ({ user }) => {
           </div>
         </div>
 
-        <LinkButton to={'/edit'}>EDITAR</LinkButton>
+        <div>
+          <LinkButton to={'/edit'}>EDITAR</LinkButton>
+          <LinkButton to={'/change-password'}>ALTERAR SENHA</LinkButton>
+        </div>
 
         <ButtonText func={handleLogout} routeTo={'/'} title="Sair" />
       </Container>

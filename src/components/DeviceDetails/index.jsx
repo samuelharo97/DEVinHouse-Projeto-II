@@ -99,7 +99,7 @@ DeviceDetails.propTypes = {
     info: PropTypes.shape({
       virtual_id: PropTypes.string.isRequired,
       ip_address: PropTypes.string.isRequired,
-      signal: PropTypes.string.isRequired,
+      signal: PropTypes.string,
       mac_address: PropTypes.string.isRequired
     })
   })
