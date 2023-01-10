@@ -21,7 +21,7 @@ export const useAxios = () => {
   const axiosGetLocations = async () => {
     const token = localStorage.getItem('@Token');
     try {
-      const res = await axios.get(`${URL}userDevices/locals`, {
+      const res = await axios.get(`${URL}users/locals`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -34,6 +34,7 @@ export const useAxios = () => {
 
   const axiosUserAddDevice = (data) => {
     const token = localStorage.getItem('@Token');
+    const id = localStorage.getItem('@ID');
     const config = {
       device_id: data.deviceId,
       settings: {
@@ -43,7 +44,7 @@ export const useAxios = () => {
       }
     };
     axios
-      .post(`${URL}userDevices`, config, {
+      .post(`${URL}userDevices/${id}`, config, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -57,8 +58,8 @@ export const useAxios = () => {
 
   const axiosGetUserDevices = async () => {
     const token = localStorage.getItem('@Token');
-    /* const id = localStorage.getItem('@ID'); */
-    const res = await axios.get(`${URL}userDevices/user/`, {
+    const id = localStorage.getItem('@ID');
+    const res = await axios.get(`${URL}userDevices/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

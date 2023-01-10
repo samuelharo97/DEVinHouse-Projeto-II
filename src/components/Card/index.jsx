@@ -7,7 +7,7 @@ import { useAxios } from '@hooks';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 
-export const Card = ({ data, isSelected }) => {
+export const Card = ({ data }) => {
   const { axiosUpdateDeviceStatus } = useAxios();
   const navigate = useNavigate();
   const [status, setStatus] = useState(true);
@@ -44,9 +44,7 @@ export const Card = ({ data, isSelected }) => {
         <div>
           <h5>{data.device.name}</h5>
           <div>
-            <p>{`${data.settings.location} | ${data.settings.room} | ${
-              isSelected ? 'ON' : 'OFF'
-            }`}</p>
+            <p>{`${data.settings.location} | ${data.settings.room} | ${status ? 'ON' : 'OFF'}`}</p>
           </div>
           <InfoIcon>
             <FaInfoCircle onClick={() => navigate(`details/${data.id}`)} />
