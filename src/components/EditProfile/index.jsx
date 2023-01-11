@@ -57,7 +57,6 @@ export const EditProfile = ({ children, title }) => {
   };
 
   const submitForm = (data) => {
-    console.log(data);
     axiosUpdateUser(data);
     setTimeout(() => {
       navigate('/profile');

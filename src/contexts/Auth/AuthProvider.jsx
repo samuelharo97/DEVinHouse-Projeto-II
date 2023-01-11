@@ -78,7 +78,6 @@ export const AuthProvider = ({ children }) => {
       new_password: data.new_password,
       confirm_password: data.confirm_password
     };
-
     axios
       .patch(`${URL}users/${id}`, config, {
         headers: {
