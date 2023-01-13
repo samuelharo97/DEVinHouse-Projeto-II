@@ -21,7 +21,7 @@ export const useAxios = () => {
   const axiosGetLocations = async () => {
     const token = localStorage.getItem('@Token');
     try {
-      const res = await axios.get(`${URL}locals`, {
+      const res = await axios.get(`${URL}users/locals`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -36,14 +36,15 @@ export const useAxios = () => {
     const token = localStorage.getItem('@Token');
     const id = localStorage.getItem('@ID');
     const config = {
-      user: id,
-      device: data.deviceId,
-      is_on: true,
-      local: data.local,
-      room: data.room
+      device_id: data.deviceId,
+      settings: {
+        is_on: false,
+        room: data.room,
+        location: data.local
+      }
     };
     axios
-      .post(`${URL}userDevices`, config, {
+      .post(`${URL}userDevices/${id}`, config, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -58,7 +59,7 @@ export const useAxios = () => {
   const axiosGetUserDevices = async () => {
     const token = localStorage.getItem('@Token');
     const id = localStorage.getItem('@ID');
-    const res = await axios.get(`${URL}userDevices/user/${id}`, {
+    const res = await axios.get(`${URL}userDevices/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -68,11 +69,11 @@ export const useAxios = () => {
 
   const axiosUpdateDeviceStatus = (device) => {
     const token = localStorage.getItem('@Token');
-    const newStatus = !device.is_on;
+    const newStatus = !device.settings.is_on;
     const config = {
       is_on: newStatus
     };
-    const response = axios.put(`${URL}userDevices/${device._id}`, config, {
+    const response = axios.patch(`${URL}userDevices/${device.id}`, config, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -84,6 +85,7 @@ export const useAxios = () => {
     const newUser = {
       email: data.email,
       password: data.password,
+      confirm_password: data.password,
       fullName: data.fullName,
       photoUrl: data.photoUrl || null,
       phone: data.phone || null,
@@ -125,7 +127,7 @@ export const useAxios = () => {
 
   const axiosGetDeviceById = (deviceId) => {
     const token = localStorage.getItem('@Token');
-    const response = axios.get(`${URL}userDevices/${deviceId}`, {
+    const response = axios.get(`${URL}userDevices/details/${deviceId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

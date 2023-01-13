@@ -11,7 +11,7 @@ export const DeviceDetails = ({ product }) => {
   const [status, setStatus] = useState(true);
   const { loadsFor, isLoading } = useLoader();
   useEffect(() => {
-    if (product.is_on) {
+    if (product.settings.is_on) {
       setStatus(true);
     } else {
       setStatus(false);
@@ -25,7 +25,7 @@ export const DeviceDetails = ({ product }) => {
       `Tem certeza que deseja remover ${product.device.name} dos seus dispositivos?`
     );
     if (confirmed) {
-      axiosDeleteUserDevice(product._id);
+      axiosDeleteUserDevice(product.id);
       loadsFor(1000);
       setTimeout(() => {
         navigate('/');
@@ -65,16 +65,16 @@ export const DeviceDetails = ({ product }) => {
         <aside>
           <section>Informações do dispositivo</section>
           <p>
-            ID virtual: <span>{product.device.info.virtual_id}</span>
+            ID virtual: <span>{product.info.virtual_id}</span>
           </p>
           <p>
-            Endereço IP: <span>{product.device.info.ip_address}</span>
+            Endereço IP: <span>{product.info.ip_address}</span>
           </p>
           <p>
-            Endereço MAC: <span>{product.device.info.mac_address}</span>
+            Endereço MAC: <span>{product.info.mac_address}</span>
           </p>
           <p>
-            Força do sinal: <span>{product.device.info.signal}</span>
+            Força do sinal: <span>{product.info.signal}</span>
           </p>
         </aside>
         <Button title="Remover" func={deleteDevice} />
@@ -85,19 +85,22 @@ export const DeviceDetails = ({ product }) => {
 
 DeviceDetails.propTypes = {
   product: PropTypes.shape({
-    room: PropTypes.string,
-    is_on: PropTypes.bool,
-    _id: PropTypes.string,
+    settings: PropTypes.shape({
+      room: PropTypes.string,
+      is_on: PropTypes.bool,
+      location: PropTypes.string
+    }),
+    id: PropTypes.string,
     device: PropTypes.shape({
       photoUrl: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      madeBy: PropTypes.string.isRequired,
-      info: PropTypes.shape({
-        virtual_id: PropTypes.string.isRequired,
-        ip_address: PropTypes.string.isRequired,
-        signal: PropTypes.string.isRequired,
-        mac_address: PropTypes.string.isRequired
-      })
+      madeBy: PropTypes.string.isRequired
+    }),
+    info: PropTypes.shape({
+      virtual_id: PropTypes.string.isRequired,
+      ip_address: PropTypes.string.isRequired,
+      signal: PropTypes.string,
+      mac_address: PropTypes.string.isRequired
     })
   })
 };

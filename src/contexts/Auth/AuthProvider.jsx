@@ -17,7 +17,9 @@ export const AuthProvider = ({ children }) => {
   const [allDevices, setAllDevices] = useState([]);
 
   const getDevices = useCallback(() => {
-    axiosGetUserDevices().then((res) => setAllDevices(res.data));
+    axiosGetUserDevices().then((res) => {
+      setAllDevices(res.data);
+    });
   }, [axiosGetUserDevices]);
 
   const checkLogin = () => {
@@ -38,9 +40,9 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post(`${URL}auth/login`, user);
       localStorage.setItem('@Token', res.data.token);
-      localStorage.setItem('@ID', res.data.user._id);
+      localStorage.setItem('@ID', res.data.user.id);
       toast.success('Usuário autenticado');
-      axiosGetUser(res.data.user._id);
+      axiosGetUser(res.data.user.id);
     } catch (err) {
       toast.error('Falha no login, tente outra senha ou e-mail');
       return console.error(err);
@@ -67,6 +69,28 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+  const axiosChangePassword = (data) => {
+    const token = localStorage.getItem('@Token');
+    const id = localStorage.getItem('@ID');
+    const config = {
+      email: user.email,
+      old_password: data.old_password,
+      new_password: data.new_password,
+      confirm_password: data.confirm_password
+    };
+    axios
+      .patch(`${URL}users/${id}`, config, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((res) => toast.success('Senha alterada com sucesso.'))
+      .catch((err) => {
+        console.log(err);
+        toast.error('Falha ao alterar a senha, tente novamente.');
+      });
+  };
+
   const axiosUpdateUser = async (data) => {
     const id = localStorage.getItem('@ID');
     const token = localStorage.getItem('@Token');
@@ -75,7 +99,6 @@ export const AuthProvider = ({ children }) => {
     }
     const updatedUser = {
       email: data.email,
-      password: data.password,
       fullName: data.fullName,
       photoUrl: data.photoUrl || null,
       phone: data.phone || null,
@@ -122,7 +145,8 @@ export const AuthProvider = ({ children }) => {
         axiosGetUser,
         axiosUpdateUser,
         allDevices,
-        getDevices
+        getDevices,
+        axiosChangePassword
       }}
     >
       {children}

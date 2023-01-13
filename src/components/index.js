@@ -16,4 +16,6 @@ export { NavBar } from './NavBar';
 export { Loading, AbsoluteLoading } from './Loading';
 export { Filter } from './Filter';
 export { ToggleTheme } from './ToggleTheme';
+export { EditProfile } from './EditProfile';
 export { DeviceDetails } from './DeviceDetails';
+export { PasswordForm } from './PasswordForm';

@@ -30,9 +30,9 @@ export const Modal = ({ showModal, setShowModal, device, locations }) => {
   };
 
   const { register, handleSubmit } = useForm();
-  const { loadsForRandom, isLoading } = useLoader();
+  const { loadsFor, isLoading } = useLoader();
   const submit = (data) => {
-    loadsForRandom();
+    loadsFor(3000);
     axiosUserAddDevice(data);
   };
 
@@ -56,7 +56,7 @@ export const Modal = ({ showModal, setShowModal, device, locations }) => {
                     >
                       {locations.map((location, index) => {
                         return (
-                          <option key={index} value={`${location._id}`}>
+                          <option key={index} value={`${location.description}`}>
                             {location.description}
                           </option>
                         );
@@ -119,6 +119,6 @@ Modal.propTypes = {
   locations: PropTypes.array,
   device: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    _id: PropTypes.string.isRequired
+    _id: PropTypes.number.isRequired
   })
 };

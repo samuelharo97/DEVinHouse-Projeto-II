@@ -1,24 +1,20 @@
-import { Card } from '@components';
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
+import {  Card } from '@components';
+/* import PropTypes from 'prop-types'; */
 import { Container, List } from './styles';
 
 export const ListSelectedDevices = ({ products }) => {
-
   return (
     <Container>
       <List>
-        {products.map((product) => (
-          <Card
-            key={product._id}
-            product={product}
-            isSelected={product.is_on}
-          />
-        ))}
+        {products.map((data) => {
+          return <Card key={data.id} data={data} isSelected={data.settings.is_on} />;
+        })}
       </List>
     </Container>
   );
 };
 
-ListSelectedDevices.propTypes = {
+/* ListSelectedDevices.propTypes = {
   products: PropTypes.array.isRequired
-};
+}; */

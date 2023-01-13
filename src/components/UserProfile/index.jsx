@@ -1,7 +1,7 @@
 import { ButtonText, WhiteLayer } from '@components';
 import { useAuth } from '@contexts';
 import PropTypes from 'prop-types';
-import { Container, LinkButton } from './styles';
+import { ButtonContainer, Container, LinkButton } from './styles';
 
 export const UserProfile = ({ user }) => {
   const { handleLogout } = useAuth();
@@ -26,7 +26,10 @@ export const UserProfile = ({ user }) => {
           </div>
         </div>
 
-        <LinkButton to={'/edit'}>EDITAR</LinkButton>
+        <ButtonContainer>
+          <LinkButton to={'/edit'}>EDITAR PERFIL</LinkButton>
+          <LinkButton to={'/change-password'}>ALTERAR SENHA</LinkButton>
+        </ButtonContainer>
 
         <ButtonText func={handleLogout} routeTo={'/'} title="Sair" />
       </Container>
@@ -44,7 +47,7 @@ UserProfile.propTypes = {
       zipCode: PropTypes.string,
       street: PropTypes.string.isRequired,
       neighborhood: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      number: PropTypes.number.isRequired,
       city: PropTypes.string.isRequired,
       state: PropTypes.string.isRequired
     })

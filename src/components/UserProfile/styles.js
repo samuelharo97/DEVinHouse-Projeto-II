@@ -38,13 +38,13 @@ export const Container = styled.div`
 `;
 
 export const LinkButton = styled(Link)`
-  width: 120px;
+  width: 140px;
   background-color: ${({ theme }) => theme.COLORS.PRIMARY.MAIN};
   color: ${({ theme }) => theme.COLORS.COMMON.WHITE};
   height: 40px;
   border: 0;
-  padding: 0 16px;
-  margin-top: 16px;
+  padding: 10px 0;
+  margin: 16px 30px;
   border-radius: 50px;
   font-style: normal;
   font-weight: 700;
@@ -53,5 +53,9 @@ export const LinkButton = styled(Link)`
   text-transform: uppercase;
   text-align: center;
   align-self: center;
-  padding: 10px 0;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

@@ -5,6 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAuth } from '@contexts';
 import { useLoader } from '@hooks';
+/* import axios from 'axios';
+import { useEffect } from 'react'; */
 
 const loginSchema = yup.object().shape({
   email: yup.string().email().typeError('Digite um e-mail válido').required('Digite um e-mail'),

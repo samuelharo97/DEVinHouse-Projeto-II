@@ -25,8 +25,9 @@ export const Home = () => {
       setActiveSection(null);
     } else {
       const filteredProducts = allDevices.filter(
-        (device) => device.local.description === clickedSection
+        (device) => device.settings.location === clickedSection
       );
+
       setFiltered(filteredProducts);
       setActiveSection(clickedSection);
     }
