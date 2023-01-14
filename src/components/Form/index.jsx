@@ -5,17 +5,25 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { WhiteLayer } from '@components';
-import { useAuth } from '@contexts';
 import { useAxios } from '@hooks';
 import { useEffect } from 'react';
-import { phoneMask, phoneNumber } from '@utils';
+import { phoneMask, phoneNumber, validPassword } from '@utils';
 import { fetchZipcode } from '@services';
-import { useNavigate } from 'react-router-dom';
 
 const message = 'Campo obrigatório';
 
 const schema = yup.object().shape({
   email: yup.string().email().typeError('Digite um e-mail válido.').required(message),
+  password: yup
+    .string()
+    .matches(validPassword, 'A senha deve conter: letras, números e caracteres especiais')
+    .min(8, 'Senha deve ter no mínimo 8 caracteres')
+    .required(message),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'As senhas não correspondem')
+    .typeError('As senhas não correspondem')
+    .required(message),
   fullName: yup.string().required(message).max(80, 'No máximo 80 caracteres'),
   photoUrl: yup.string().typeError('URL Inválida').url(),
   street: yup.string().required(message),
@@ -33,7 +41,6 @@ const schema = yup.object().shape({
 });
 
 export const Form = ({ children, title }) => {
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -45,7 +52,6 @@ export const Form = ({ children, title }) => {
   });
 
   const { axiosCreateUser } = useAxios();
-  const { user } = useAuth();
 
   // lógica da função obtida através do estudo deste vídeo https://youtu.be/155ywtYSpdY
   const findZipcode = (e) => {
@@ -61,32 +67,9 @@ export const Form = ({ children, title }) => {
 
   const submitForm = (data) => {
     axiosCreateUser(data);
-    setTimeout(() => {
-      navigate('/');
-    }, 1500);
-  };
-
-  const populateForm = () => {
-    if (title === 'Editar Perfil') {
-      setValue('fullName', user.fullName);
-      setValue('email', user.email);
-      setValue('photoUrl', user.photoUrl);
-      setValue('phone', user.phone);
-      setValue('street', user.userAddress.street);
-      setValue('number', user.userAddress.number);
-      setValue('zipCode', user.userAddress.zipCode);
-      setValue('city', user.userAddress.city);
-      setValue('neighborhood', user.userAddress.neighborhood);
-      setValue('state', user.userAddress.state);
-      setValue('complement', user.userAddress.complement || '');
-    }
   };
 
   const phoneValue = watch('phone');
-
-  useEffect(() => {
-    populateForm();
-  }, []);
 
   useEffect(() => {
     setValue('phone', phoneMask(phoneValue));
@@ -145,6 +128,33 @@ export const Form = ({ children, title }) => {
               name="phone"
               id="phone"
               {...register('phone')}
+            />
+          </InputContainer>
+        </InputWrapper>
+
+        <InputWrapper>
+          <InputContainer>
+            <label htmlFor="password">
+              Senha* <span>{errors.password?.message}</span>
+            </label>
+            <input
+              type="password"
+              placeholder="Sua senha"
+              name="password"
+              id="password"
+              {...register('password')}
+            />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor="confirmPassword">
+              Confirmar senha* <span>{errors.confirmPassword?.message}</span>
+            </label>
+            <input
+              type="password"
+              placeholder="Confirme sua senha"
+              name="confirmPassword"
+              id="confirmPassword"
+              {...register('confirmPassword')}
             />
           </InputContainer>
         </InputWrapper>

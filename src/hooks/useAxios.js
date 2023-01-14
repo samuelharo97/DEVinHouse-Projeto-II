@@ -99,6 +99,7 @@ export const useAxios = () => {
         complement: data.complement || null
       }
     };
+    console.log(newUser);
     axios
       .post(`${URL}auth/register`, newUser)
       .then((res) => toast.success('Usuário criado com sucesso'))
