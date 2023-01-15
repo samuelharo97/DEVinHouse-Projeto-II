@@ -44,7 +44,7 @@ export const useAxios = () => {
       }
     };
     axios
-      .post(`${URL}userDevices/${id}`, config, {
+      .post(`${URL}user-devices/${id}`, config, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -59,7 +59,7 @@ export const useAxios = () => {
   const axiosGetUserDevices = async () => {
     const token = localStorage.getItem('@Token');
     const id = localStorage.getItem('@ID');
-    const res = await axios.get(`${URL}userDevices/${id}`, {
+    const res = await axios.get(`${URL}user-devices/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -73,7 +73,7 @@ export const useAxios = () => {
     const config = {
       is_on: newStatus
     };
-    const response = axios.patch(`${URL}userDevices/${device.id}`, config, {
+    const response = axios.patch(`${URL}user-devices/${device.id}`, config, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -111,7 +111,7 @@ export const useAxios = () => {
   const axiosDeleteUserDevice = (deviceId) => {
     const token = localStorage.getItem('@Token');
     axios
-      .delete(`${URL}userDevices/${deviceId}`, {
+      .delete(`${URL}user-devices/${deviceId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -127,7 +127,7 @@ export const useAxios = () => {
 
   const axiosGetDeviceById = (deviceId) => {
     const token = localStorage.getItem('@Token');
-    const response = axios.get(`${URL}userDevices/details/${deviceId}`, {
+    const response = axios.get(`${URL}user-devices/details/${deviceId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
