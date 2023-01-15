@@ -1,7 +1,7 @@
 <!-- prettier-ignore -->
 # DEVinHouse Project II - ConnectLab
 
-This project is the second big challenge from DEVinHouse course in collaboration with the company Intelbras, where the proposition was to create a web application to manage IOT devices using Vite + React in the given time period of 16 days.
+This project is the second major challenge from the DEVinHouse course in collaboration with Intelbras. The objective was to develop a web application within a 16-day period to manage IoT devices using Vite and React.
 
 ![Current Version](https://img.shields.io/badge/version-v0.1-blue)
 ![GitHub contributors](https://img.shields.io/github/contributors/samuelharo97/DEVinHouse-Projeto-II)
